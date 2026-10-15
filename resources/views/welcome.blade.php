@@ -39,7 +39,7 @@
             </a>
             <div id="desktop-nav" style="display:none;align-items:center;gap:.25rem;" role="menubar">
                 <a href="#hero" class="nav-link active" role="menuitem">Home</a>
-                <a href="#programs" class="nav-link" role="menuitem">Program Belajar</a>
+                <a href="{{ route('program.index') }}" class="nav-link" role="menuitem">Program Belajar</a>
                 <a href="#cara-kerja" class="nav-link" role="menuitem">Jadwal</a>
                 <a href="#about" class="nav-link" role="menuitem">Tentang Kami</a>
                 <a href="#contact" class="nav-link" role="menuitem">Kontak</a>
@@ -82,7 +82,7 @@
     </div>
     <nav role="menu" aria-label="Menu Mobile">
         <a href="#hero" class="mobile-nav-link" role="menuitem">Home</a>
-        <a href="#programs" class="mobile-nav-link" role="menuitem">Program Belajar</a>
+        <a href="{{ route('program.index') }}" class="mobile-nav-link" role="menuitem">Program Belajar</a>
         <a href="#cara-kerja" class="mobile-nav-link" role="menuitem">Jadwal</a>
         <a href="#about" class="mobile-nav-link" role="menuitem">Tentang Kami</a>
         <a href="#contact" class="mobile-nav-link" role="menuitem">Kontak</a>
@@ -116,7 +116,7 @@
                     Temukan pengalaman belajar yang lebih terstruktur dengan pendampingan tutor, program belajar yang sesuai kebutuhan, dan lingkungan yang mendukung perkembangan akademikmu.
                 </p>
                 <div class="animate-fade-in-up delay-300" style="display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem;opacity:0;">
-                    <a href="#programs" class="btn-primary" id="cta-jelajahi-program">
+                    <a href="{{ route('program.index') }}" class="btn-primary" id="cta-jelajahi-program">
                         Jelajahi Program
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </a>
@@ -139,7 +139,7 @@
                          alt="Siswa berdiskusi bersama tutor dalam sesi bimbingan belajar"
                          style="width:100%;height:100%;object-fit:cover;display:block;" loading="eager">
                 </div>
-                <div style="position:absolute;bottom:-1rem;left:-1rem;background-color:white;border-radius:.875rem;padding:1rem 1.25rem;box-shadow:0 12px 32px rgba(20,43,74,.12);display:flex;align-items:center;gap:.75rem;min-width:200px;" aria-hidden="true">
+                <a href="{{ route('program.index') }}" style="position:absolute;bottom:-1rem;left:-1rem;background-color:white;border-radius:.875rem;padding:1rem 1.25rem;box-shadow:0 12px 32px rgba(20,43,74,.12);display:flex;align-items:center;gap:.75rem;min-width:200px;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease;cursor:pointer;" id="hero-floating-program-card" aria-label="Lihat Program Belajar">
                     <div style="width:2.5rem;height:2.5rem;background-color:#EAF6EF;border-radius:.625rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16845B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
@@ -150,7 +150,7 @@
                         <div style="font-size:.8125rem;font-weight:700;color:#142B4A;">Program Tersedia</div>
                         <div style="font-size:.75rem;color:#4a5568;">SD, SMP, SMA &amp; Ujian</div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
@@ -228,7 +228,7 @@
                         @endforeach
                     </div>
                 </div>
-                <a href="#contact" class="btn-primary btn-sm" id="btn-program-{{ $program['id'] }}" style="width:100%;justify-content:center;">Lihat Program</a>
+                <a href="{{ route('program.show', $program['id'] === 'ujian' ? 'persiapan-ujian' : $program['id']) }}" class="btn-primary btn-sm" id="btn-program-{{ $program['id'] }}" style="width:100%;justify-content:center;">Lihat Program</a>
             </article>
             @endforeach
         </div>
