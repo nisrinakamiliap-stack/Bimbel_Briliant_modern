@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Route;
 
@@ -9,3 +10,5 @@ Route::get('/', function () {
 
 Route::get('/program', [ProgramController::class, 'index'])->name('program.index');
 Route::get('/program/{slug}', [ProgramController::class, 'show'])->name('program.show');
+
+Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.index');

@@ -40,7 +40,7 @@
             <div id="desktop-nav" style="display:none;align-items:center;gap:.25rem;" role="menubar">
                 <a href="#hero" class="nav-link active" role="menuitem">Home</a>
                 <a href="{{ route('program.index') }}" class="nav-link" role="menuitem">Program Belajar</a>
-                <a href="#cara-kerja" class="nav-link" role="menuitem">Jadwal</a>
+                <a href="{{ route('jadwal.index') }}" class="nav-link" role="menuitem">Jadwal</a>
                 <a href="#about" class="nav-link" role="menuitem">Tentang Kami</a>
                 <a href="#contact" class="nav-link" role="menuitem">Kontak</a>
             </div>
@@ -83,7 +83,7 @@
     <nav role="menu" aria-label="Menu Mobile">
         <a href="#hero" class="mobile-nav-link" role="menuitem">Home</a>
         <a href="{{ route('program.index') }}" class="mobile-nav-link" role="menuitem">Program Belajar</a>
-        <a href="#cara-kerja" class="mobile-nav-link" role="menuitem">Jadwal</a>
+        <a href="{{ route('jadwal.index') }}" class="mobile-nav-link" role="menuitem">Jadwal</a>
         <a href="#about" class="mobile-nav-link" role="menuitem">Tentang Kami</a>
         <a href="#contact" class="mobile-nav-link" role="menuitem">Kontak</a>
     </nav>

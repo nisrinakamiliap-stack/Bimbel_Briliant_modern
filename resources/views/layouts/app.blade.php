@@ -48,7 +48,7 @@
             <div id="desktop-nav" style="display:none;align-items:center;gap:.25rem;" role="menubar">
                 <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" role="menuitem">Home</a>
                 <a href="{{ route('program.index') }}" class="nav-link {{ request()->routeIs('program.*') ? 'active' : '' }}" role="menuitem">Program Belajar</a>
-                <a href="{{ url('/#cara-kerja') }}" class="nav-link" role="menuitem">Jadwal</a>
+                <a href="{{ route('jadwal.index') }}" class="nav-link {{ request()->routeIs('jadwal.*') ? 'active' : '' }}" role="menuitem">Jadwal</a>
                 <a href="{{ url('/#about') }}" class="nav-link" role="menuitem">Tentang Kami</a>
                 <a href="{{ url('/#contact') }}" class="nav-link" role="menuitem">Kontak</a>
             </div>
@@ -96,7 +96,7 @@
     <nav role="menu" aria-label="Menu Mobile">
         <a href="{{ route('home') }}" class="mobile-nav-link {{ request()->routeIs('home') ? 'style-active' : '' }}" role="menuitem" style="{{ request()->routeIs('home') ? 'color:#16845B;font-weight:700;' : '' }}">Home</a>
         <a href="{{ route('program.index') }}" class="mobile-nav-link" role="menuitem" style="{{ request()->routeIs('program.*') ? 'color:#16845B;font-weight:700;' : '' }}">Program Belajar</a>
-        <a href="{{ url('/#cara-kerja') }}" class="mobile-nav-link" role="menuitem">Jadwal</a>
+        <a href="{{ route('jadwal.index') }}" class="mobile-nav-link" role="menuitem" style="{{ request()->routeIs('jadwal.*') ? 'color:#16845B;font-weight:700;' : '' }}">Jadwal</a>
         <a href="{{ url('/#about') }}" class="mobile-nav-link" role="menuitem">Tentang Kami</a>
         <a href="{{ url('/#contact') }}" class="mobile-nav-link" role="menuitem">Kontak</a>
     </nav>

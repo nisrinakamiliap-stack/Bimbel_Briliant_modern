@@ -733,3 +733,20 @@ html {
     scroll-padding-top: 80px;
 }
 
+/* ===================== */
+/* JADWAL RESPONSIVE     */
+/* ===================== */
+@media (max-width: 640px) {
+    .jadwal-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.875rem !important;
+    }
+    .jadwal-right-col {
+        width: 100% !important;
+        justify-content: space-between !important;
+        padding-top: 0.625rem;
+        border-top: 1px dashed #f1f5f9;
+    }
+}
+
