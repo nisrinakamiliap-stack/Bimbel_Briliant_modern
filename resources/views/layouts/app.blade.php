@@ -49,13 +49,13 @@
                 <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" role="menuitem">Home</a>
                 <a href="{{ route('program.index') }}" class="nav-link {{ request()->routeIs('program.*') ? 'active' : '' }}" role="menuitem">Program Belajar</a>
                 <a href="{{ route('jadwal.index') }}" class="nav-link {{ request()->routeIs('jadwal.*') ? 'active' : '' }}" role="menuitem">Jadwal</a>
-                <a href="{{ url('/#about') }}" class="nav-link" role="menuitem">Tentang Kami</a>
-                <a href="{{ url('/#contact') }}" class="nav-link" role="menuitem">Kontak</a>
+                <a href="{{ route('tentang.index') }}" class="nav-link {{ request()->routeIs('tentang.*') ? 'active' : '' }}" role="menuitem">Tentang Kami</a>
+                <a href="{{ route('kontak.index') }}" class="nav-link {{ request()->routeIs('kontak.*') ? 'active' : '' }}" role="menuitem">Kontak</a>
             </div>
 
             {{-- Right CTA Desktop --}}
             <div id="desktop-cta" style="display:none;align-items:center;gap:.75rem;">
-                <a href="{{ url('/#contact') }}" class="nav-link" style="font-weight:500;">Masuk</a>
+                <a href="{{ route('kontak.index') }}" class="nav-link" style="font-weight:500;">Masuk</a>
                 <a href="{{ route('program.index') }}" class="btn-primary btn-sm">Daftar Sekarang</a>
             </div>
 
@@ -97,11 +97,11 @@
         <a href="{{ route('home') }}" class="mobile-nav-link {{ request()->routeIs('home') ? 'style-active' : '' }}" role="menuitem" style="{{ request()->routeIs('home') ? 'color:#16845B;font-weight:700;' : '' }}">Home</a>
         <a href="{{ route('program.index') }}" class="mobile-nav-link" role="menuitem" style="{{ request()->routeIs('program.*') ? 'color:#16845B;font-weight:700;' : '' }}">Program Belajar</a>
         <a href="{{ route('jadwal.index') }}" class="mobile-nav-link" role="menuitem" style="{{ request()->routeIs('jadwal.*') ? 'color:#16845B;font-weight:700;' : '' }}">Jadwal</a>
-        <a href="{{ url('/#about') }}" class="mobile-nav-link" role="menuitem">Tentang Kami</a>
-        <a href="{{ url('/#contact') }}" class="mobile-nav-link" role="menuitem">Kontak</a>
+        <a href="{{ route('tentang.index') }}" class="mobile-nav-link" role="menuitem" style="{{ request()->routeIs('tentang.*') ? 'color:#16845B;font-weight:700;' : '' }}">Tentang Kami</a>
+        <a href="{{ route('kontak.index') }}" class="mobile-nav-link" role="menuitem" style="{{ request()->routeIs('kontak.*') ? 'color:#16845B;font-weight:700;' : '' }}">Kontak</a>
     </nav>
     <div style="margin-top:2rem;display:flex;flex-direction:column;gap:.875rem;">
-        <a href="{{ url('/#contact') }}" class="btn-secondary" style="justify-content:center;">Masuk</a>
+        <a href="{{ route('kontak.index') }}" class="btn-secondary" style="justify-content:center;">Masuk</a>
         <a href="{{ route('program.index') }}" class="btn-primary" style="justify-content:center;">
             Daftar Sekarang
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -158,9 +158,9 @@
                 <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.75rem;">
                     <li><a href="{{ route('home') }}" class="footer-link">Home</a></li>
                     <li><a href="{{ route('program.index') }}" class="footer-link">Program Belajar</a></li>
-                    <li><a href="{{ url('/#cara-kerja') }}" class="footer-link">Jadwal</a></li>
-                    <li><a href="{{ url('/#about') }}" class="footer-link">Tentang Kami</a></li>
-                    <li><a href="{{ url('/#contact') }}" class="footer-link">Kontak</a></li>
+                    <li><a href="{{ route('jadwal.index') }}" class="footer-link">Jadwal</a></li>
+                    <li><a href="{{ route('tentang.index') }}" class="footer-link">Tentang Kami</a></li>
+                    <li><a href="{{ route('kontak.index') }}" class="footer-link">Kontak</a></li>
                 </ul>
             </nav>
 

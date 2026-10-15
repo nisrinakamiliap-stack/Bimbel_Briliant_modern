@@ -41,8 +41,8 @@
                 <a href="#hero" class="nav-link active" role="menuitem">Home</a>
                 <a href="{{ route('program.index') }}" class="nav-link" role="menuitem">Program Belajar</a>
                 <a href="{{ route('jadwal.index') }}" class="nav-link" role="menuitem">Jadwal</a>
-                <a href="#about" class="nav-link" role="menuitem">Tentang Kami</a>
-                <a href="#contact" class="nav-link" role="menuitem">Kontak</a>
+                <a href="{{ route('tentang.index') }}" class="nav-link" role="menuitem">Tentang Kami</a>
+                <a href="{{ route('kontak.index') }}" class="nav-link" role="menuitem">Kontak</a>
             </div>
             <div id="desktop-cta" style="display:none;align-items:center;gap:.75rem;">
                 <a href="#contact" class="nav-link" style="font-weight:500;">Masuk</a>
@@ -84,8 +84,8 @@
         <a href="#hero" class="mobile-nav-link" role="menuitem">Home</a>
         <a href="{{ route('program.index') }}" class="mobile-nav-link" role="menuitem">Program Belajar</a>
         <a href="{{ route('jadwal.index') }}" class="mobile-nav-link" role="menuitem">Jadwal</a>
-        <a href="#about" class="mobile-nav-link" role="menuitem">Tentang Kami</a>
-        <a href="#contact" class="mobile-nav-link" role="menuitem">Kontak</a>
+        <a href="{{ route('tentang.index') }}" class="mobile-nav-link" role="menuitem">Tentang Kami</a>
+        <a href="{{ route('kontak.index') }}" class="mobile-nav-link" role="menuitem">Kontak</a>
     </nav>
     <div style="margin-top:2rem;display:flex;flex-direction:column;gap:.875rem;">
         <a href="#contact" class="btn-secondary" style="justify-content:center;">Masuk</a>
@@ -424,7 +424,7 @@
             <nav aria-label="Navigasi footer">
                 <h3 style="font-size:.8125rem;font-weight:700;color:#ffffff;letter-spacing:.05em;text-transform:uppercase;margin-bottom:1.25rem;">Navigasi</h3>
                 <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.75rem;">
-                    @foreach ([['href'=>'#hero','label'=>'Home'],['href'=>'#programs','label'=>'Program Belajar'],['href'=>'#cara-kerja','label'=>'Jadwal'],['href'=>'#about','label'=>'Tentang Kami'],['href'=>'#contact','label'=>'Kontak']] as $link)
+                    @foreach ([['href'=>'#hero','label'=>'Home'],['href'=>route('program.index'),'label'=>'Program Belajar'],['href'=>route('jadwal.index'),'label'=>'Jadwal'],['href'=>route('tentang.index'),'label'=>'Tentang Kami'],['href'=>route('kontak.index'),'label'=>'Kontak']] as $link)
                     <li><a href="{{ $link['href'] }}" class="footer-link">{{ $link['label'] }}</a></li>
                     @endforeach
                 </ul>

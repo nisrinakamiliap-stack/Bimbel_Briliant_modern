@@ -455,5 +455,193 @@ return [
             'program_slug' => 'persiapan-ujian',
         ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Data Informasi "Tentang Kami"
+    |--------------------------------------------------------------------------
+    |
+    | Profil, Visi & Misi, Nilai Utama, Tim Pengajar, dan Fasilitas.
+    |
+    */
+    'tentang_kami' => [
+        'profil' => [
+            'tagline' => 'Tentang Bimbel Modern Brilliant',
+            'judul' => 'Membimbing Generasi Cerdas dan Berkarakter Sejak 2018',
+            'ringkasan' => 'Bimbel Modern Brilliant didirikan dengan tekad kuat untuk menghadirkan bimbingan belajar berkualitas tinggi yang tidak hanya berfokus pada hafalan rumus kilat, melainkan membangun fondasi pemahaman konsep mendalam, daya kritis, dan karakter percaya diri pada setiap siswa.',
+            'cerita' => 'Bermula dari kelompok bimbingan belajar kecil yang digagas oleh para alumni dan akademisi perguruan tinggi terkemuka di Indonesia, kini Modern Brilliant telah berkembang menjadi mitra belajar terpercaya bagi ribuan siswa dan orang tua. Kami meyakini bahwa setiap siswa adalah pribadi berharga yang unik dengan gaya belajar serta kecepatan berpikir berbeda. Oleh karena itu, pendekatan kami selalu bersifat personal, adaptif, sabar, dan interaktif.',
+        ],
+
+        'statistik' => [
+            [
+                'angka' => '1.500+',
+                'label' => 'Siswa Terbimbing',
+                'sub' => 'Dari jenjang SD, SMP, hingga SMA',
+            ],
+            [
+                'angka' => '94.8%',
+                'label' => 'Lolos Kampus Impian',
+                'sub' => 'Melalui jalur SNBP, SNBT, & Ujian Mandiri',
+            ],
+            [
+                'angka' => '45+',
+                'label' => 'Tutor Berpengalaman',
+                'sub' => 'Lulusan PTN ternama & bersertifikasi',
+            ],
+            [
+                'angka' => '8+ Tahun',
+                'label' => 'Dedikasi Pengabdian',
+                'sub' => 'Membangun ekosistem belajar suportif',
+            ],
+        ],
+
+        'visi' => 'Menjadi lembaga bimbingan belajar modern nomor satu di Indonesia yang melahirkan generasi muda berdaya saing global, berpikir kritis, mandiri, dan berkarakter mulia melalui pembelajaran adaptif yang memanusiakan siswa.',
+
+        'misi' => [
+            'Menyelenggarakan sistem pendampingan belajar yang personal, terstruktur, dan berbasis pemahaman konsep fundamental.',
+            'Menghadirkan tenaga pengajar profesional yang kompeten, berempati, inspiratif, dan selalu siap membimbing dengan sabar.',
+            'Mengembangkan materi ajar mutakhir, bank soal prediktif, serta teknologi asesmen adaptif (Computer Based Test) berbasis IRT.',
+            'Membangun komunikasi dan kemitraan harmonis yang transparan bersama orang tua guna memantau pertumbuhan akademik siswa secara berkala.',
+        ],
+
+        'nilai_utama' => [
+            [
+                'judul' => 'Pendekatan Personal',
+                'deskripsi' => 'Rasio kelas kecil memungkinkan tutor mengenali keunikan, kesulitan, dan potensi individual setiap murid secara optimal.',
+                'ikon' => 'users',
+                'warna' => 'green',
+            ],
+            [
+                'judul' => 'Konseptual & Logis',
+                'deskripsi' => 'Kami menolak hafalan rumus buta. Siswa diajak memahami alasan di balik setiap rumus agar materi melekat dalam ingatan jangka panjang.',
+                'ikon' => 'book-open',
+                'warna' => 'blue',
+            ],
+            [
+                'judul' => 'Lingkungan Suportif',
+                'deskripsi' => 'Suasana kelas yang hangat dan apresiatif membuat murid tidak takut salah, percaya diri bertanya, serta nyaman berdiskusi aktif.',
+                'ikon' => 'smile',
+                'warna' => 'orange',
+            ],
+            [
+                'judul' => 'Transparansi Evaluasi',
+                'deskripsi' => 'Orang tua mendapatkan laporan berkala setiap bulan yang mencakup grafik skor tryout, kedisiplinan, dan catatan tutor.',
+                'ikon' => 'chart',
+                'warna' => 'purple',
+            ],
+        ],
+
+        'tutor' => [
+            [
+                'nama' => 'Sari Wahyuni, M.Pd.',
+                'peran' => 'Head of Academic & Tutor Matematika SD-SMP',
+                'lulusan' => 'Magister Pendidikan Matematika UNJ',
+                'pengalaman' => '8 Tahun Pengalaman Mengajar',
+                'inisial' => 'SW',
+                'warna' => 'blue',
+            ],
+            [
+                'nama' => 'Budi Santoso, S.Si.',
+                'peran' => 'Master Tutor Fisika & IPA Terpadu',
+                'lulusan' => 'Fisika MIPA Universitas Indonesia',
+                'pengalaman' => '7 Tahun Pengalaman Mengajar',
+                'inisial' => 'BS',
+                'warna' => 'green',
+            ],
+            [
+                'nama' => 'Dimas Prasetyo, S.T.',
+                'peran' => 'Spesialis Penalaran Kuantitatif & TPS UTBK',
+                'lulusan' => 'Teknik Industri Institut Teknologi Bandung',
+                'pengalaman' => '6 Tahun Pengalaman Mengajar',
+                'inisial' => 'DP',
+                'warna' => 'purple',
+            ],
+            [
+                'nama' => 'Ratna Kusuma, S.Pd.',
+                'peran' => 'Spesialis Kimia & Biologi SMA',
+                'lulusan' => 'Pendidikan Kimia Universitas Pendidikan Indonesia',
+                'pengalaman' => '9 Tahun Pengalaman Mengajar',
+                'inisial' => 'RK',
+                'warna' => 'orange',
+            ],
+            [
+                'nama' => 'Nadia Amanda, M.Hum.',
+                'peran' => 'Tutor Bahasa Inggris & Literasi Kritis',
+                'lulusan' => 'Sastra Inggris Universitas Gadjah Mada',
+                'pengalaman' => '5 Tahun Pengalaman Mengajar',
+                'inisial' => 'NA',
+                'warna' => 'red',
+            ],
+            [
+                'nama' => 'Hendra Pratama, S.E.',
+                'peran' => 'Spesialis Ekonomi, Akuntansi & Soshum',
+                'lulusan' => 'Ilmu Ekonomi Universitas Airlangga',
+                'pengalaman' => '6 Tahun Pengalaman Mengajar',
+                'inisial' => 'HP',
+                'warna' => 'blue',
+            ],
+        ],
+
+        'fasilitas' => [
+            [
+                'nama' => 'Ruang Belajar Ergonomis & Ber-AC',
+                'deskripsi' => 'Didesain hening dengan pencahayaan optimal dan pendingin ruangan untuk menjaga konsentrasi belajar maksimal.',
+                'ikon' => 'building',
+            ],
+            [
+                'nama' => 'Modul Belajar Eksklusif & Bank Soal',
+                'deskripsi' => 'Disusun langsung oleh tim riset kurikulum Modern Brilliant dengan pembahasan bertingkat dari dasar hingga level HOTS.',
+                'ikon' => 'book',
+            ],
+            [
+                'nama' => 'Sistem CBT Adaptif IRT Nasional',
+                'deskripsi' => 'Platform simulasi ujian digital dengan sistem penilaian Item Response Theory (IRT) yang identik dengan tes SNBT resmi.',
+                'ikon' => 'laptop',
+            ],
+            [
+                'nama' => 'Klinik Konsultasi & Tanya PR Gratis',
+                'deskripsi' => 'Fasilitas bimbingan ekstra di luar jam kelas bimbingan reguler bagi siswa yang ingin menuntaskan tugas sekolahnya.',
+                'ikon' => 'chat',
+            ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Data Informasi Kontak & Layanan
+    |--------------------------------------------------------------------------
+    |
+    | Alamat, Call Center, WhatsApp, Email, Jam Kerja, dan FAQ.
+    |
+    */
+    'kontak' => [
+        'alamat' => 'Jl. Pendidikan Utama No. 88, Kebayoran Baru, Jakarta Selatan — 12340',
+        'telepon' => '(021) 7890-1234',
+        'whatsapp' => '0812-3456-7890',
+        'whatsapp_link' => 'https://wa.me/6281234567890',
+        'email' => 'info@modernbrilliant.sch.id',
+        'jam_operasional' => 'Senin – Sabtu, 08.00 – 20.00 WIB',
+        'maps_embed' => 'https://maps.google.com/maps?q=Jakarta+Selatan&t=&z=13&ie=UTF8&iwloc=&output=embed',
+        'faq' => [
+            [
+                'tanya' => 'Bagaimana cara mendaftar program di Bimbel Modern Brilliant?',
+                'jawab' => 'Pendaftaran dapat dilakukan secara online melalui formulir di halaman ini, menghubungi admin WhatsApp di 0812-3456-7890, atau datang langsung ke kantor cabang kami.',
+            ],
+            [
+                'tanya' => 'Apakah ada tes diagnostik atau pemetaan kemampuan awal?',
+                'jawab' => 'Ya, setiap siswa baru akan mengikuti tes diagnostik awal tanpa dipungut biaya guna memetakan kekuatan dan kelemahan materi agar tutor dapat menyusun strategi bimbingan yang tepat.',
+            ],
+            [
+                'tanya' => 'Apakah tersedia sesi uji coba (Free Trial Class)?',
+                'jawab' => 'Kami menyediakan 1x sesi coba kelas gratis agar siswa dapat merasakan langsung metode pembelajaran dan kecocokan interaksi dengan tutor sebelum melakukan pendaftaran resmi.',
+            ],
+            [
+                'tanya' => 'Bagaimana jika siswa berhalangan hadir pada jadwal sesi tertentu?',
+                'jawab' => 'Siswa dapat mengajukan izin minimal 6 jam sebelum sesi dimulai dan berhak mendapatkan sesi pengganti (makeup class) atau konsultasi materi di klinik PR.',
+            ],
+        ],
+    ],
 ];
+
+
 
