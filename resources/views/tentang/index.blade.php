@@ -1,7 +1,7 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
-@section('title', 'Tentang Kami — Bimbel Modern Brilliant')
-@section('meta_description', 'Kenali lebih dekat Bimbel Modern Brilliant: lembaga bimbingan belajar dengan pendekatan personal, pemahaman konsep mendalam, dan tutor lulusan PTN terbaik sejak 2018.')
+@section('title', 'Tentang Kami — Bimbel Sentra Edukasi')
+@section('meta_description', 'Kenali lebih dekat Bimbel Sentra Edukasi: lembaga bimbingan belajar dengan pendekatan personal, pemahaman konsep mendalam, dan tutor lulusan PTN terbaik sejak 2018.')
 
 @section('content')
 {{-- HERO / HEADER SECTION --}}
@@ -69,7 +69,7 @@
                     {{ $about['profil']['cerita'] ?? '' }}
                 </p>
                 <p style="font-size: 1rem; color: #4a5568; line-height: 1.8; margin-bottom: 2rem;">
-                    Kami tidak memandang siswa sebagai wadah kosong yang harus dijejali rumus instan. Di Modern Brilliant, tutor memposisikan diri sebagai mentor, sahabat diskusi, dan fasilitator yang memandu anak memahami esensi ilmu dengan hati yang gembira.
+                    Kami tidak memandang siswa sebagai wadah kosong yang harus dijejali rumus instan. Di Sentra Edukasi, tutor memposisikan diri sebagai mentor, sahabat diskusi, dan fasilitator yang memandu anak memahami esensi ilmu dengan hati yang gembira.
                 </p>
 
                 <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
@@ -100,7 +100,7 @@
                             </div>
                             <div>
                                 <div style="font-size: 0.9375rem; font-weight: 700; color: #ffffff;">Dewan Pembina Akademik</div>
-                                <div style="font-size: 0.8125rem; color: rgba(255,255,255,0.7);">Bimbel Modern Brilliant</div>
+                                <div style="font-size: 0.8125rem; color: rgba(255,255,255,0.7);">Bimbel Sentra Edukasi</div>
                             </div>
                         </div>
                     </div>
@@ -323,7 +323,7 @@
             Bergabung Bersama Kami
         </span>
         <h2 style="font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; color: #ffffff; margin-bottom: 1rem; line-height: 1.2;">
-            Raih Potensi Akademik Terbaik Bersama Modern Brilliant
+            Raih Potensi Akademik Terbaik Bersama Sentra Edukasi
         </h2>
         <p style="font-size: 1.0625rem; color: rgba(255,255,255,0.8); line-height: 1.75; margin-bottom: 2.25rem;">
             Daftarkan putra-putri Anda sekarang atau konsultasikan kebutuhan belajarnya bersama konselor pendidikan kami secara gratis.

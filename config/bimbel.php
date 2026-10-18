@@ -3,7 +3,7 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | Data Program Belajar Bimbel Modern Brilliant
+    | Data Program Belajar Bimbel Sentra Edukasi
     |--------------------------------------------------------------------------
     |
     | Seluruh data program bimbingan belajar disimpan secara terstruktur di sini.
@@ -18,7 +18,7 @@ return [
             'kelas' => 'Kelas 1-6',
             'badge_class' => 'badge-green',
             'deskripsi' => 'Membangun fondasi belajar yang kuat dengan pendekatan yang menyenangkan dan sesuai usia. Fokus pada Matematika, Bahasa Indonesia, IPA, dan IPS.',
-            'deskripsi_panjang' => 'Program Bimbingan Belajar SD di Modern Brilliant dirancang khusus untuk membangun fondasi akademik yang kokoh dan menumbuhkan rasa percaya diri siswa sejak dini. Melalui pendekatan active and fun learning, tutor membimbing siswa memahami konsep secara mendalam tanpa rasa jenuh. Kami mendampingi pemahaman materi harian, penyelesaian PR, serta persiapan Penilaian Harian dan Asesmen Akhir Semester.',
+            'deskripsi_panjang' => 'Program Bimbingan Belajar SD di Sentra Edukasi dirancang khusus untuk membangun fondasi akademik yang kokoh dan menumbuhkan rasa percaya diri siswa sejak dini. Melalui pendekatan active and fun learning, tutor membimbing siswa memahami konsep secara mendalam tanpa rasa jenuh. Kami mendampingi pemahaman materi harian, penyelesaian PR, serta persiapan Penilaian Harian dan Asesmen Akhir Semester.',
             'ikon' => 'book',
             'populer' => false,
             'poin' => [
@@ -84,7 +84,7 @@ return [
             'kelas' => 'Kelas 10-12',
             'badge_class' => 'badge-green',
             'deskripsi' => 'Program intensif untuk siswa SMA dengan fokus penguasaan materi dan strategi belajar efektif menghadapi ujian akhir dan seleksi perguruan tinggi.',
-            'deskripsi_panjang' => 'Program Bimbingan Belajar SMA di Modern Brilliant berorientasi pada pencapaian prestasi akademik tertinggi di sekolah dan pemantapan portofolio rapor untuk jalur SNBP/SNBT Perguruan Tinggi Negeri. Siswa dibimbing oleh tutor spesialis pada bidang studi Saintek maupun Soshum, dilengkapi modul konsep ringkas, bank soal prediktif, serta layanan konsultasi pemilihan program studi dan kampus impian.',
+            'deskripsi_panjang' => 'Program Bimbingan Belajar SMA di Sentra Edukasi berorientasi pada pencapaian prestasi akademik tertinggi di sekolah dan pemantapan portofolio rapor untuk jalur SNBP/SNBT Perguruan Tinggi Negeri. Siswa dibimbing oleh tutor spesialis pada bidang studi Saintek maupun Soshum, dilengkapi modul konsep ringkas, bank soal prediktif, serta layanan konsultasi pemilihan program studi dan kampus impian.',
             'ikon' => 'graduation-cap',
             'populer' => false,
             'poin' => [
@@ -105,7 +105,7 @@ return [
                 'Meningkatkan rata-rata nilai rapor guna memperbesar peluang lolos SNBP (jalur prestasi)',
                 'Pemahaman konsep mendalam yang mempermudah adaptasi materi kuliah kelak',
                 'Konseling akademik berkala bersama mentor alumni PTN ternama',
-                'Akses eksklusif ke platform latihan soal digital dan modul Modern Brilliant',
+                'Akses eksklusif ke platform latihan soal digital dan modul Sentra Edukasi',
             ],
             'biaya' => 'Mulai dari Rp550.000 / bulan',
             'rasio' => 'Maksimal 8-10 siswa per kelompok',
@@ -466,10 +466,10 @@ return [
     */
     'tentang_kami' => [
         'profil' => [
-            'tagline' => 'Tentang Bimbel Modern Brilliant',
+            'tagline' => 'Tentang Bimbel Sentra Edukasi',
             'judul' => 'Membimbing Generasi Cerdas dan Berkarakter Sejak 2018',
-            'ringkasan' => 'Bimbel Modern Brilliant didirikan dengan tekad kuat untuk menghadirkan bimbingan belajar berkualitas tinggi yang tidak hanya berfokus pada hafalan rumus kilat, melainkan membangun fondasi pemahaman konsep mendalam, daya kritis, dan karakter percaya diri pada setiap siswa.',
-            'cerita' => 'Bermula dari kelompok bimbingan belajar kecil yang digagas oleh para alumni dan akademisi perguruan tinggi terkemuka di Indonesia, kini Modern Brilliant telah berkembang menjadi mitra belajar terpercaya bagi ribuan siswa dan orang tua. Kami meyakini bahwa setiap siswa adalah pribadi berharga yang unik dengan gaya belajar serta kecepatan berpikir berbeda. Oleh karena itu, pendekatan kami selalu bersifat personal, adaptif, sabar, dan interaktif.',
+            'ringkasan' => 'Bimbel Sentra Edukasi didirikan dengan tekad kuat untuk menghadirkan bimbingan belajar berkualitas tinggi yang tidak hanya berfokus pada hafalan rumus kilat, melainkan membangun fondasi pemahaman konsep mendalam, daya kritis, dan karakter percaya diri pada setiap siswa.',
+            'cerita' => 'Bermula dari kelompok bimbingan belajar kecil yang digagas oleh para alumni dan akademisi perguruan tinggi terkemuka di Indonesia, kini Sentra Edukasi telah berkembang menjadi mitra belajar terpercaya bagi ribuan siswa dan orang tua. Kami meyakini bahwa setiap siswa adalah pribadi berharga yang unik dengan gaya belajar serta kecepatan berpikir berbeda. Oleh karena itu, pendekatan kami selalu bersifat personal, adaptif, sabar, dan interaktif.',
         ],
 
         'statistik' => [
@@ -590,7 +590,7 @@ return [
             ],
             [
                 'nama' => 'Modul Belajar Eksklusif & Bank Soal',
-                'deskripsi' => 'Disusun langsung oleh tim riset kurikulum Modern Brilliant dengan pembahasan bertingkat dari dasar hingga level HOTS.',
+                'deskripsi' => 'Disusun langsung oleh tim riset kurikulum Sentra Edukasi dengan pembahasan bertingkat dari dasar hingga level HOTS.',
                 'ikon' => 'book',
             ],
             [
@@ -624,7 +624,7 @@ return [
         'maps_embed' => 'https://maps.google.com/maps?q=Jakarta+Selatan&t=&z=13&ie=UTF8&iwloc=&output=embed',
         'faq' => [
             [
-                'tanya' => 'Bagaimana cara mendaftar program di Bimbel Modern Brilliant?',
+                'tanya' => 'Bagaimana cara mendaftar program di Bimbel Sentra Edukasi?',
                 'jawab' => 'Pendaftaran dapat dilakukan secara online melalui formulir di halaman ini, menghubungi admin WhatsApp di 0812-3456-7890, atau datang langsung ke kantor cabang kami.',
             ],
             [
@@ -642,6 +642,3 @@ return [
         ],
     ],
 ];
-
-
-

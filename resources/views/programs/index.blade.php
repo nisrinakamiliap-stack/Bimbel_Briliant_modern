@@ -1,7 +1,7 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
-@section('title', 'Program Belajar — Bimbel Modern Brilliant')
-@section('meta_description', 'Pilih program bimbingan belajar terbaik sesuai kebutuhan siswa SD, SMP, SMA, dan persiapan ujian masuk sekolah favorit atau SNBT di Bimbel Modern Brilliant.')
+@section('title', 'Program Belajar — Bimbel Sentra Edukasi')
+@section('meta_description', 'Pilih program bimbingan belajar terbaik sesuai kebutuhan siswa SD, SMP, SMA, dan persiapan ujian masuk sekolah favorit atau SNBT di Bimbel Sentra Edukasi.')
 
 @section('content')
 {{-- HERO / HEADER SECTION --}}

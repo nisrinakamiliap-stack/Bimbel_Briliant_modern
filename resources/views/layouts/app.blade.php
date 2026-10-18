@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="@yield('meta_description', 'Bimbel Modern Brilliant — Lembaga bimbingan belajar terstruktur untuk siswa SD, SMP, SMA, dan persiapan ujian.')">
-    <meta name="keywords" content="bimbingan belajar, bimbel, modern brilliant, les privat, SD, SMP, SMA, persiapan ujian, SNBT">
-    <meta property="og:title" content="@yield('title', 'Bimbel Modern Brilliant — Belajar Lebih Terarah')">
+    <meta name="description" content="@yield('meta_description', 'Bimbel Sentra Edukasi — Lembaga bimbingan belajar terstruktur untuk siswa SD, SMP, SMA, dan persiapan ujian.')">
+    <meta name="keywords" content="bimbingan belajar, bimbel, sentra edukasi, les privat, SD, SMP, SMA, persiapan ujian, SNBT">
+    <meta property="og:title" content="@yield('title', 'Bimbel Sentra Edukasi — Belajar Lebih Terarah')">
     <meta property="og:description" content="@yield('meta_description', 'Temukan pengalaman belajar terstruktur bersama tutor profesional dan program yang sesuai dengan target prestasimu.')">
     <meta property="og:type" content="website">
 
-    <title>@yield('title', 'Bimbel Modern Brilliant — Belajar Lebih Terarah, Raih Prestasi Lebih Gemilang')</title>
+    <title>@yield('title', 'Bimbel Sentra Edukasi — Belajar Lebih Terarah, Raih Prestasi Lebih Gemilang')</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
     <div class="container-main">
         <div style="display:flex;align-items:center;justify-content:space-between;height:4.5rem;">
             {{-- Logo --}}
-            <a href="{{ route('home') }}" style="display:flex;align-items:center;gap:.625rem;text-decoration:none;flex-shrink:0;" aria-label="Bimbel Modern Brilliant — Beranda">
+            <a href="{{ route('home') }}" style="display:flex;align-items:center;gap:.625rem;text-decoration:none;flex-shrink:0;" aria-label="Bimbel Sentra Edukasi — Beranda">
                 <div style="width:2.25rem;height:2.25rem;background-color:#16845B;border-radius:.625rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white"/>
@@ -40,7 +40,7 @@
                 </div>
                 <div>
                     <span style="font-size:1rem;font-weight:800;color:#142B4A;display:block;line-height:1.1;">Bimbel</span>
-                    <span style="font-size:.6875rem;font-weight:600;color:#16845B;letter-spacing:.05em;text-transform:uppercase;display:block;line-height:1.1;">MODERN BRILLIANT</span>
+                    <span style="font-size:.6875rem;font-weight:600;color:#16845B;letter-spacing:.05em;text-transform:uppercase;display:block;line-height:1.1;">SENTRA EDUKASI</span>
                 </div>
             </a>
 
@@ -55,8 +55,16 @@
 
             {{-- Right CTA Desktop --}}
             <div id="desktop-cta" style="display:none;align-items:center;gap:.75rem;">
-                <a href="{{ route('kontak.index') }}" class="nav-link" style="font-weight:500;">Masuk</a>
-                <a href="{{ route('program.index') }}" class="btn-primary btn-sm">Daftar Sekarang</a>
+                @auth
+                    <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('*.dashboard') ? 'active' : '' }}" style="font-weight:500;">Dashboard</a>
+                    <form action="{{ route('logout') }}" method="POST" style="margin:0;">
+                        @csrf
+                        <button type="submit" class="btn-primary btn-sm" style="border:none;cursor:pointer;">Keluar</button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}" class="nav-link {{ request()->routeIs('login') ? 'active' : '' }}" style="font-weight:500;">Masuk</a>
+                    <a href="{{ route('register') }}" class="btn-primary btn-sm">Daftar Sekarang</a>
+                @endauth
             </div>
 
             {{-- Hamburger Button Mobile --}}
@@ -83,7 +91,7 @@
             </div>
             <div>
                 <span style="font-size:1rem;font-weight:800;color:#142B4A;display:block;line-height:1.1;">Bimbel</span>
-                <span style="font-size:.6875rem;font-weight:600;color:#16845B;letter-spacing:.05em;text-transform:uppercase;display:block;line-height:1.1;">MODERN BRILLIANT</span>
+                <span style="font-size:.6875rem;font-weight:600;color:#16845B;letter-spacing:.05em;text-transform:uppercase;display:block;line-height:1.1;">SENTRA EDUKASI</span>
             </div>
         </div>
         <button id="close-menu-btn" aria-label="Tutup menu" style="padding:.5rem;border:none;background:none;cursor:pointer;color:#4a5568;border-radius:.375rem;">
@@ -101,13 +109,21 @@
         <a href="{{ route('kontak.index') }}" class="mobile-nav-link" role="menuitem" style="{{ request()->routeIs('kontak.*') ? 'color:#16845B;font-weight:700;' : '' }}">Kontak</a>
     </nav>
     <div style="margin-top:2rem;display:flex;flex-direction:column;gap:.875rem;">
-        <a href="{{ route('kontak.index') }}" class="btn-secondary" style="justify-content:center;">Masuk</a>
-        <a href="{{ route('program.index') }}" class="btn-primary" style="justify-content:center;">
-            Daftar Sekarang
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-        </a>
+        @auth
+            <a href="{{ route('dashboard') }}" class="btn-secondary" style="justify-content:center;">Dashboard</a>
+            <form action="{{ route('logout') }}" method="POST" style="margin:0;">
+                @csrf
+                <button type="submit" class="btn-primary" style="justify-content:center;width:100%;border:none;cursor:pointer;">Keluar</button>
+            </form>
+        @else
+            <a href="{{ route('login') }}" class="btn-secondary" style="justify-content:center;">Masuk</a>
+            <a href="{{ route('register') }}" class="btn-primary" style="justify-content:center;">
+                Daftar Sekarang
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </a>
+        @endauth
     </div>
 </div>
 
@@ -133,20 +149,20 @@
                     </div>
                     <div>
                         <span style="font-size:1rem;font-weight:800;color:#ffffff;display:block;line-height:1.1;">Bimbel</span>
-                        <span style="font-size:.6875rem;font-weight:600;color:#16845B;letter-spacing:.05em;text-transform:uppercase;display:block;line-height:1.1;">MODERN BRILLIANT</span>
+                        <span style="font-size:.6875rem;font-weight:600;color:#16845B;letter-spacing:.05em;text-transform:uppercase;display:block;line-height:1.1;">SENTRA EDUKASI</span>
                     </div>
                 </div>
                 <p style="font-size:.875rem;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:1.5rem;">
                     Lembaga bimbingan belajar dengan pendekatan modern, materi terstruktur, dan pendampingan tutor berpengalaman untuk mengantarkan siswa meraih prestasi akademik terbaik.
                 </p>
                 <div style="display:flex;gap:.75rem;">
-                    <a href="#" class="footer-social" aria-label="Instagram Bimbel Modern Brilliant">
+                    <a href="#" class="footer-social" aria-label="Instagram Bimbel Sentra Edukasi">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     </a>
-                    <a href="#" class="footer-social" aria-label="Facebook Bimbel Modern Brilliant">
+                    <a href="#" class="footer-social" aria-label="Facebook Bimbel Sentra Edukasi">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                     </a>
-                    <a href="#" class="footer-social" aria-label="YouTube Bimbel Modern Brilliant">
+                    <a href="#" class="footer-social" aria-label="YouTube Bimbel Sentra Edukasi">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
                     </a>
                 </div>
@@ -190,7 +206,7 @@
 
         {{-- Bottom line --}}
         <div style="border-top:1px solid rgba(255,255,255,.08);padding:1.5rem 0;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;">
-            <p style="font-size:.8125rem;color:rgba(255,255,255,.4);margin:0;">&copy; {{ date('Y') }} Bimbel Modern Brilliant. Hak cipta dilindungi.</p>
+            <p style="font-size:.8125rem;color:rgba(255,255,255,.4);margin:0;">&copy; {{ date('Y') }} Bimbel Sentra Edukasi. Hak cipta dilindungi.</p>
             <div style="display:flex;gap:1.5rem;">
                 <a href="#" class="footer-link" style="font-size:.8125rem;color:rgba(255,255,255,.4);">Kebijakan Privasi</a>
                 <a href="#" class="footer-link" style="font-size:.8125rem;color:rgba(255,255,255,.4);">Syarat &amp; Ketentuan</a>

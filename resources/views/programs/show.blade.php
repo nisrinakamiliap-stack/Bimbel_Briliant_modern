@@ -1,6 +1,6 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
-@section('title', $program['judul'] . ' — Bimbel Modern Brilliant')
+@section('title', $program['judul'] . ' — Bimbel Sentra Edukasi')
 @section('meta_description', Str::limit(strip_tags($program['deskripsi_panjang'] ?? $program['deskripsi']), 160))
 
 @section('content')

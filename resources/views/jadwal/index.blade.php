@@ -1,7 +1,7 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
-@section('title', 'Jadwal Pembelajaran — Bimbel Modern Brilliant')
-@section('meta_description', 'Lihat jadwal lengkap sesi bimbingan belajar untuk siswa SD, SMP, SMA, dan persiapan ujian di Bimbel Modern Brilliant. Pilih waktu belajar yang paling sesuai.')
+@section('title', 'Jadwal Pembelajaran — Bimbel Sentra Edukasi')
+@section('meta_description', 'Lihat jadwal lengkap sesi bimbingan belajar untuk siswa SD, SMP, SMA, dan persiapan ujian di Bimbel Sentra Edukasi. Pilih waktu belajar yang paling sesuai.')
 
 @section('content')
 {{-- HEADER / BREADCRUMB SECTION --}}

@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Bimbel Modern Brilliant — Lembaga bimbingan belajar yang menyediakan program pendampingan terstruktur untuk siswa SD, SMP, SMA, dan persiapan ujian.">
+    <meta name="description" content="Bimbel Sentra Edukasi — Lembaga bimbingan belajar yang menyediakan program pendampingan terstruktur untuk siswa SD, SMP, SMA, dan persiapan ujian.">
     <meta name="keywords" content="bimbingan belajar, bimbel, les privat, tutor, SD, SMP, SMA, persiapan ujian">
-    <meta property="og:title" content="Bimbel Modern Brilliant — Belajar Lebih Terarah">
+    <meta property="og:title" content="Bimbel Sentra Edukasi — Belajar Lebih Terarah">
     <meta property="og:description" content="Temukan pengalaman belajar yang lebih terstruktur dengan pendampingan tutor profesional dan program yang sesuai kebutuhanmu.">
     <meta property="og:type" content="website">
-    <title>Bimbel Modern Brilliant — Belajar Lebih Terarah, Raih Prestasi Lebih Gemilang</title>
+    <title>Bimbel Sentra Edukasi — Belajar Lebih Terarah, Raih Prestasi Lebih Gemilang</title>
 
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -24,7 +24,7 @@
 <nav id="navbar" role="navigation" aria-label="Navigasi Utama">
     <div class="container-main">
         <div style="display:flex;align-items:center;justify-content:space-between;height:4.5rem;">
-            <a href="#hero" style="display:flex;align-items:center;gap:.625rem;text-decoration:none;flex-shrink:0;" aria-label="Bimbel Modern Brilliant — Beranda">
+            <a href="#hero" style="display:flex;align-items:center;gap:.625rem;text-decoration:none;flex-shrink:0;" aria-label="Bimbel Sentra Edukasi — Beranda">
                 <div style="width:2.25rem;height:2.25rem;background-color:#16845B;border-radius:.625rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white"/>
@@ -34,7 +34,7 @@
                 </div>
                 <div>
                     <span style="font-size:1rem;font-weight:800;color:#142B4A;display:block;line-height:1.1;">Bimbel</span>
-                    <span style="font-size:.6875rem;font-weight:600;color:#16845B;letter-spacing:.05em;text-transform:uppercase;display:block;line-height:1.1;">Modern Brilliant</span>
+                    <span style="font-size:.6875rem;font-weight:600;color:#16845B;letter-spacing:.05em;text-transform:uppercase;display:block;line-height:1.1;">Sentra Edukasi</span>
                 </div>
             </a>
             <div id="desktop-nav" style="display:none;align-items:center;gap:.25rem;" role="menubar">
@@ -45,8 +45,8 @@
                 <a href="{{ route('kontak.index') }}" class="nav-link" role="menuitem">Kontak</a>
             </div>
             <div id="desktop-cta" style="display:none;align-items:center;gap:.75rem;">
-                <a href="#contact" class="nav-link" style="font-weight:500;">Masuk</a>
-                <a href="#programs" class="btn-primary btn-sm">Daftar Sekarang</a>
+                <a href="{{ route('login') }}" class="nav-link" style="font-weight:500;">Masuk</a>
+                <a href="{{ route('login') }}" class="btn-primary btn-sm">Daftar Sekarang</a>
             </div>
             <button id="hamburger-btn" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobile-menu"
                 style="display:flex;flex-direction:column;gap:5px;padding:.5rem;border:none;background:none;cursor:pointer;border-radius:.375rem;">
@@ -71,7 +71,7 @@
             </div>
             <div>
                 <span style="font-size:1rem;font-weight:800;color:#142B4A;display:block;line-height:1.1;">Bimbel</span>
-                <span style="font-size:.6875rem;font-weight:600;color:#16845B;letter-spacing:.05em;text-transform:uppercase;display:block;line-height:1.1;">Modern Brilliant</span>
+                <span style="font-size:.6875rem;font-weight:600;color:#16845B;letter-spacing:.05em;text-transform:uppercase;display:block;line-height:1.1;">Sentra Edukasi</span>
             </div>
         </div>
         <button id="close-menu-btn" aria-label="Tutup menu" style="padding:.5rem;border:none;background:none;cursor:pointer;color:#4a5568;border-radius:.375rem;">
@@ -88,8 +88,8 @@
         <a href="{{ route('kontak.index') }}" class="mobile-nav-link" role="menuitem">Kontak</a>
     </nav>
     <div style="margin-top:2rem;display:flex;flex-direction:column;gap:.875rem;">
-        <a href="#contact" class="btn-secondary" style="justify-content:center;">Masuk</a>
-        <a href="#programs" class="btn-primary" style="justify-content:center;">
+        <a href="{{ route('login') }}" class="btn-secondary" style="justify-content:center;">Masuk</a>
+        <a href="{{ route('login') }}" class="btn-primary" style="justify-content:center;">
             Daftar Sekarang
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
@@ -120,7 +120,7 @@
                         Jelajahi Program
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </a>
-                    <a href="#contact" class="btn-secondary" id="cta-konsultasi">Konsultasi Gratis</a>
+                    <a href="{{ route('kontak.index') }}" class="btn-secondary" id="cta-konsultasi">Konsultasi Gratis</a>
                 </div>
                 <div class="animate-fade-in-up delay-400" style="display:flex;flex-wrap:wrap;gap:1.25rem;opacity:0;">
                     @foreach ([['label' => 'Tutor Berpengalaman'], ['label' => 'Jadwal Fleksibel'], ['label' => 'Materi Terstruktur']] as $item)
@@ -135,7 +135,8 @@
             </div>
             <div id="hero-image-col" style="position:relative;">
                 <div class="hero-image-wrapper" style="aspect-ratio:4/3;">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80"
+                    <img src="https://images.unspla
+                    sh.com/photo-1522202176988-66273c2fd55f?w=800&q=80"
                          alt="Siswa berdiskusi bersama tutor dalam sesi bimbingan belajar"
                          style="width:100%;height:100%;object-fit:cover;display:block;" loading="eager">
                 </div>
@@ -314,7 +315,7 @@
             @endforeach
         </div>
         <div style="text-align:center;margin-top:3rem;">
-            <a href="#contact" class="btn-primary" id="cta-mulai-belajar">
+            <a href="{{ route('login') }}" class="btn-primary" id="cta-mulai-belajar">
                 Mulai Sekarang
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </a>
@@ -377,11 +378,11 @@
                 Konsultasikan kebutuhan belajarmu dan temukan program yang sesuai. Kami siap membantu kamu belajar lebih terarah.
             </p>
             <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;">
-                <a href="#contact" class="btn-primary" id="cta-daftar-sekarang" style="background-color:#16845B;border-color:#16845B;">
+                <a href="{{ route('login') }}" class="btn-primary" id="cta-daftar-sekarang" style="background-color:#16845B;border-color:#16845B;">
                     Daftar Sekarang
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
-                <a href="#contact" class="btn-outline-white" id="cta-hubungi-kami">Hubungi Kami</a>
+                <a href="{{ route('kontak.index') }}" class="btn-outline-white" id="cta-hubungi-kami">Hubungi Kami</a>
             </div>
         </div>
     </div>
@@ -402,7 +403,7 @@
                     </div>
                     <div>
                         <span style="font-size:1rem;font-weight:800;color:#ffffff;display:block;line-height:1.1;">Bimbel</span>
-                        <span style="font-size:.6875rem;font-weight:600;color:#16845B;letter-spacing:.05em;text-transform:uppercase;display:block;line-height:1.1;">Modern Brilliant</span>
+                        <span style="font-size:.6875rem;font-weight:600;color:#16845B;letter-spacing:.05em;text-transform:uppercase;display:block;line-height:1.1;">Sentra Edukasi</span>
                     </div>
                 </div>
                 <p style="font-size:.875rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:1.5rem;">Lembaga bimbingan belajar yang menyediakan program pendampingan terstruktur untuk siswa SD, SMP, SMA, dan persiapan ujian.</p>
@@ -452,7 +453,7 @@
             </address>
         </div>
         <div style="border-top:1px solid rgba(255,255,255,.08);padding:1.5rem 0;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;">
-            <p style="font-size:.8125rem;color:rgba(255,255,255,.4);margin:0;">&copy; {{ date('Y') }} Bimbel Modern Brilliant. Hak cipta dilindungi.</p>
+            <p style="font-size:.8125rem;color:rgba(255,255,255,.4);margin:0;">&copy; {{ date('Y') }} Bimbel Sentra Edukasi. Hak cipta dilindungi.</p>
             <div style="display:flex;gap:1.5rem;">
                 <a href="#" class="footer-link" style="font-size:.8125rem;color:rgba(255,255,255,.4);">Kebijakan Privasi</a>
                 <a href="#" class="footer-link" style="font-size:.8125rem;color:rgba(255,255,255,.4);">Syarat &amp; Ketentuan</a>

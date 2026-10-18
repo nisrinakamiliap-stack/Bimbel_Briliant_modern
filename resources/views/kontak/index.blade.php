@@ -1,7 +1,7 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
-@section('title', 'Kontak & Konsultasi Belajar — Bimbel Modern Brilliant')
-@section('meta_description', 'Hubungi Bimbel Modern Brilliant untuk konsultasi program belajar gratis, informasi jadwal kelas, biaya bimbingan, dan pendaftaran siswa baru.')
+@section('title', 'Kontak & Konsultasi Belajar — Bimbel Sentra Edukasi')
+@section('meta_description', 'Hubungi Bimbel Sentra Edukasi untuk konsultasi program belajar gratis, informasi jadwal kelas, biaya bimbingan, dan pendaftaran siswa baru.')
 
 @section('content')
 {{-- HEADER / BREADCRUMB SECTION --}}
@@ -26,7 +26,7 @@
                 Kami Siap Membantu Perjalanan Belajarmu
             </h1>
             <p style="font-size: 1.0625rem; color: #4a5568; line-height: 1.75; margin: 0 auto;">
-                Punya pertanyaan seputar program belajar, jadwal kelas, atau ingin konsultasi pendidikan gratis? Tim konselor Bimbel Modern Brilliant siap melayani Anda.
+                Punya pertanyaan seputar program belajar, jadwal kelas, atau ingin konsultasi pendidikan gratis? Tim konselor Bimbel Sentra Edukasi siap melayani Anda.
             </p>
         </div>
     </div>
@@ -156,7 +156,7 @@
                             allowfullscreen=""
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"
-                            title="Peta Lokasi Bimbel Modern Brilliant">
+                            title="Peta Lokasi Bimbel Sentra Edukasi">
                         </iframe>
                     </div>
                 </div>
