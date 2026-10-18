@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\AttendanceStatus;
-use App\EnrollmentStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CorrectAttendanceRequest;
 use App\Http\Requests\Admin\StoreStudentAttendanceRequest;
 use App\Models\Classroom;
-use App\Models\Enrollment;
 use App\Models\Schedule;
 use App\Models\StudentAttendance;
 use App\Models\User;
@@ -22,7 +20,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
-use Illuminate\Validation\ValidationException;
 
 class StudentAttendanceController extends Controller
 {
@@ -93,7 +90,7 @@ class StudentAttendanceController extends Controller
         $hasStarted = false;
 
         if ($selectedSchedule !== null) {
-            $roster = $this->roster($selectedSchedule, $date);
+            $roster = StudentAttendance::rosterFor($selectedSchedule, $date);
             $existingRecords = StudentAttendance::query()
                 ->where('schedule_id', $selectedSchedule->id)
                 ->where('session_date', $date->format('Y-m-d'))
@@ -115,10 +112,7 @@ class StudentAttendanceController extends Controller
     }
 
     /**
-     * Menyimpan absensi untuk murid peserta sesi yang belum memiliki catatan.
-     *
-     * Catatan yang sudah ada tidak diubah (gunakan koreksi), sehingga pengiriman ulang formulir
-     * tidak membuat atau menimpa data. Constraint unik di database menjadi pengaman terakhir.
+     * Menyimpan absensi untuk murid peserta sesi yang belum memiliki catatan (lihat {@see StudentAttendance::recordSession()}).
      */
     public function store(StoreStudentAttendanceRequest $request): RedirectResponse
     {
@@ -127,54 +121,7 @@ class StudentAttendanceController extends Controller
         /** @var array<int|string, array{status: string, notes?: string|null}> $submitted */
         $submitted = $request->validated('attendances');
 
-        $rosterByEnrollment = $this->roster($schedule, $date)->keyBy('id');
-        $unknownEnrollmentIds = array_diff(array_map('intval', array_keys($submitted)), $rosterByEnrollment->keys()->all());
-
-        if ($unknownEnrollmentIds !== []) {
-            throw ValidationException::withMessages([
-                'attendances' => 'Terdapat murid yang bukan peserta aktif kelas ini pada tanggal tersebut.',
-            ]);
-        }
-
-        [$createdCount, $skippedCount] = DB::transaction(function () use ($schedule, $date, $submitted, $rosterByEnrollment, $request): array {
-            Schedule::query()->whereKey($schedule->id)->lockForUpdate()->first();
-
-            $alreadyRecordedStudentIds = StudentAttendance::query()
-                ->where('schedule_id', $schedule->id)
-                ->where('session_date', $date->format('Y-m-d'))
-                ->pluck('student_id')
-                ->all();
-
-            $created = 0;
-            $skipped = 0;
-
-            foreach ($submitted as $enrollmentId => $entry) {
-                /** @var Enrollment $enrollment */
-                $enrollment = $rosterByEnrollment->get((int) $enrollmentId);
-
-                if (in_array($enrollment->student_id, $alreadyRecordedStudentIds, true)) {
-                    $skipped++;
-
-                    continue;
-                }
-
-                $attendance = new StudentAttendance([
-                    'status' => $entry['status'],
-                    'notes' => filled($entry['notes'] ?? null) ? trim($entry['notes']) : null,
-                ]);
-                $attendance->schedule_id = $schedule->id;
-                $attendance->session_date = $date;
-                $attendance->student_id = $enrollment->student_id;
-                $attendance->enrollment_id = $enrollment->id;
-                $attendance->recorded_by = $request->user()->id;
-                $attendance->save();
-
-                $alreadyRecordedStudentIds[] = $enrollment->student_id;
-                $created++;
-            }
-
-            return [$created, $skipped];
-        });
+        [$createdCount, $skippedCount] = StudentAttendance::recordSession($schedule, $date, $submitted, $request->user());
 
         $message = "Absensi {$createdCount} murid untuk {$schedule->classroom->name} pada {$date->translatedFormat('d F Y')} berhasil disimpan.";
         if ($skippedCount > 0) {
@@ -314,23 +261,6 @@ class StudentAttendanceController extends Controller
             ->orderBy('start_time')
             ->get()
             ->filter(fn (Schedule $schedule) => $schedule->occursOn($date))
-            ->values();
-    }
-
-    /**
-     * Peserta sesi: murid dengan pendaftaran Diterima di kelas jadwal, terdaftar sebelum atau pada tanggal sesi.
-     *
-     * @return Collection<int, Enrollment>
-     */
-    private function roster(Schedule $schedule, CarbonImmutable $date): Collection
-    {
-        return Enrollment::query()
-            ->where('classroom_id', $schedule->classroom_id)
-            ->where('status', EnrollmentStatus::Approved->value)
-            ->where('enrolled_on', '<=', $date->format('Y-m-d'))
-            ->with('student')
-            ->get()
-            ->sortBy(fn (Enrollment $enrollment) => $enrollment->student->name)
             ->values();
     }
 }

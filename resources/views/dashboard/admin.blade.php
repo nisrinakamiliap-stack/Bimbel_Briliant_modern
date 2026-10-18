@@ -13,6 +13,27 @@
         <p>Ringkasan aktivitas Bimbel Sentra Edukasi per {{ now()->translatedFormat('l, d F Y') }}.</p>
     </section>
 
+    @if (($honorariumStats['pending_approval'] ?? 0) > 0 || ($honorariumStats['pending_payment'] ?? 0) > 0)
+        <div class="admin-alert" style="margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; background-color: var(--admin-mint-bg); border-left: 4px solid var(--admin-primary); color: var(--admin-forest);">
+            <div style="display: flex; align-items: center; gap: .75rem;">
+                <x-admin.icon name="payments" :size="20" />
+                <span>
+                    Terdapat
+                    @if ($honorariumStats['pending_approval'] > 0)
+                        <strong>{{ $honorariumStats['pending_approval'] }}</strong> honorarium berstatus draft
+                    @endif
+                    @if ($honorariumStats['pending_approval'] > 0 && $honorariumStats['pending_payment'] > 0)
+                        dan
+                    @endif
+                    @if ($honorariumStats['pending_payment'] > 0)
+                        <strong>{{ $honorariumStats['pending_payment'] }}</strong> honorarium menunggu/belum lunas dibayar.
+                    @endif
+                </span>
+            </div>
+            <a href="{{ route('admin.honorariums.index') }}" class="admin-btn admin-btn-sm admin-btn-primary">Kelola Honorarium</a>
+        </div>
+    @endif
+
     {{-- KARTU STATISTIK --}}
     <section class="admin-stats" aria-label="Statistik utama">
         <x-admin.stat-card id="stat-students" label="Total Murid" :value="$stats['students']" icon="students" tone="green" note="Akun murid terdaftar" />

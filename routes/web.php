@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\HonorariumController as AdminHonorariumController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AnnouncementController;
 use App\Http\Controllers\Admin\ClassroomController;
@@ -28,7 +29,16 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\Student\LearningController as StudentLearningController;
 use App\Http\Controllers\Teacher\CheckInController;
+use App\Http\Controllers\Teacher\ClassroomController as TeacherClassroomController;
 use App\Http\Controllers\Teacher\GradeController as TeacherGradeController;
+use App\Http\Controllers\Teacher\HonorariumController as TeacherHonorariumController;
+use App\Http\Controllers\Teacher\HomeController as TeacherHomeController;
+use App\Http\Controllers\Teacher\Learning\AssignmentController as TeacherAssignmentController;
+use App\Http\Controllers\Teacher\Learning\MaterialController as TeacherMaterialController;
+use App\Http\Controllers\Teacher\Learning\SubmissionController as TeacherSubmissionController;
+use App\Http\Controllers\Teacher\ProfileController as TeacherProfileController;
+use App\Http\Controllers\Teacher\ScheduleController as TeacherScheduleController;
+use App\Http\Controllers\Teacher\StudentAttendanceController as TeacherStudentAttendanceController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -104,6 +114,16 @@ Route::middleware('auth')->group(function () {
             ->only(['index', 'create', 'store', 'show'])
             ->names('payments');
 
+        Route::get('honorarium/cek-sesi', [AdminHonorariumController::class, 'checkSessions'])->name('honorariums.check-sessions');
+        Route::patch('honorarium/{honorarium}/setujui', [AdminHonorariumController::class, 'approve'])->name('honorariums.approve');
+        Route::post('honorarium/{honorarium}/bayar', [AdminHonorariumController::class, 'recordPayment'])->name('honorariums.record-payment');
+        Route::patch('honorarium/{honorarium}/bayar', [AdminHonorariumController::class, 'markPaid'])->name('honorariums.mark-paid');
+        Route::get('honorarium/pembayaran/{payment}/bukti', [AdminHonorariumController::class, 'proof'])->name('honorariums.proof');
+        Route::resource('honorarium', AdminHonorariumController::class)
+            ->parameters(['honorarium' => 'honorarium'])
+            ->except(['destroy'])
+            ->names('honorariums');
+
         Route::prefix('absensi')->name('attendances.')->group(function () {
             Route::get('murid', [StudentAttendanceController::class, 'index'])->name('students.index');
             Route::get('murid/catat', [StudentAttendanceController::class, 'create'])->name('students.create');
@@ -166,14 +186,39 @@ Route::middleware('auth')->group(function () {
         Route::get('pengumpulan/{submission}', [LearningFileController::class, 'submission'])->name('submission');
     });
 
-    Route::get('/guru/dashboard', [DashboardController::class, 'teacher'])
-        ->middleware('role:teacher')
-        ->name('teacher.dashboard');
-
     Route::prefix('guru')->name('teacher.')->middleware('role:teacher')->group(function () {
+        Route::redirect('/', '/guru/dashboard');
+        Route::get('dashboard', TeacherHomeController::class)->name('dashboard');
+        Route::get('jadwal', [TeacherScheduleController::class, 'index'])->name('schedules.index');
+        Route::get('kelas', [TeacherClassroomController::class, 'index'])->name('classes.index');
+        Route::get('kelas/{classroom}', [TeacherClassroomController::class, 'show'])->name('classes.show');
+
+        Route::get('absensi', [TeacherStudentAttendanceController::class, 'index'])->name('attendances.index');
+        Route::get('absensi/catat', [TeacherStudentAttendanceController::class, 'create'])->name('attendances.create');
+        Route::post('absensi', [TeacherStudentAttendanceController::class, 'store'])->name('attendances.store');
         Route::post('absensi/{schedule}/check-in', [CheckInController::class, 'store'])->name('attendance.check-in');
         Route::patch('absensi/{schedule}/check-out', [CheckInController::class, 'update'])->name('attendance.check-out');
-        Route::post('pembelajaran/pengumpulan/{submission}/nilai', [TeacherGradeController::class, 'store'])->name('learning.grades.store');
+
+        Route::prefix('pembelajaran')->name('learning.')->group(function () {
+            Route::resource('materi', TeacherMaterialController::class)
+                ->parameters(['materi' => 'material'])
+                ->except('destroy')
+                ->names('materials');
+            Route::resource('tugas', TeacherAssignmentController::class)
+                ->parameters(['tugas' => 'assignment'])
+                ->names('assignments');
+            Route::get('pengumpulan', [TeacherSubmissionController::class, 'index'])->name('submissions.index');
+            Route::get('pengumpulan/{submission}', [TeacherSubmissionController::class, 'show'])->name('submissions.show');
+            Route::get('penilaian', [TeacherSubmissionController::class, 'grading'])->name('grades.index');
+            Route::post('pengumpulan/{submission}/nilai', [TeacherGradeController::class, 'store'])->name('grades.store');
+        });
+
+        Route::get('profil', [TeacherProfileController::class, 'edit'])->name('profile.edit');
+        Route::put('profil', [TeacherProfileController::class, 'update'])->name('profile.update');
+
+        Route::get('honorarium', [TeacherHonorariumController::class, 'index'])->name('honorariums.index');
+        Route::get('honorarium/pembayaran/{payment}/bukti', [TeacherHonorariumController::class, 'proof'])->name('honorariums.proof');
+        Route::get('honorarium/{honorarium}', [TeacherHonorariumController::class, 'show'])->name('honorariums.show');
     });
 
     Route::get('/murid/dashboard', [DashboardController::class, 'student'])

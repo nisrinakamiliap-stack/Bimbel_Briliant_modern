@@ -20,9 +20,9 @@ $dueAtValue = old('due_at', $assignment?->due_at?->format('Y-m-d\TH:i'));
         <div class="admin-field">
             <label for="classroom_id" class="admin-label">Kelas Tujuan <span class="is-required" aria-hidden="true">*</span></label>
             <select id="classroom_id" name="classroom_id" class="{{ $fieldClass('classroom_id', 'admin-select') }}" required @disabled($classrooms->isEmpty())>
-                <option value="">— Pilih kelas —</option>
+                <option value="">Pilih kelas</option>
                 @foreach ($classrooms as $classroom)
-                    <option value="{{ $classroom->id }}" @selected($selectedClassroomId === (string) $classroom->id)>{{ $classroom->name }} — Guru: {{ $classroom->teacher?->name ?? 'belum ditentukan' }}</option>
+                    <option value="{{ $classroom->id }}" @selected($selectedClassroomId === (string) $classroom->id)>{{ $classroom->name }}@if ($showTeacher ?? true) · Guru: {{ $classroom->teacher?->name ?? 'belum ditentukan' }}@endif</option>
                 @endforeach
             </select>
             @error('classroom_id') <p class="admin-error">{{ $message }}</p> @enderror
@@ -30,7 +30,7 @@ $dueAtValue = old('due_at', $assignment?->due_at?->format('Y-m-d\TH:i'));
         <div class="admin-field">
             <label for="material_id" class="admin-label">Materi Terkait <span class="is-optional">(opsional)</span></label>
             <select id="material_id" name="material_id" class="{{ $fieldClass('material_id', 'admin-select') }}">
-                <option value="">— Tanpa materi —</option>
+                <option value="">Tanpa materi</option>
                 @foreach ($materials as $materialOption)
                     <option value="{{ $materialOption->id }}" data-classroom-id="{{ $materialOption->classroom_id }}" @selected($selectedMaterialId === (string) $materialOption->id)>{{ $materialOption->title }}</option>
                 @endforeach

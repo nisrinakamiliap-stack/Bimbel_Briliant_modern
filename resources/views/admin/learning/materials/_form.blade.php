@@ -17,9 +17,9 @@ $selectedStatus = old('status', $material?->status?->value ?? 'draft');
         <div class="admin-field">
             <label for="classroom_id" class="admin-label">Kelas Tujuan <span class="is-required" aria-hidden="true">*</span></label>
             <select id="classroom_id" name="classroom_id" class="{{ $fieldClass('classroom_id', 'admin-select') }}" required @disabled($classrooms->isEmpty())>
-                <option value="">— Pilih kelas —</option>
+                <option value="">Pilih kelas</option>
                 @foreach ($classrooms as $classroom)
-                    <option value="{{ $classroom->id }}" @selected($selectedClassroomId === (string) $classroom->id)>{{ $classroom->name }} — Guru: {{ $classroom->teacher?->name ?? 'belum ditentukan' }}</option>
+                    <option value="{{ $classroom->id }}" @selected($selectedClassroomId === (string) $classroom->id)>{{ $classroom->name }}@if ($showTeacher ?? true) · Guru: {{ $classroom->teacher?->name ?? 'belum ditentukan' }}@endif</option>
                 @endforeach
             </select>
             @error('classroom_id') <p class="admin-error">{{ $message }}</p> @enderror

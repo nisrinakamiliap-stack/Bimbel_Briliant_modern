@@ -58,7 +58,7 @@ class AppServiceProvider extends ServiceProvider
             date_default_timezone_set($timezone);
         }
 
-        View::composer(['layouts.admin', 'layouts.portal', 'notifications.partials.tabs'], function ($view): void {
+        View::composer(['layouts.admin', 'layouts.portal', 'layouts.teacher', 'notifications.partials.tabs'], function ($view): void {
             $user = auth()->user();
 
             $view->with('institution', Setting::institution());

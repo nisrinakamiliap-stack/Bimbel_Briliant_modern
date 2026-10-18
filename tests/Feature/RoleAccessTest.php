@@ -33,7 +33,7 @@ class RoleAccessTest extends TestCase
         $this->actingAs(User::factory()->teacher()->create())
             ->get(route('teacher.dashboard'))
             ->assertOk()
-            ->assertSee('Dashboard Guru/Tentor');
+            ->assertSee('Jadwal Mengajar Hari Ini');
 
         $this->actingAs(User::factory()->student()->create())
             ->get(route('student.dashboard'))

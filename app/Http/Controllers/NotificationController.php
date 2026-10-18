@@ -110,10 +110,14 @@ class NotificationController extends Controller
     }
 
     /**
-     * Layout sesuai role: panel admin untuk admin, portal untuk guru/murid.
+     * Layout sesuai role: panel admin, Portal Guru, atau portal murid.
      */
     private function layoutFor(Request $request): string
     {
-        return $request->user()->hasRole(UserRole::Admin) ? 'layouts.admin' : 'layouts.portal';
+        return match ($request->user()->role) {
+            UserRole::Admin => 'layouts.admin',
+            UserRole::Teacher => 'layouts.teacher',
+            UserRole::Student => 'layouts.portal',
+        };
     }
 }

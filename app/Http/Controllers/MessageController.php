@@ -160,10 +160,14 @@ class MessageController extends Controller
     }
 
     /**
-     * Layout sesuai role: panel admin untuk admin, portal untuk guru/murid.
+     * Layout sesuai role: panel admin, Portal Guru, atau portal murid.
      */
     private function layoutFor(User $user): string
     {
-        return $user->hasRole(UserRole::Admin) ? 'layouts.admin' : 'layouts.portal';
+        return match ($user->role) {
+            UserRole::Admin => 'layouts.admin',
+            UserRole::Teacher => 'layouts.teacher',
+            UserRole::Student => 'layouts.portal',
+        };
     }
 }

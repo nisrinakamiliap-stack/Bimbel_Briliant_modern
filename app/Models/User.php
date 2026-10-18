@@ -115,7 +115,27 @@ class User extends Authenticatable
     }
 
     /**
-     * Pendaftaran program milik pengguna sebagai murid.
+     * Catatan honorarium milik guru ini.
+     *
+     * @return HasMany<TeacherHonorarium, $this>
+     */
+    public function honorariums(): HasMany
+    {
+        return $this->hasMany(TeacherHonorarium::class, 'teacher_id');
+    }
+
+    /**
+     * Riwayat honorarium guru.
+     *
+     * @return HasMany<TeacherHonorarium, $this>
+     */
+    public function teacherHonorariums(): HasMany
+    {
+        return $this->hasMany(TeacherHonorarium::class, 'teacher_id');
+    }
+
+    /**
+     * Pendaftaran kelas yang diikuti murid ini.
      *
      * @return HasMany<Enrollment, $this>
      */

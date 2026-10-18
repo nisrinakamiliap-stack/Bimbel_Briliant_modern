@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\HonorariumStatus;
 use App\Models\Classroom;
 use App\Models\Enrollment;
 use App\Models\Payment;
 use App\Models\Program;
 use App\Models\Schedule;
+use App\Models\TeacherHonorarium;
 use App\Models\User;
 use App\PaymentStatus;
 use App\UserRole;
@@ -91,7 +93,12 @@ class DashboardController extends Controller
 
         $upcomingSchedules = $this->upcomingSchedules(now(), self::UPCOMING_SCHEDULE_LIMIT);
 
-        return view('dashboard.admin', compact('stats', 'recentEnrollments', 'pendingPayments', 'upcomingSchedules'));
+        $honorariumStats = [
+            'pending_approval' => TeacherHonorarium::where('status', HonorariumStatus::Draft->value)->count(),
+            'pending_payment'  => TeacherHonorarium::whereIn('status', [HonorariumStatus::Approved->value, HonorariumStatus::PartiallyPaid->value])->count(),
+        ];
+
+        return view('dashboard.admin', compact('stats', 'recentEnrollments', 'pendingPayments', 'upcomingSchedules', 'honorariumStats'));
     }
 
     /**
@@ -116,14 +123,6 @@ class DashboardController extends Controller
             ->sortBy('starts_at')
             ->take($limit)
             ->values();
-    }
-
-    /**
-     * Dashboard guru/tentor (placeholder).
-     */
-    public function teacher(): View
-    {
-        return view('dashboard.teacher');
     }
 
     /**

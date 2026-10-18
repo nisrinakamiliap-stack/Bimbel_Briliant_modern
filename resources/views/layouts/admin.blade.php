@@ -48,6 +48,7 @@ $menuItems = [
     ['label' => 'Data Kelas', 'icon' => 'classes', 'route' => 'admin.classes.index', 'active' => 'admin.classes.*'],
     ['label' => 'Jadwal Belajar', 'icon' => 'schedule', 'route' => 'admin.schedules.index', 'active' => 'admin.schedules.*'],
     ['label' => 'Pembayaran', 'icon' => 'payments', 'route' => 'admin.payments.index', 'active' => 'admin.payments.*'],
+    ['label' => 'Honorarium Guru', 'icon' => 'payments', 'route' => 'admin.honorariums.index', 'active' => 'admin.honorariums.*'],
     ['label' => 'Absensi', 'icon' => 'attendance', 'route' => 'admin.attendances.students.index', 'active' => 'admin.attendances.*'],
     ['label' => 'Pembelajaran', 'icon' => 'learning', 'route' => 'admin.learning.materials.index', 'active' => 'admin.learning.*'],
     ['label' => 'Notifikasi dan Pesan', 'icon' => 'bell', 'route' => 'notifications.index', 'active' => ['notifications.*', 'messages.*', 'admin.announcements.*'], 'count' => ($navCounts['notifications'] ?? 0) + ($navCounts['messages'] ?? 0)],

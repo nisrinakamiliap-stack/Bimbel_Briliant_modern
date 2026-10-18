@@ -1,0 +1,1354 @@
+/*
+|--------------------------------------------------------------------------
+| Portal Guru, Bimbel Sentra Edukasi
+|--------------------------------------------------------------------------
+| Kerangka portal guru: navbar horizontal, area konten tengah, sambutan
+| beranda, dan daftar sesi mengajar. Komponen formulir, tabel, badge, dan
+| tombol memakai admin.css agar bahasa visual aplikasi tetap satu.
+|
+| Keputusan desain:
+| - Latar mint (#EFFFF5) dengan panel putih: hierarki jelas tanpa bayangan.
+| - Teks di atas hijau memakai Deep Green #057A46 (5,41:1). Primary Green
+|   #079B58 hanya untuk aksen non-teks (garis menu aktif, cincin fokus).
+| - Banner hero memakai latar putih bersih dengan kartu ilustrasi berbingkai mint lembut.
+| - Motif identitas: "rel waktu", kolom jam di kiri setiap sesi mengajar.
+| - Emas (#FFC94A) hanya untuk jumlah belum dibaca dan penanda sesi yang
+|   sedang berlangsung.
+*/
+
+:root {
+    --teacher-bg: #EFFFF5;
+    --teacher-surface: #FFFFFF;
+    --teacher-hero: #FFFFFF;
+    --teacher-action: #057A46;
+    --teacher-action-hover: #046339;
+    --teacher-nav-height: 4rem;
+    --teacher-container: 76rem;
+}
+
+body.teacher-body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    background-color: var(--teacher-bg);
+    color: var(--admin-forest);
+    -webkit-font-smoothing: antialiased;
+}
+
+body.teacher-body.menu-open {
+    overflow: hidden;
+}
+
+.teacher-container {
+    width: 100%;
+    max-width: var(--teacher-container);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+    .teacher-container {
+        padding-left: 1.75rem;
+        padding-right: 1.75rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .teacher-container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+/* ---------- Tombol: teks di atas hijau harus lolos AA ---------- */
+
+.teacher-body .admin-btn {
+    min-height: 2.75rem;
+}
+
+.teacher-body .admin-btn-sm {
+    min-height: 2.5rem;
+}
+
+.teacher-body .admin-btn-primary {
+    background-color: var(--teacher-action);
+}
+
+.teacher-body .admin-btn-primary:hover {
+    background-color: var(--teacher-action-hover);
+}
+
+.teacher-body .admin-btn[disabled] {
+    cursor: not-allowed;
+    opacity: .65;
+}
+
+@media (pointer: coarse) {
+    .teacher-body .admin-btn-sm {
+        min-height: 2.75rem;
+    }
+}
+
+.teacher-link {
+    color: var(--teacher-action);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+.teacher-link:hover {
+    color: var(--teacher-action-hover);
+}
+
+.teacher-link:focus-visible,
+.teacher-body a:focus-visible,
+.teacher-body button:focus-visible {
+    outline: 2px solid var(--admin-primary);
+    outline-offset: 2px;
+    border-radius: .375rem;
+}
+
+/* ---------- Navbar ---------- */
+
+.teacher-nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background-color: var(--teacher-surface);
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.teacher-nav-inner {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    height: var(--teacher-nav-height);
+}
+
+.teacher-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: .625rem;
+    min-height: 2.75rem;
+    margin-right: auto;
+    color: var(--admin-forest);
+    text-decoration: none;
+}
+
+.teacher-brand img {
+    width: 2.25rem;
+    height: 2.25rem;
+    object-fit: contain;
+    border-radius: .5rem;
+}
+
+.teacher-brand {
+    min-width: 0;
+}
+
+.teacher-brand img {
+    flex-shrink: 0;
+}
+
+.teacher-brand-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    line-height: 1.15;
+}
+
+.teacher-brand-name {
+    overflow: hidden;
+    font-size: .9375rem;
+    font-weight: 800;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@media (max-width: 419px) {
+    .teacher-brand {
+        gap: .5rem;
+    }
+
+    .teacher-brand-name {
+        font-size: .8125rem;
+    }
+}
+
+.teacher-profile-wrap {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .teacher-profile-wrap {
+        display: block;
+    }
+}
+
+.teacher-section-head .teacher-link,
+.admin-panel-header .teacher-link {
+    white-space: nowrap;
+}
+
+.teacher-section-head .admin-actions {
+    flex-wrap: wrap;
+}
+
+.teacher-body .admin-table td {
+    color: var(--admin-forest);
+}
+
+.teacher-brand-label {
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--teacher-action);
+}
+
+.teacher-nav-links {
+    display: none;
+}
+
+.teacher-nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: .25rem;
+    height: var(--teacher-nav-height);
+    padding: 0 .625rem;
+    border: 0;
+    background: none;
+    color: var(--admin-forest);
+    font-family: inherit;
+    font-size: .9rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.teacher-nav-link:hover {
+    color: var(--teacher-action);
+}
+
+.teacher-nav-link.is-active {
+    color: var(--teacher-action);
+}
+
+.teacher-nav-link.is-active::after {
+    content: '';
+    position: absolute;
+    left: .625rem;
+    right: .625rem;
+    bottom: 0;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+    background-color: var(--admin-primary);
+}
+
+.teacher-nav-link:focus-visible {
+    outline-offset: -4px;
+}
+
+.teacher-nav-link .admin-icon {
+    transition: transform .15s ease;
+}
+
+.teacher-nav-link[aria-expanded="true"] .admin-icon {
+    transform: rotate(180deg);
+}
+
+.teacher-dropdown-wrap {
+    position: relative;
+}
+
+.teacher-dropdown {
+    position: absolute;
+    top: calc(100% - .25rem);
+    left: 0;
+    z-index: 50;
+    min-width: 16rem;
+    margin: 0;
+    padding: .375rem;
+    list-style: none;
+    background-color: var(--teacher-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: .75rem;
+    /* Bayangan menandai lapisan yang melayang di atas konten. */
+    box-shadow: 0 12px 28px rgba(18, 53, 42, .14);
+}
+
+.teacher-dropdown.is-right {
+    left: auto;
+    right: 0;
+}
+
+.teacher-dropdown[hidden] {
+    display: none;
+}
+
+.teacher-dropdown-item {
+    display: flex;
+    flex-direction: column;
+    gap: .125rem;
+    width: 100%;
+    min-height: 2.75rem;
+    padding: .625rem .75rem;
+    border: 0;
+    border-radius: .5rem;
+    background: none;
+    color: var(--admin-forest);
+    font-family: inherit;
+    font-size: .875rem;
+    font-weight: 700;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.teacher-dropdown-item small {
+    font-size: .75rem;
+    font-weight: 500;
+    color: var(--admin-muted);
+}
+
+.teacher-dropdown-item:hover,
+.teacher-dropdown-item.is-active {
+    background-color: var(--teacher-bg);
+}
+
+.teacher-dropdown-item.is-active {
+    color: var(--teacher-action);
+}
+
+.teacher-dropdown-divider {
+    height: 1px;
+    margin: .375rem 0;
+    background-color: var(--admin-border);
+}
+
+.teacher-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+}
+
+.teacher-icon-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .375rem;
+    min-width: 2.75rem;
+    height: 2.75rem;
+    padding: 0 .5rem;
+    border: 0;
+    border-radius: .625rem;
+    background: none;
+    color: var(--admin-forest);
+    font-family: inherit;
+    font-size: .875rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.teacher-icon-button:hover,
+.teacher-icon-button.is-active {
+    background-color: var(--teacher-bg);
+}
+
+.teacher-icon-button .admin-count-badge {
+    position: absolute;
+    top: .25rem;
+    right: .125rem;
+    margin-left: 0;
+}
+
+.teacher-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.125rem;
+    height: 2.125rem;
+    border-radius: 999px;
+    background-color: var(--admin-mint);
+    color: var(--admin-forest);
+    font-size: .8125rem;
+    font-weight: 800;
+}
+
+.teacher-profile-name {
+    display: none;
+    max-width: 10rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.teacher-dropdown-header {
+    padding: .625rem .75rem .5rem;
+    font-size: .8125rem;
+    color: var(--admin-muted);
+}
+
+.teacher-dropdown-header strong {
+    display: block;
+    font-size: .875rem;
+    color: var(--admin-forest);
+}
+
+.teacher-menu-toggle span {
+    font-size: .875rem;
+}
+
+.teacher-mobile-menu {
+    position: fixed;
+    top: var(--teacher-nav-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 39;
+    overflow-y: auto;
+    padding: .5rem 0 2rem;
+    background-color: var(--teacher-surface);
+    border-top: 1px solid var(--admin-border);
+}
+
+.teacher-mobile-menu[hidden] {
+    display: none;
+}
+
+.teacher-mobile-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.teacher-mobile-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 3rem;
+    padding: .5rem .75rem;
+    border-radius: .625rem;
+    color: var(--admin-forest);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.teacher-mobile-link.is-sub {
+    padding-left: 1.75rem;
+    font-weight: 600;
+}
+
+.teacher-mobile-link.is-active {
+    background-color: var(--teacher-bg);
+    color: var(--teacher-action);
+}
+
+.teacher-mobile-group {
+    margin: .75rem .75rem .25rem;
+    font-size: .75rem;
+    font-weight: 700;
+    color: var(--admin-muted);
+}
+
+.teacher-mobile-menu form {
+    margin: 0;
+}
+
+.teacher-mobile-menu button.teacher-mobile-link {
+    width: 100%;
+    border: 0;
+    background: none;
+    font-family: inherit;
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+}
+
+@media (min-width: 640px) {
+    .teacher-container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .teacher-nav-links {
+        display: flex;
+        align-items: center;
+        gap: .125rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .teacher-menu-toggle,
+    .teacher-mobile-menu {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1280px) {
+    .teacher-profile-name {
+        display: inline;
+    }
+
+    .teacher-nav-link {
+        padding: 0 .875rem;
+    }
+
+    .teacher-nav-link.is-active::after {
+        left: .875rem;
+        right: .875rem;
+    }
+}
+
+/* ---------- Konten ---------- */
+
+/* Ruang bawah 6rem agar baris terakhir tidak tertutup tombol Pesan mengambang. */
+.teacher-main {
+    padding-top: 1.75rem;
+    padding-bottom: 6rem;
+}
+
+.teacher-main:focus {
+    outline: none;
+}
+
+.teacher-page-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.teacher-page-head h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.teacher-page-head p {
+    margin: .375rem 0 0;
+    max-width: 40rem;
+    font-size: .9375rem;
+    color: var(--admin-muted);
+}
+
+.teacher-section + .teacher-section {
+    margin-top: 2rem;
+}
+
+.teacher-section-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: .5rem 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.teacher-section-head h2 {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 800;
+}
+
+.teacher-section-head p {
+    margin: .375rem 0 0;
+    font-size: .875rem;
+    color: var(--admin-muted);
+}
+
+.teacher-columns {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.teacher-body .admin-panel-header h2,
+.teacher-body .admin-form-section > h2 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.teacher-radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .375rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.teacher-radio-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: .375rem;
+    min-height: 2.75rem;
+    padding: 0 .75rem;
+    border: 1px solid var(--admin-border);
+    border-radius: .625rem;
+    font-size: .875rem;
+    cursor: pointer;
+}
+
+.teacher-radio-group label:has(input:checked) {
+    border-color: var(--admin-primary);
+    background-color: var(--teacher-bg);
+    font-weight: 700;
+}
+
+.teacher-radio-group input:focus-visible {
+    outline: 2px solid var(--admin-primary);
+    outline-offset: 2px;
+}
+
+.teacher-stack > * + * {
+    margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .teacher-main {
+        padding-top: 2rem;
+    }
+
+    .teacher-page-head h1 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .teacher-columns {
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+        align-items: start;
+    }
+
+    .teacher-columns.is-even {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+}
+
+/* ---------- Sambutan beranda (Hero Banner) ---------- */
+
+.teacher-hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem 1.25rem;
+    border-radius: 1.5rem;
+    border: 1px solid var(--admin-border);
+    background-color: var(--teacher-surface);
+    color: var(--admin-forest);
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .teacher-hero {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: 2rem;
+        padding: 2.25rem 2.5rem;
+        min-height: auto;
+    }
+}
+
+.teacher-hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+}
+
+.teacher-hero-date {
+    margin: 0 0 .5rem;
+    font-size: .8125rem;
+    font-weight: 700;
+    color: var(--teacher-action);
+    letter-spacing: .03em;
+    text-transform: uppercase;
+}
+
+.teacher-hero h1 {
+    margin: 0;
+    font-size: 1.625rem;
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--admin-forest);
+}
+
+@media (min-width: 768px) {
+    .teacher-hero h1 {
+        font-size: 1.875rem;
+    }
+}
+
+.teacher-hero-summary {
+    margin: .5rem 0 1.5rem;
+    max-width: 32rem;
+    font-size: .9375rem;
+    line-height: 1.6;
+    color: var(--admin-muted);
+}
+
+.teacher-hero .admin-btn-primary {
+    background-color: var(--teacher-action);
+    color: #FFFFFF;
+    align-self: flex-start;
+    padding: 0 1.5rem;
+    min-height: 2.75rem;
+    border-radius: .625rem;
+    font-weight: 700;
+}
+
+.teacher-hero .admin-btn-primary:hover {
+    background-color: var(--teacher-action-hover);
+}
+
+/* Kolom kanan: Ilustrasi guru sebagai elemen visual terpisah */
+.teacher-hero-media {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    max-height: 12rem;
+    border-radius: 1.125rem;
+    background-color: #F0FAF4;
+    border: 1px solid var(--admin-border);
+    padding: .75rem 1rem;
+    box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+    .teacher-hero-media {
+        max-height: 14.5rem;
+        padding: 1rem 1.25rem;
+    }
+}
+
+.teacher-hero-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 12.5rem;
+    object-fit: contain;
+    object-position: center;
+    border-radius: .75rem;
+}
+
+/* ---------- Rel waktu: daftar sesi mengajar ---------- */
+
+.teacher-free-day {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    border: 1px dashed var(--admin-border);
+    border-radius: 1.25rem;
+    background-color: var(--teacher-surface);
+    color: var(--admin-muted);
+}
+
+.teacher-free-day .admin-icon {
+    flex-shrink: 0;
+    margin-top: .125rem;
+    color: var(--teacher-action);
+}
+
+.teacher-free-day > div {
+    flex: 1;
+    min-width: 0;
+}
+
+.teacher-free-day h3 {
+    margin: 0 0 .375rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--admin-forest);
+}
+
+.teacher-free-day p {
+    margin: 0 0 1rem;
+    font-size: .875rem;
+    line-height: 1.5;
+}
+
+.teacher-sessions {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: var(--teacher-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: 1.25rem;
+    overflow: hidden;
+}
+
+.teacher-session {
+    position: relative;
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    gap: .5rem 1.25rem;
+    padding: 1.25rem 1.5rem;
+}
+
+.teacher-session + .teacher-session {
+    border-top: 1px solid var(--admin-border);
+}
+
+/* Penanda emas hanya untuk sesi yang benar-benar sedang berlangsung. */
+.teacher-session.is-ongoing::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: .875rem;
+    bottom: .875rem;
+    width: 4px;
+    border-radius: 0 4px 4px 0;
+    background-color: var(--admin-gold);
+}
+
+.teacher-session-time {
+    display: flex;
+    flex-direction: column;
+    padding-right: .875rem;
+    border-right: 2px solid var(--admin-border);
+    font-variant-numeric: tabular-nums;
+}
+
+.teacher-session-time strong {
+    font-size: 1.0625rem;
+    font-weight: 800;
+}
+
+.teacher-session-time span {
+    font-size: .8125rem;
+    color: var(--admin-muted);
+}
+
+.teacher-session-body h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.teacher-session-body h3 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.teacher-session-body h3 a:hover {
+    color: var(--teacher-action);
+    text-decoration: underline;
+}
+
+.teacher-session-meta {
+    margin: .25rem 0 0;
+    font-size: .875rem;
+    color: var(--admin-muted);
+}
+
+.teacher-session-state {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .5rem;
+    margin-top: .625rem;
+    font-size: .8125rem;
+    color: var(--admin-muted);
+}
+
+.teacher-session-actions {
+    grid-column: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: .75rem;
+}
+
+.teacher-session-actions form {
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .teacher-session {
+        grid-template-columns: 5rem minmax(0, 1fr) auto;
+        align-items: center;
+        padding: 1.125rem 1.25rem 1.125rem 1.125rem;
+    }
+
+    .teacher-session-actions {
+        grid-column: 3;
+        justify-content: flex-end;
+        margin-top: 0;
+    }
+}
+
+.teacher-day-label {
+    margin: 1.25rem 0 .5rem;
+    font-size: .9375rem;
+    font-weight: 800;
+}
+
+.teacher-day-label:first-child {
+    margin-top: 0;
+}
+
+.teacher-day-label span {
+    margin-left: .375rem;
+    font-weight: 600;
+    color: var(--admin-muted);
+}
+
+.teacher-day-empty {
+    margin: 0;
+    padding: .875rem 1rem;
+    border: 1px dashed var(--admin-border);
+    border-radius: .75rem;
+    background-color: var(--teacher-surface);
+    font-size: .875rem;
+    color: var(--admin-muted);
+}
+
+/* ---------- Grid kartu aktivitas penting ---------- */
+
+.teacher-activity {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+    .teacher-activity {
+        grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .teacher-activity {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+.teacher-activity .admin-panel {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.25rem;
+    border: 1px solid var(--admin-border);
+    background-color: var(--teacher-surface);
+    overflow: hidden;
+    height: 100%;
+}
+
+.teacher-activity .admin-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.teacher-activity .admin-panel-header h3 {
+    margin: 0;
+    font-size: .9375rem;
+    font-weight: 800;
+    color: var(--admin-forest);
+}
+
+.teacher-activity .teacher-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex: 1;
+}
+
+.teacher-activity .teacher-list-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+}
+
+.teacher-activity .teacher-list-item + .teacher-list-item {
+    border-top: 1px solid var(--admin-border);
+}
+
+.teacher-activity .teacher-list-item p {
+    margin: .375rem 0 0;
+    font-size: .8125rem;
+    color: var(--admin-muted);
+    line-height: 1.4;
+}
+
+/* Empty state di kartu aktivitas penting: rapi, kompak, terpusat */
+.teacher-activity .admin-empty {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.75rem 1.25rem;
+    text-align: center;
+    min-height: auto;
+}
+
+.teacher-activity .admin-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-bottom: .75rem;
+    border-radius: 50%;
+    background-color: var(--admin-mint-bg);
+    color: var(--teacher-action);
+}
+
+.teacher-activity .admin-empty h4 {
+    margin: 0 0 .375rem;
+    font-size: .875rem;
+    font-weight: 700;
+    color: var(--admin-forest);
+}
+
+.teacher-activity .admin-empty p {
+    margin: 0;
+    max-width: 16rem;
+    font-size: .8125rem;
+    line-height: 1.5;
+    color: var(--admin-muted);
+}
+
+/* ---------- Akses cepat ---------- */
+
+.teacher-quick {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.teacher-quick a {
+    display: inline-flex;
+    align-items: center;
+    gap: .625rem;
+    min-height: 2.875rem;
+    padding: 0 1.25rem;
+    border: 1px solid var(--admin-border);
+    border-radius: .75rem;
+    background-color: var(--teacher-surface);
+    color: var(--admin-forest);
+    font-size: .875rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: border-color .15s ease, background-color .15s ease, color .15s ease;
+}
+
+.teacher-quick a:hover {
+    border-color: var(--admin-primary);
+    background-color: #F0FAF4;
+    color: var(--teacher-action);
+}
+
+.teacher-quick .admin-icon {
+    color: var(--teacher-action);
+}
+
+/* ---------- Kartu kelas ---------- */
+
+.teacher-class-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+@media (min-width: 640px) {
+    .teacher-class-grid {
+        grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+    }
+}
+
+.teacher-class {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    border: 1px solid var(--admin-border);
+    border-radius: 1rem;
+    background-color: var(--teacher-surface);
+}
+
+.teacher-class h2 {
+    margin: 0;
+    font-size: 1.0625rem;
+    font-weight: 800;
+}
+
+.teacher-class-program {
+    margin: .25rem 0 0;
+    font-size: .875rem;
+    color: var(--admin-muted);
+}
+
+.teacher-class-facts {
+    display: grid;
+    gap: .375rem;
+    margin: 1rem 0;
+    padding: 0;
+    list-style: none;
+    font-size: .875rem;
+}
+
+.teacher-class-facts li {
+    display: flex;
+    gap: .5rem;
+}
+
+.teacher-class-facts .admin-icon {
+    flex-shrink: 0;
+    margin-top: .125rem;
+    color: var(--teacher-action);
+}
+
+.teacher-class .admin-btn {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+/* ---------- Status rekap absensi ---------- */
+
+.teacher-status-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-bottom: 1.25rem;
+}
+
+.teacher-status-chip {
+    display: inline-flex;
+    align-items: baseline;
+    gap: .375rem;
+    padding: .5rem .875rem;
+    border: 1px solid var(--admin-border);
+    border-radius: .625rem;
+    background-color: var(--teacher-surface);
+    font-size: .875rem;
+}
+
+.teacher-status-chip strong {
+    font-size: 1.125rem;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Tombol Pesan mengambang ---------- */
+
+.teacher-message-button {
+    position: fixed;
+    right: 1rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    z-index: 30;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 999px;
+    background-color: var(--teacher-action);
+    color: #FFFFFF;
+    font-size: .9375rem;
+    font-weight: 700;
+    text-decoration: none;
+    /* Satu-satunya elemen yang melayang di atas konten, jadi diberi bayangan sebagai penanda lapisan. */
+    box-shadow: 0 10px 24px rgba(5, 122, 70, .32);
+    transition: background-color .15s ease;
+}
+
+.teacher-message-button:hover {
+    background-color: var(--teacher-action-hover);
+}
+
+.teacher-body .teacher-message-button:focus-visible {
+    outline: 3px solid var(--admin-forest);
+    outline-offset: 3px;
+}
+
+.teacher-message-button-label {
+    display: none;
+}
+
+.teacher-message-button .admin-count-badge {
+    position: absolute;
+    top: -.25rem;
+    right: -.125rem;
+    margin-left: 0;
+    box-shadow: 0 0 0 2px #FFFFFF;
+}
+
+@media (min-width: 640px) {
+    .teacher-message-button {
+        right: 1.5rem;
+        bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+        width: auto;
+        padding: 0 1.25rem 0 1.125rem;
+    }
+
+    .teacher-message-button-label {
+        display: inline;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .teacher-nav-link .admin-icon,
+    .teacher-message-button {
+        transition: none;
+    }
+}
+
+/* ---------- Honorarium Saya ---------- */
+
+.teacher-honor-summary {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: .25rem;
+}
+
+@media (min-width: 640px) {
+    .teacher-honor-summary {
+        grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+        gap: 1.25rem;
+    }
+}
+
+.teacher-honor-card {
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--admin-border);
+    border-radius: 1rem;
+    background-color: var(--teacher-surface);
+}
+
+.teacher-honor-label {
+    margin: 0 0 .25rem;
+    font-size: .8125rem;
+    font-weight: 600;
+    color: var(--admin-muted);
+    text-transform: uppercase;
+    letter-spacing: .03em;
+}
+
+.teacher-honor-value {
+    margin: 0 0 .125rem;
+    font-size: 1.375rem;
+    font-weight: 800;
+    color: var(--admin-forest);
+}
+
+.teacher-honor-note {
+    margin: 0;
+    font-size: .8125rem;
+    color: var(--admin-muted);
+}
+
+.teacher-honor-row {
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: .5rem 1rem;
+    padding: 1rem 1.25rem;
+}
+
+.teacher-honor-row + .teacher-honor-row {
+    border-top: 1px solid var(--admin-border);
+}
+
+.teacher-honor-period {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: .875rem;
+    border-right: 2px solid var(--admin-border);
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.teacher-honor-period strong {
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.teacher-honor-period span {
+    font-size: .75rem;
+    color: var(--admin-muted);
+}
+
+.teacher-honor-amount {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--admin-forest);
+}
+
+.teacher-honor-meta {
+    margin: .125rem 0 0;
+    font-size: .8125rem;
+    color: var(--admin-muted);
+}
+
+.teacher-honor-status {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .25rem;
+}
+
+.teacher-honor-date {
+    margin: 0;
+    font-size: .75rem;
+    color: var(--admin-muted);
+}
+
+@media (max-width: 639px) {
+    .teacher-honor-row {
+        grid-template-columns: 3rem minmax(0, 1fr);
+        grid-template-rows: auto auto;
+    }
+
+    .teacher-honor-status {
+        grid-column: 2;
+        align-items: flex-start;
+    }
+
+    .teacher-honor-row > .admin-btn {
+        grid-column: 1 / -1;
+        justify-self: start;
+    }
+
+    .teacher-period-form {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+
+    .teacher-period-form > div {
+        min-width: 100% !important;
+    }
+
+    .teacher-period-form button {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+}

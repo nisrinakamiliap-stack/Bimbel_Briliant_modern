@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Http\UploadedFile;
 
 /**
  * Materi pembelajaran untuk satu kelas.
@@ -24,6 +25,11 @@ class Material extends Model
 {
     /** @use HasFactory<MaterialFactory> */
     use HasFactory;
+
+    /**
+     * Disk privat untuk berkas pembelajaran.
+     */
+    public const FILE_DISK = 'local';
 
     /**
      * Nilai default atribut model, selaras dengan default kolom di database.
@@ -106,5 +112,28 @@ class Material extends Model
     public function hasFile(): bool
     {
         return $this->file_path !== null;
+    }
+
+    /**
+     * Mengganti atau menghapus berkas materi pada disk privat (belum disimpan ke database).
+     *
+     * Mengembalikan path berkas lama yang harus dihapus setelah perubahan berhasil disimpan, atau null.
+     */
+    public function replaceFile(?UploadedFile $file, bool $remove = false): ?string
+    {
+        if ($file === null && ! $remove) {
+            return null;
+        }
+
+        $oldPath = $this->file_path;
+        $this->file_path = null;
+        $this->file_original_name = null;
+
+        if ($file !== null) {
+            $this->file_path = $file->store('learning/materials', self::FILE_DISK);
+            $this->file_original_name = $file->getClientOriginalName();
+        }
+
+        return $oldPath;
     }
 }

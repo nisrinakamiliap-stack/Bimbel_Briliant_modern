@@ -677,7 +677,9 @@ a.admin-nav-item:focus-visible,
     color: var(--admin-muted);
 }
 
+/* position: relative agar elemen .sr-only (absolute) di dalam tabel ikut terpotong dan tidak melebarkan halaman di HP. */
 .admin-table-wrap {
+    position: relative;
     overflow-x: auto;
 }
 

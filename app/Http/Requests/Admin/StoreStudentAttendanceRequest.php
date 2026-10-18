@@ -21,11 +21,25 @@ use Illuminate\Validation\Validator;
 class StoreStudentAttendanceRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Admin dapat mencatat absensi semua kelas; guru hanya untuk jadwal kelas yang diampunya.
      */
     public function authorize(): bool
     {
-        return $this->user()?->hasRole(UserRole::Admin) ?? false;
+        $user = $this->user();
+
+        if ($user === null) {
+            return false;
+        }
+
+        if ($user->hasRole(UserRole::Admin)) {
+            return true;
+        }
+
+        $schedule = Schedule::with('classroom')->find($this->integer('schedule_id'));
+
+        return $user->hasRole(UserRole::Teacher)
+            && $schedule !== null
+            && $schedule->classroom->teacher_id === $user->id;
     }
 
     /**

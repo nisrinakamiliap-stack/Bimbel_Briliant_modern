@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Learning;
 
-use App\EnrollmentStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Learning\AssignmentRequest;
 use App\LearningContentStatus;
 use App\Models\Assignment;
 use App\Models\Classroom;
-use App\Models\Enrollment;
 use App\Models\Material;
 use Carbon\CarbonImmutable;
 use Illuminate\Contracts\View\View;
@@ -74,12 +72,7 @@ class AssignmentController extends Controller
     {
         $assignment = new Assignment($this->attributesFrom($request));
         $assignment->author_id = $request->user()->id;
-
-        if ($request->hasFile('attachment')) {
-            $assignment->attachment_path = $request->file('attachment')->store('learning/assignments', MaterialController::DISK);
-            $assignment->attachment_original_name = $request->file('attachment')->getClientOriginalName();
-        }
-
+        $assignment->replaceFile($request->file('attachment'));
         $assignment->save();
 
         return redirect()
@@ -95,17 +88,10 @@ class AssignmentController extends Controller
         $assignment->load(['classroom.teacher', 'material', 'author']);
 
         $submissions = $assignment->submissions()->with(['student', 'grade'])->get()->keyBy('student_id');
-        $roster = Enrollment::query()
-            ->where('classroom_id', $assignment->classroom_id)
-            ->where('status', EnrollmentStatus::Approved->value)
-            ->with('student')
-            ->get()
-            ->sortBy(fn (Enrollment $enrollment) => $enrollment->student->name)
-            ->values();
 
         return view('admin.learning.assignments.show', [
             'assignment' => $assignment,
-            'roster' => $roster,
+            'roster' => $assignment->participantEnrollments(),
             'submissions' => $submissions,
             'canDelete' => Gate::inspect('delete', $assignment),
         ]);
@@ -132,18 +118,7 @@ class AssignmentController extends Controller
 
         DB::transaction(function () use ($request, $assignment, &$oldPath): void {
             $assignment->fill($this->attributesFrom($request));
-
-            if ($request->hasFile('attachment') || $request->boolean('remove_attachment')) {
-                $oldPath = $assignment->attachment_path;
-                $assignment->attachment_path = null;
-                $assignment->attachment_original_name = null;
-            }
-
-            if ($request->hasFile('attachment')) {
-                $assignment->attachment_path = $request->file('attachment')->store('learning/assignments', MaterialController::DISK);
-                $assignment->attachment_original_name = $request->file('attachment')->getClientOriginalName();
-            }
-
+            $oldPath = $assignment->replaceFile($request->file('attachment'), $request->boolean('remove_attachment'));
             $assignment->save();
         });
 

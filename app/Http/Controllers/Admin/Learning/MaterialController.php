@@ -20,7 +20,7 @@ class MaterialController extends Controller
     /**
      * Disk privat untuk berkas pembelajaran.
      */
-    public const DISK = 'local';
+    public const DISK = Material::FILE_DISK;
 
     /**
      * Jumlah materi per halaman.
@@ -75,12 +75,7 @@ class MaterialController extends Controller
     {
         $material = new Material($request->safe()->except(['file', 'remove_file']));
         $material->author_id = $request->user()->id;
-
-        if ($request->hasFile('file')) {
-            $material->file_path = $request->file('file')->store('learning/materials', self::DISK);
-            $material->file_original_name = $request->file('file')->getClientOriginalName();
-        }
-
+        $material->replaceFile($request->file('file'));
         $material->save();
 
         return redirect()
@@ -124,18 +119,7 @@ class MaterialController extends Controller
 
         DB::transaction(function () use ($request, $material, &$oldFilePath): void {
             $material->fill($request->safe()->except(['file', 'remove_file']));
-
-            if ($request->hasFile('file') || $request->boolean('remove_file')) {
-                $oldFilePath = $material->file_path;
-                $material->file_path = null;
-                $material->file_original_name = null;
-            }
-
-            if ($request->hasFile('file')) {
-                $material->file_path = $request->file('file')->store('learning/materials', self::DISK);
-                $material->file_original_name = $request->file('file')->getClientOriginalName();
-            }
-
+            $oldFilePath = $material->replaceFile($request->file('file'), $request->boolean('remove_file'));
             $material->save();
         });
 

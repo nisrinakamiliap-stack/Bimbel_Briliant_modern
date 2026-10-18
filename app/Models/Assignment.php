@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\EnrollmentStatus;
 use App\LearningContentStatus;
 use Carbon\CarbonInterface;
 use Database\Factories\AssignmentFactory;
@@ -9,10 +10,12 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Http\UploadedFile;
 
 /**
  * Tugas untuk satu kelas, dengan tenggat, skala nilai, dan aturan pengumpulan.
@@ -28,6 +31,11 @@ class Assignment extends Model
 {
     /** @use HasFactory<AssignmentFactory> */
     use HasFactory;
+
+    /**
+     * Disk privat untuk berkas pembelajaran.
+     */
+    public const FILE_DISK = 'local';
 
     /**
      * Nilai default atribut model, selaras dengan default kolom di database.
@@ -139,6 +147,22 @@ class Assignment extends Model
     }
 
     /**
+     * Pendaftaran Diterima di kelas tugas (murid yang seharusnya mengumpulkan), urut nama murid.
+     *
+     * @return Collection<int, Enrollment>
+     */
+    public function participantEnrollments(): Collection
+    {
+        return Enrollment::query()
+            ->where('classroom_id', $this->classroom_id)
+            ->where('status', EnrollmentStatus::Approved->value)
+            ->with('student')
+            ->get()
+            ->sortBy(fn (Enrollment $enrollment) => $enrollment->student->name)
+            ->values();
+    }
+
+    /**
      * Menentukan apakah tugas sudah memiliki pengumpulan (tidak boleh dihapus).
      */
     public function hasSubmissions(): bool
@@ -152,5 +176,28 @@ class Assignment extends Model
     public function hasAttachment(): bool
     {
         return $this->attachment_path !== null;
+    }
+
+    /**
+     * Mengganti atau menghapus lampiran tugas pada disk privat (belum disimpan ke database).
+     *
+     * Mengembalikan path berkas lama yang harus dihapus setelah perubahan berhasil disimpan, atau null.
+     */
+    public function replaceFile(?UploadedFile $file, bool $remove = false): ?string
+    {
+        if ($file === null && ! $remove) {
+            return null;
+        }
+
+        $oldPath = $this->attachment_path;
+        $this->attachment_path = null;
+        $this->attachment_original_name = null;
+
+        if ($file !== null) {
+            $this->attachment_path = $file->store('learning/assignments', self::FILE_DISK);
+            $this->attachment_original_name = $file->getClientOriginalName();
+        }
+
+        return $oldPath;
     }
 }

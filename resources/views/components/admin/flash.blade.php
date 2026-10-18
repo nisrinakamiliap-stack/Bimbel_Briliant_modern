@@ -12,7 +12,15 @@
     </div>
 @endif
 
-@if ($errors->any())
+{{-- Galat check-in/check-out guru tidak terkait isian formulir, jadi pesannya ditampilkan langsung. --}}
+@error('schedule')
+    <div class="admin-alert is-error" role="alert">
+        <x-admin.icon name="alert" :size="18" />
+        <span>{{ $message }}</span>
+    </div>
+@enderror
+
+@if (collect($errors->keys())->reject(fn (string $key) => $key === 'schedule')->isNotEmpty())
     <div class="admin-alert is-error" role="alert">
         <x-admin.icon name="alert" :size="18" />
         <span>Data belum dapat disimpan. Periksa kembali isian yang ditandai merah.</span>
