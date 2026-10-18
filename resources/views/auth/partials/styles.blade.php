@@ -4,8 +4,7 @@
     .auth-grid.auth-grid--single { max-width: 560px; }
 
     .auth-brand-panel { display: none; position: relative; overflow: hidden; border-radius: 1.25rem; padding: 2.75rem; color: #ffffff; background: linear-gradient(150deg, #12352A 0%, #0c2620 55%, #079B58 140%); }
-    .auth-brand-panel::after { content: ''; position: absolute; width: 18rem; height: 18rem; right: -6rem; bottom: -6rem; border-radius: 50%; background-color: rgba(7,155,88,.3); }
-    .auth-brand-panel h2 { font-size: 1.75rem; font-weight: 800; line-height: 1.25; margin: 1.25rem 0 1rem; }
+    .auth-brand-panel h2 { font-size: 1.75rem; font-weight: 800; line-height: 1.25; margin: 0 0 1rem; }
     .auth-brand-panel p { font-size: .9375rem; line-height: 1.7; color: rgba(255,255,255,.75); margin: 0 0 1.75rem; }
     .auth-brand-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .875rem; position: relative; z-index: 1; }
     .auth-brand-list li { display: flex; align-items: flex-start; gap: .75rem; font-size: .9375rem; color: rgba(255,255,255,.9); }

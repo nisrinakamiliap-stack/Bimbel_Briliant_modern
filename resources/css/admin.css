@@ -308,10 +308,10 @@ a.admin-nav-item:focus-visible,
 }
 
 .admin-nav-item.is-active {
-    background: linear-gradient(135deg, var(--admin-primary) 0%, var(--admin-primary-light) 100%);
+    background-color: rgba(255, 255, 255, .12);
     color: #ffffff;
     font-weight: 700;
-    box-shadow: 0 6px 16px rgba(7, 155, 88, .3);
+    box-shadow: inset 3px 0 0 var(--admin-fresh);
 }
 
 .admin-nav-item.is-disabled {
@@ -630,9 +630,9 @@ a.admin-nav-item:focus-visible,
 
 .admin-stat-value {
     margin: .125rem 0;
-    font-size: 1.75rem;
-    font-weight: 800;
-    line-height: 1.15;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.2;
     color: var(--admin-forest);
 }
 

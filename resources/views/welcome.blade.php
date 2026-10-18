@@ -78,15 +78,9 @@
 
 {{-- HERO SECTION --}}
 <section id="hero" aria-labelledby="hero-heading">
-    <div class="hero-deco-circle" style="width:500px;height:500px;top:-100px;right:-150px;" aria-hidden="true"></div>
-    <div class="hero-deco-circle" style="width:250px;height:250px;bottom:-50px;left:-80px;opacity:.4;" aria-hidden="true"></div>
     <div class="container-main" style="position:relative;z-index:1;">
         <div id="hero-grid" style="display:grid;grid-template-columns:1fr;gap:3rem;align-items:center;">
             <div style="max-width:640px;">
-                <div class="hero-badge animate-fade-in">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    Pendampingan Belajar Terarah
-                </div>
                 <h1 id="hero-heading" class="heading-display animate-fade-in-up delay-100" style="margin-bottom:1.25rem;opacity:0;">
                     Belajar Lebih Terarah,<br>
                     <span style="color:#079B58;">Raih Prestasi</span><br>
@@ -285,9 +279,6 @@
                 <div style="display:flex;justify-content:center;margin-bottom:1.25rem;">
                     <div class="step-number" aria-hidden="true">{{ $step['num'] }}</div>
                 </div>
-                <div style="width:3.5rem;height:3.5rem;background-color:#EFFFF5;border-radius:.875rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;" aria-hidden="true">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#079B58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{!! $step['icon'] !!}</svg>
-                </div>
                 <h3 style="font-size:1.0625rem;font-weight:700;color:#12352A;margin-bottom:.625rem;">{{ $step['title'] }}</h3>
                 <p style="font-size:.875rem;color:#5F7569;line-height:1.7;max-width:220px;margin:0 auto;">{{ $step['desc'] }}</p>
             </div>
@@ -302,46 +293,14 @@
     </div>
 </section>
 
-{{-- TESTIMONI --}}
-<section id="testimonials" class="section-padding bg-section-green" aria-labelledby="testimonials-heading">
+{{-- AJAKAN KONSULTASI --}}
+<section id="konsultasi" class="section-padding bg-section-green" aria-labelledby="konsultasi-heading">
     <div class="container-main">
-        <div style="text-align:center;max-width:520px;margin:0 auto 3.5rem;">
+        <div style="max-width:640px;margin:0 auto;text-align:center;">
             <div class="divider-green" style="margin-left:auto;margin-right:auto;"></div>
-            <p class="text-section-label" style="margin-bottom:.75rem;">Testimoni</p>
-            <h2 id="testimonials-heading" class="heading-xl" style="margin-bottom:1rem;">Cerita dari Pengalaman Belajar</h2>
-            <p style="font-size:1rem;color:#5F7569;line-height:1.7;">Berikut adalah contoh cerita dari berbagai peserta. Gantikan dengan testimoni nyata dari siswa dan orang tua.</p>
-            <div class="demo-label" style="margin:1rem auto 0;width:fit-content;" role="note" aria-label="Konten demo">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                Konten demo — gantikan dengan testimoni nyata
-            </div>
-        </div>
-        @php
-        $testimonials = [
-            ['initials'=>'BU','quote'=>'Program bimbingan belajarnya sangat membantu anak saya memahami pelajaran yang selama ini sulit. Tutor-nya sabar dan cara mengajarnya mudah dipahami.','name'=>'[Nama Orang Tua]','role'=>'Orang tua siswa SD — Data Contoh'],
-            ['initials'=>'SI','quote'=>'Jadwalnya fleksibel dan tutor selalu siap membantu ketika ada materi yang belum dipahami. Saya merasa lebih percaya diri menghadapi ujian.','name'=>'[Nama Siswa]','role'=>'Peserta Program SMP — Data Contoh'],
-            ['initials'=>'AY','quote'=>'Program persiapan ujiannya sangat terstruktur. Latihan soal yang diberikan sangat relevan dan membantu saya belajar lebih fokus dan efisien.','name'=>'[Nama Siswa]','role'=>'Peserta Persiapan Ujian — Data Contoh'],
-        ];
-        @endphp
-        <div class="grid-testimonials">
-            @foreach ($testimonials as $i => $testimonial)
-            <blockquote class="testimonial-card" id="testimonial-{{ $i + 1 }}">
-                <div style="display:flex;margin-bottom:1rem;" aria-label="Rating: 5 bintang" role="img">
-                    @for ($s = 0; $s < 5; $s++)
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1" aria-hidden="true">
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                    </svg>
-                    @endfor
-                </div>
-                <p class="testimonial-quote" style="margin-bottom:1.5rem;">"{{ $testimonial['quote'] }}"</p>
-                <footer style="display:flex;align-items:center;gap:.875rem;margin-top:auto;">
-                    <div class="testimonial-avatar" aria-hidden="true">{{ $testimonial['initials'] }}</div>
-                    <div>
-                        <div style="font-size:.875rem;font-weight:700;color:#12352A;">{{ $testimonial['name'] }}</div>
-                        <div style="font-size:.75rem;color:#5F7569;">{{ $testimonial['role'] }}</div>
-                    </div>
-                </footer>
-            </blockquote>
-            @endforeach
+            <h2 id="konsultasi-heading" class="heading-xl" style="margin-bottom:1rem;">Ada pertanyaan tentang program belajar?</h2>
+            <p style="font-size:1rem;color:#5F7569;line-height:1.7;margin-bottom:2rem;">Tim kami siap membantu memilih program yang paling sesuai dengan kebutuhan dan jadwal kamu. Hubungi kami langsung.</p>
+            <a href="{{ route('kontak.index') }}" class="btn-primary" id="cta-konsultasi-section">Hubungi Kami</a>
         </div>
     </div>
 </section>
@@ -376,19 +335,11 @@
                     <img src="{{ asset('logo.png') }}" alt="Logo Bimbel Sentra Edukasi" style="height:3rem;width:auto;object-fit:contain;filter:brightness(0) invert(1);">
                 </div>
                 <p style="font-size:.875rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:1.5rem;">Lembaga bimbingan belajar yang menyediakan program pendampingan terstruktur untuk siswa SD, SMP, SMA, dan persiapan ujian.</p>
-                <div style="display:flex;gap:.625rem;" aria-label="Media sosial kami">
-                    <a href="#" class="footer-social" aria-label="Instagram (placeholder)">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    </a>
-                    <a href="#" class="footer-social" aria-label="Facebook (placeholder)">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                    </a>
-                    <a href="#" class="footer-social" aria-label="WhatsApp (placeholder)">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                    </a>
-                    <a href="#" class="footer-social" aria-label="YouTube (placeholder)">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
-                    </a>
+                <div style="display:flex;gap:.625rem;" aria-hidden="true">
+                    <span class="footer-social"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></span>
+                    <span class="footer-social"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></span>
+                    <span class="footer-social"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></span>
+                    <span class="footer-social"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg></span>
                 </div>
             </div>
             <nav aria-label="Navigasi footer">
@@ -423,10 +374,6 @@
         </div>
         <div style="border-top:1px solid rgba(255,255,255,.08);padding:1.5rem 0;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;">
             <p style="font-size:.8125rem;color:rgba(255,255,255,.4);margin:0;">&copy; {{ date('Y') }} Bimbel Sentra Edukasi. Hak cipta dilindungi.</p>
-            <div style="display:flex;gap:1.5rem;">
-                <a href="#" class="footer-link" style="font-size:.8125rem;color:rgba(255,255,255,.4);">Kebijakan Privasi</a>
-                <a href="#" class="footer-link" style="font-size:.8125rem;color:rgba(255,255,255,.4);">Syarat &amp; Ketentuan</a>
-            </div>
         </div>
     </div>
 </footer>

@@ -27,15 +27,7 @@ $quickLinks = [
 @section('content')
     <x-admin.flash />
 
-    <section class="teacher-hero" aria-labelledby="teacher-greeting" style="position:relative;overflow:hidden;">
-        {{-- Dekorasi: bintang kecil --}}
-        <span aria-hidden="true" class="th-deco-star" style="position:absolute;top:1.25rem;right:2.5rem;font-size:1rem;color:#FFC94A;line-height:1;pointer-events:none;">★</span>
-        <span aria-hidden="true" class="th-deco-star" style="position:absolute;top:2.5rem;right:5rem;font-size:.625rem;color:#35D477;line-height:1;pointer-events:none;">★</span>
-        <span aria-hidden="true" class="th-deco-star" style="position:absolute;bottom:1.75rem;left:1.5rem;font-size:.75rem;color:#B9F6D0;line-height:1;pointer-events:none;">★</span>
-
-        {{-- Dekorasi: pesawat kertas --}}
-        <span aria-hidden="true" class="th-deco-plane" style="position:absolute;top:1rem;left:45%;font-size:1.125rem;color:#079B58;opacity:.35;pointer-events:none;">✈</span>
-
+    <section class="teacher-hero" aria-labelledby="teacher-greeting">
         <div class="teacher-hero-text">
             <p class="teacher-hero-date">{{ $now->translatedFormat('l, d F Y') }}</p>
             <h1 id="teacher-greeting">{{ $greeting }}, {{ $firstName }}</h1>

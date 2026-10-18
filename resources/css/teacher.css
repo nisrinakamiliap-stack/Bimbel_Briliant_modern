@@ -761,27 +761,6 @@ body.teacher-body.menu-open {
     to   { opacity: 1; }
 }
 
-@keyframes th-float {
-    0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(-8px); }
-}
-
-@keyframes th-twinkle {
-    0%, 100% { opacity: .25; transform: scale(.85); }
-    50%       { opacity: 1;   transform: scale(1.15); }
-}
-
-@keyframes th-plane {
-    0%   { transform: translate(0, 0) rotate(-8deg); }
-    40%  { transform: translate(18px, -12px) rotate(-14deg); }
-    70%  { transform: translate(30px, -6px)  rotate(-6deg); }
-    100% { transform: translate(0, 0) rotate(-8deg); }
-}
-
-@keyframes th-leaf {
-    0%, 100% { transform: rotate(-4deg); }
-    50%       { transform: rotate(6deg); }
-}
 
 /* Teks hero muncul berurutan */
 .teacher-hero-date {
@@ -816,26 +795,6 @@ body.teacher-body.menu-open {
     animation: th-fade-in .7s .1s ease both;
 }
 
-/* Dekorasi SVG inline di hero — bintang, daun, pesawat (opsional, hanya jika ditambahkan di Blade) */
-.th-deco-star {
-    animation: th-twinkle 2.4s ease-in-out infinite;
-    will-change: opacity, transform;
-}
-
-.th-deco-star:nth-child(2) { animation-delay: .8s; }
-.th-deco-star:nth-child(3) { animation-delay: 1.5s; }
-
-.th-deco-leaf {
-    animation: th-leaf 3.8s ease-in-out infinite;
-    transform-origin: bottom center;
-    will-change: transform;
-}
-
-.th-deco-plane {
-    animation: th-plane 4.5s 1.2s ease-in-out infinite;
-    will-change: transform;
-}
-
 /* Hormati preferensi gerak minim */
 @media (prefers-reduced-motion: reduce) {
     .teacher-hero-date,
@@ -843,10 +802,7 @@ body.teacher-body.menu-open {
     .teacher-hero-summary,
     .teacher-hero #btn-hero-schedule,
     .teacher-hero-media,
-    .teacher-hero-media img,
-    .th-deco-star,
-    .th-deco-leaf,
-    .th-deco-plane {
+    .teacher-hero-media img {
         animation: none;
     }
 
