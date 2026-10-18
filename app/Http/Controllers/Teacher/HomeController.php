@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Teacher\Concerns\ListsTeachingSessions;
-use App\Models\Assignment;
+use App\Models\Material;
 use App\Models\Schedule;
-use App\Models\Submission;
 use Carbon\CarbonImmutable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
@@ -40,19 +39,10 @@ class HomeController extends Controller
             'greeting' => $this->greeting($now),
             'todaySessions' => $this->teachingSessions($teacher, $now, $now),
             'nextSession' => $this->nextSession($teacher->id, $now->addDay()->startOfDay()),
-            'ungradedCount' => Submission::query()->whereHas('assignment.classroom', $ownClasses)->doesntHave('grade')->count(),
-            'assignmentsToReview' => Assignment::query()
+            'recentMaterials' => Material::query()
                 ->whereHas('classroom', $ownClasses)
-                ->whereHas('submissions', fn (Builder $query) => $query->doesntHave('grade'))
-                ->withCount(['submissions as ungraded_count' => fn (Builder $query) => $query->doesntHave('grade')])
                 ->with('classroom')
-                ->orderBy('due_at')
-                ->take(self::ACTIVITY_LIMIT)
-                ->get(),
-            'recentSubmissions' => Submission::query()
-                ->whereHas('assignment.classroom', $ownClasses)
-                ->with(['student', 'assignment', 'grade'])
-                ->latest('submitted_at')
+                ->latest('published_at')
                 ->take(self::ACTIVITY_LIMIT)
                 ->get(),
             'recentNotifications' => $teacher->notifications()

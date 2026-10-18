@@ -18,28 +18,32 @@ if ($todaySessions->isEmpty()) {
 }
 
 $quickLinks = [
-    ['label' => 'Kelas Saya', 'icon' => 'classes', 'route' => 'teacher.classes.index'],
-    ['label' => 'Materi Pembelajaran', 'icon' => 'learning', 'route' => 'teacher.learning.materials.index'],
-    ['label' => 'Tugas', 'icon' => 'edit', 'route' => 'teacher.learning.assignments.index'],
-    ['label' => 'Pengumpulan Tugas', 'icon' => 'inbox', 'route' => 'teacher.learning.submissions.index'],
-    ['label' => 'Penilaian', 'icon' => 'check', 'route' => 'teacher.learning.grades.index'],
-    ['label' => 'Absensi', 'icon' => 'attendance', 'route' => 'teacher.attendances.index'],
-    ['label' => 'Pesan', 'icon' => 'message', 'route' => 'messages.index'],
+    ['label' => 'Jadwal Mengajar', 'icon' => 'schedule', 'route' => 'teacher.schedules.index'],
+    ['label' => 'Kelas Saya',      'icon' => 'classes',  'route' => 'teacher.classes.index'],
+    ['label' => 'Honorarium Saya', 'icon' => 'check',    'route' => 'teacher.honorariums.index'],
 ];
 @endphp
 
 @section('content')
     <x-admin.flash />
 
-    <section class="teacher-hero" aria-labelledby="teacher-greeting">
+    <section class="teacher-hero" aria-labelledby="teacher-greeting" style="position:relative;overflow:hidden;">
+        {{-- Dekorasi: bintang kecil --}}
+        <span aria-hidden="true" class="th-deco-star" style="position:absolute;top:1.25rem;right:2.5rem;font-size:1rem;color:#FFC94A;line-height:1;pointer-events:none;">★</span>
+        <span aria-hidden="true" class="th-deco-star" style="position:absolute;top:2.5rem;right:5rem;font-size:.625rem;color:#35D477;line-height:1;pointer-events:none;">★</span>
+        <span aria-hidden="true" class="th-deco-star" style="position:absolute;bottom:1.75rem;left:1.5rem;font-size:.75rem;color:#B9F6D0;line-height:1;pointer-events:none;">★</span>
+
+        {{-- Dekorasi: pesawat kertas --}}
+        <span aria-hidden="true" class="th-deco-plane" style="position:absolute;top:1rem;left:45%;font-size:1.125rem;color:#079B58;opacity:.35;pointer-events:none;">✈</span>
+
         <div class="teacher-hero-text">
             <p class="teacher-hero-date">{{ $now->translatedFormat('l, d F Y') }}</p>
             <h1 id="teacher-greeting">{{ $greeting }}, {{ $firstName }}</h1>
             <p class="teacher-hero-summary">{{ $summary }}</p>
             <a href="{{ route('teacher.schedules.index') }}" class="admin-btn admin-btn-primary" id="btn-hero-schedule">Buka Jadwal Mengajar</a>
         </div>
-        <figure class="teacher-hero-media">
-            <img src="{{ asset('images/guru.png') }}" alt="Ilustrasi guru menjelaskan pelajaran di depan papan tulis" width="1738" height="905" decoding="async" fetchpriority="high">
+        <figure class="teacher-hero-media" aria-hidden="true">
+            <img src="{{ asset('images/guru.png') }}" alt="" width="1738" height="905" decoding="async" fetchpriority="high">
         </figure>
     </section>
 
@@ -87,53 +91,25 @@ $quickLinks = [
 
     <section class="teacher-section" aria-labelledby="activity-heading">
         <div class="teacher-section-head">
-            <div>
-                <h2 id="activity-heading">Aktivitas Penting</h2>
-                <p>{{ $ungradedCount > 0 ? $ungradedCount.' pengumpulan belum diberi nilai.' : 'Tidak ada pengumpulan yang menunggu nilai.' }}</p>
-            </div>
+            <h2 id="activity-heading">Aktivitas Terbaru</h2>
         </div>
 
         <div class="teacher-activity">
-            <section class="admin-panel" aria-labelledby="review-heading">
+            <section class="admin-panel" aria-labelledby="recent-materials-heading">
                 <div class="admin-panel-header">
-                    <div><h3 id="review-heading">Tugas Perlu Diperiksa</h3></div>
-                    @if ($ungradedCount > 0)
-                        <a href="{{ route('teacher.learning.grades.index') }}" class="teacher-link">Buka Penilaian</a>
-                    @endif
+                    <div><h3 id="recent-materials-heading">Materi Terbaru</h3></div>
                 </div>
-                @if ($assignmentsToReview->isEmpty())
-                    <x-admin.empty-state title="Semua sudah dinilai" icon="check">Tugas yang memiliki pengumpulan belum dinilai akan muncul di sini.</x-admin.empty-state>
+                @if ($recentMaterials->isEmpty())
+                    <x-admin.empty-state title="Belum ada materi" icon="learning">Buka halaman kelas untuk menambahkan materi belajar.</x-admin.empty-state>
                 @else
                     <ul class="teacher-list">
-                        @foreach ($assignmentsToReview as $assignment)
+                        @foreach ($recentMaterials as $material)
                             <li class="teacher-list-item">
                                 <div>
-                                    <a href="{{ route('teacher.learning.grades.index', ['tugas' => $assignment->id]) }}">{{ $assignment->title }}</a>
-                                    <p>{{ $assignment->classroom->name }} · tenggat {{ $assignment->due_at->translatedFormat('d M, H:i') }}</p>
+                                    <a href="{{ route('teacher.learning.materials.show', $material) }}">{{ $material->title }}</a>
+                                    <p>{{ $material->classroom->name }} · {{ $material->published_at?->translatedFormat('d M Y') ?? 'Draft' }}</p>
                                 </div>
-                                <span class="admin-badge is-pending" style="flex-shrink: 0;">{{ $assignment->ungraded_count }} belum dinilai</span>
-                            </li>
-                        @endforeach
-                    </ul>
-                @endif
-            </section>
-
-            <section class="admin-panel" aria-labelledby="recent-submissions-heading">
-                <div class="admin-panel-header">
-                    <div><h3 id="recent-submissions-heading">Pengumpulan Terbaru</h3></div>
-                    <a href="{{ route('teacher.learning.submissions.index') }}" class="teacher-link">Semua</a>
-                </div>
-                @if ($recentSubmissions->isEmpty())
-                    <x-admin.empty-state title="Belum ada pengumpulan" icon="inbox">Jawaban murid akan tampil di sini setelah tugas diterbitkan.</x-admin.empty-state>
-                @else
-                    <ul class="teacher-list">
-                        @foreach ($recentSubmissions as $submission)
-                            <li class="teacher-list-item">
-                                <div>
-                                    <a href="{{ route('teacher.learning.submissions.show', $submission) }}">{{ $submission->student->name }}</a>
-                                    <p>{{ $submission->assignment->title }} · {{ $submission->submitted_at->diffForHumans() }}</p>
-                                </div>
-                                <span class="admin-badge {{ $submission->statusBadgeClass() }}" style="flex-shrink: 0;">{{ $submission->statusLabel() }}</span>
+                                <span class="admin-badge {{ $material->status->badgeClass() }}" style="flex-shrink:0;">{{ $material->status->label() }}</span>
                             </li>
                         @endforeach
                     </ul>
@@ -146,7 +122,7 @@ $quickLinks = [
                     <a href="{{ route('notifications.index') }}" class="teacher-link">Semua</a>
                 </div>
                 @if ($recentNotifications->isEmpty())
-                    <x-admin.empty-state title="Belum ada notifikasi" icon="bell">Notifikasi muncul saat ada jadwal baru, pengumpulan tugas, atau pengumuman dari admin.</x-admin.empty-state>
+                    <x-admin.empty-state title="Belum ada notifikasi" icon="bell">Notifikasi muncul saat ada jadwal baru atau pengumuman dari admin.</x-admin.empty-state>
                 @else
                     <ul class="teacher-list">
                         @foreach ($recentNotifications as $notification)

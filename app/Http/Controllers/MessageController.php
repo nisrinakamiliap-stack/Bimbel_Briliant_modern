@@ -7,6 +7,7 @@ use App\Models\Message;
 use App\Models\User;
 use App\UserRole;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -157,6 +158,97 @@ class MessageController extends Controller
             'body.required' => 'Isi pesan wajib diisi.',
             'body.max' => 'Pesan maksimal 2000 karakter.',
         ];
+    }
+
+    /**
+     * JSON: daftar percakapan milik pengguna untuk panel chat mengambang.
+     */
+    public function apiConversations(Request $request): JsonResponse
+    {
+        $user = $request->user();
+
+        $conversations = Conversation::query()
+            ->forUser($user)
+            ->whereNotNull('last_message_at')
+            ->with(['participants' => fn ($q) => $q->withTrashed(), 'latestMessage.sender'])
+            ->orderByDesc('last_message_at')
+            ->limit(30)
+            ->get()
+            ->map(function (Conversation $conv) use ($user): array {
+                $other = $conv->otherParticipant($user);
+                return [
+                    'id'          => $conv->id,
+                    'other_name'  => $other?->name ?? 'Pengguna',
+                    'other_initials' => $other ? collect(preg_split('/\s+/', trim($other->name)))->filter()->take(2)->map(fn ($p) => mb_strtoupper(mb_substr($p, 0, 1)))->implode('') : '?',
+                    'last_body'   => $conv->latestMessage?->body,
+                    'last_at'     => $conv->last_message_at?->diffForHumans(),
+                    'unread'      => $conv->unreadCountFor($user),
+                ];
+            });
+
+        return response()->json($conversations);
+    }
+
+    /**
+     * JSON: pesan dalam percakapan untuk panel chat mengambang.
+     */
+    public function apiMessages(Request $request, Conversation $conversation): JsonResponse
+    {
+        $user = $request->user();
+        abort_unless($conversation->hasParticipant($user), 403);
+
+        // Tandai sudah dibaca
+        $conversation->participants()->updateExistingPivot($user->id, [
+            'last_read_at' => now(),
+            'last_read_message_id' => $conversation->messages()->max('id'),
+        ]);
+
+        $messages = $conversation->messages()
+            ->with('sender')
+            ->oldest()
+            ->limit(100)
+            ->get()
+            ->map(fn (Message $m) => [
+                'id'        => $m->id,
+                'body'      => $m->body,
+                'mine'      => $m->sender_id === $user->id,
+                'sender'    => $m->sender?->name,
+                'at'        => $m->created_at->format('H:i'),
+            ]);
+
+        $other = $conversation->load('participants')->otherParticipant($user);
+
+        return response()->json([
+            'messages'    => $messages,
+            'other_name'  => $other?->name ?? 'Pengguna',
+            'can_reply'   => $other !== null && $user->canMessage($other),
+        ]);
+    }
+
+    /**
+     * JSON: kirim pesan baru (reply) dari panel chat mengambang.
+     */
+    public function apiReply(Request $request, Conversation $conversation): JsonResponse
+    {
+        $user = $request->user();
+        abort_unless($conversation->hasParticipant($user), 403);
+
+        $validated = $request->validate(['body' => ['required', 'string', 'max:2000']]);
+
+        $other = $conversation->load('participants')->otherParticipant($user);
+        if ($other === null || ! $user->canMessage($other)) {
+            return response()->json(['error' => 'Percakapan ini tidak dapat dibalas.'], 422);
+        }
+
+        $message = DB::transaction(fn () => $this->appendMessage($conversation, $user, $validated['body']));
+
+        return response()->json([
+            'id'     => $message->id,
+            'body'   => $message->body,
+            'mine'   => true,
+            'sender' => $user->name,
+            'at'     => $message->created_at->format('H:i'),
+        ]);
     }
 
     /**

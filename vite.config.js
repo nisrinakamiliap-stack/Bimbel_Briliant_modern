@@ -13,6 +13,8 @@ export default defineConfig({
                 'resources/js/admin.js',
                 'resources/css/teacher.css',
                 'resources/js/teacher.js',
+                'resources/css/student.css',
+                'resources/js/student.js',
             ],
             refresh: true,
             fonts: [

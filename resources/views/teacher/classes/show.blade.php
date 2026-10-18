@@ -18,8 +18,7 @@
             <p>{{ $classroom->program->name }} · {{ $classroom->learning_mode->label() }} · Kode {{ $classroom->code }}</p>
         </div>
         <div class="admin-actions">
-            <a href="{{ route('teacher.learning.materials.create', ['kelas' => $classroom->id]) }}" class="admin-btn admin-btn-secondary">Tambah Materi</a>
-            <a href="{{ route('teacher.learning.assignments.create', ['kelas' => $classroom->id]) }}" class="admin-btn admin-btn-primary">Buat Tugas</a>
+            <a href="{{ route('teacher.learning.materials.create', ['kelas' => $classroom->id]) }}" class="admin-btn admin-btn-primary">+ Tambah Materi</a>
         </div>
     </div>
 
@@ -113,29 +112,6 @@
                 @endif
             </section>
 
-            <section class="admin-panel" aria-labelledby="class-assignments-heading">
-                <div class="admin-panel-header">
-                    <div>
-                        <h2 id="class-assignments-heading">Tugas Terbaru</h2>
-                    </div>
-                    <a href="{{ route('teacher.learning.assignments.index', ['kelas' => $classroom->id]) }}" class="teacher-link">Semua tugas</a>
-                </div>
-                @if ($classroom->assignments->isEmpty())
-                    <x-admin.empty-state title="Belum ada tugas" icon="edit">Tugas yang Anda buat untuk kelas ini akan tampil di sini.</x-admin.empty-state>
-                @else
-                    <ul class="teacher-list">
-                        @foreach ($classroom->assignments as $assignment)
-                            <li class="teacher-list-item">
-                                <div>
-                                    <a href="{{ route('teacher.learning.assignments.show', $assignment) }}">{{ $assignment->title }}</a>
-                                    <p>Tenggat {{ $assignment->due_at->translatedFormat('d M Y, H:i') }} · {{ $assignment->submissions_count }} pengumpulan</p>
-                                </div>
-                                <span class="admin-badge {{ $assignment->status->badgeClass() }}">{{ $assignment->status->label() }}</span>
-                            </li>
-                        @endforeach
-                    </ul>
-                @endif
-            </section>
         </div>
     </div>
 @endsection

@@ -27,7 +27,14 @@ use App\Http\Controllers\LearningFileController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\Student\AttendanceController as StudentPortalAttendanceController;
+use App\Http\Controllers\Student\ClassroomController as StudentClassroomController;
+use App\Http\Controllers\Student\GradeController as StudentGradeController;
+use App\Http\Controllers\Student\HomeController as StudentHomeController;
 use App\Http\Controllers\Student\LearningController as StudentLearningController;
+use App\Http\Controllers\Student\PaymentController as StudentPaymentController;
+use App\Http\Controllers\Student\ProfileController as StudentProfileController;
+use App\Http\Controllers\Student\ScheduleController as StudentScheduleController;
 use App\Http\Controllers\Teacher\CheckInController;
 use App\Http\Controllers\Teacher\ClassroomController as TeacherClassroomController;
 use App\Http\Controllers\Teacher\GradeController as TeacherGradeController;
@@ -180,6 +187,12 @@ Route::middleware('auth')->group(function () {
         Route::post('{conversation}', [MessageController::class, 'reply'])->name('reply');
     });
 
+    Route::prefix('api/chat')->name('api.chat.')->group(function () {
+        Route::get('conversations', [MessageController::class, 'apiConversations'])->name('conversations');
+        Route::get('conversations/{conversation}/messages', [MessageController::class, 'apiMessages'])->name('messages');
+        Route::post('conversations/{conversation}/reply', [MessageController::class, 'apiReply'])->name('reply');
+    });
+
     Route::prefix('pembelajaran/berkas')->name('learning.files.')->group(function () {
         Route::get('materi/{material}', [LearningFileController::class, 'material'])->name('material');
         Route::get('tugas/{assignment}', [LearningFileController::class, 'assignment'])->name('assignment');
@@ -221,14 +234,35 @@ Route::middleware('auth')->group(function () {
         Route::get('honorarium/{honorarium}', [TeacherHonorariumController::class, 'show'])->name('honorariums.show');
     });
 
-    Route::get('/murid/dashboard', [DashboardController::class, 'student'])
-        ->middleware('role:student')
-        ->name('student.dashboard');
+    Route::prefix('murid')->name('student.')->middleware('role:student')->group(function () {
+        Route::get('dashboard', StudentHomeController::class)->name('dashboard');
 
-    Route::prefix('murid/pembelajaran')->name('student.learning.')->middleware('role:student')->group(function () {
-        Route::get('/', [StudentLearningController::class, 'index'])->name('index');
-        Route::get('materi/{material}', [StudentLearningController::class, 'material'])->name('materials.show');
-        Route::get('tugas/{assignment}', [StudentLearningController::class, 'assignment'])->name('assignments.show');
-        Route::post('tugas/{assignment}', [StudentLearningController::class, 'submit'])->name('assignments.submit');
+        Route::get('jadwal', [StudentScheduleController::class, 'index'])->name('schedules.index');
+
+        Route::get('kelas', [StudentClassroomController::class, 'index'])->name('classes.index');
+        Route::get('kelas/{classroom}', [StudentClassroomController::class, 'show'])->name('classes.show');
+
+        Route::get('absensi', [StudentPortalAttendanceController::class, 'index'])->name('attendances.index');
+
+        Route::get('pembayaran', [StudentPaymentController::class, 'index'])->name('payments.index');
+        Route::get('pembayaran/{enrollment}', [StudentPaymentController::class, 'show'])->name('payments.show');
+        Route::post('pembayaran/{enrollment}', [StudentPaymentController::class, 'store'])->name('payments.store');
+        Route::get('pembayaran/{payment}/bukti', [StudentPaymentController::class, 'proof'])->name('payments.proof');
+
+        Route::get('profil', [StudentProfileController::class, 'edit'])->name('profile.edit');
+        Route::put('profil', [StudentProfileController::class, 'update'])->name('profile.update');
+        Route::put('profil/password', [StudentProfileController::class, 'updatePassword'])->name('profile.password');
+
+        Route::prefix('pembelajaran')->name('learning.')->group(function () {
+            Route::get('/', [StudentLearningController::class, 'index'])->name('index');
+            Route::get('materi/{material}', [StudentLearningController::class, 'material'])->name('materials.show');
+            Route::get('tugas/{assignment}', [StudentLearningController::class, 'assignment'])->name('assignments.show');
+            Route::post('tugas/{assignment}', [StudentLearningController::class, 'submit'])->name('assignments.submit');
+        });
+
+        Route::get('materi', [StudentLearningController::class, 'materialList'])->name('materials.index');
+        Route::get('tugas', [StudentLearningController::class, 'assignmentList'])->name('assignments.index');
+        Route::get('tugas/{assignment}/kumpulkan', [StudentLearningController::class, 'assignment'])->name('submissions.index');
+        Route::get('nilai', [StudentGradeController::class, 'index'])->name('grades.index');
     });
 });

@@ -2,18 +2,11 @@
 @php
 $teacher = auth()->user();
 $initials = collect(preg_split('/\s+/', trim($teacher->name)))->filter()->take(2)->map(fn (string $part) => mb_strtoupper(mb_substr($part, 0, 1)))->implode('');
-$learningLinks = [
-    ['label' => 'Materi Pembelajaran', 'hint' => 'Bahan ajar untuk kelas Anda', 'route' => 'teacher.learning.materials.index', 'active' => 'teacher.learning.materials.*'],
-    ['label' => 'Tugas', 'hint' => 'Buat, terbitkan, dan arsipkan tugas', 'route' => 'teacher.learning.assignments.index', 'active' => 'teacher.learning.assignments.*'],
-    ['label' => 'Pengumpulan Tugas', 'hint' => 'Jawaban yang masuk dari murid', 'route' => 'teacher.learning.submissions.index', 'active' => 'teacher.learning.submissions.*'],
-    ['label' => 'Penilaian Tugas', 'hint' => 'Pengumpulan yang menunggu nilai', 'route' => 'teacher.learning.grades.index', 'active' => 'teacher.learning.grades.*'],
-];
 $navItems = [
-    ['label' => 'Beranda', 'route' => 'teacher.dashboard', 'active' => 'teacher.dashboard'],
-    ['label' => 'Kelas & Jadwal', 'route' => 'teacher.schedules.index', 'active' => ['teacher.schedules.*', 'teacher.classes.*']],
-    ['label' => 'Pembelajaran', 'children' => $learningLinks, 'active' => 'teacher.learning.*'],
-    ['label' => 'Absensi', 'route' => 'teacher.attendances.index', 'active' => 'teacher.attendances.*'],
-    ['label' => 'Honorarium Saya', 'route' => 'teacher.honorariums.index', 'active' => 'teacher.honorariums.*'],
+    ['label' => 'Beranda',         'route' => 'teacher.dashboard',        'active' => 'teacher.dashboard'],
+    ['label' => 'Jadwal',          'route' => 'teacher.schedules.index',  'active' => 'teacher.schedules.*'],
+    ['label' => 'Kelas',           'route' => 'teacher.classes.index',    'active' => 'teacher.classes.*'],
+    ['label' => 'Honorarium Saya', 'route' => 'teacher.honorariums.index','active' => 'teacher.honorariums.*'],
 ];
 // Pesan tidak ada di navbar; aksesnya melalui tombol mengambang (teacher.partials.message-button).
 $unreadNotifications = $navCounts['notifications'] ?? 0;

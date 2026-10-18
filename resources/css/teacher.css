@@ -640,33 +640,39 @@ body.teacher-body.menu-open {
 /* ---------- Sambutan beranda (Hero Banner) ---------- */
 
 .teacher-hero {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: center;
-    gap: 1.5rem;
+    position: relative;
+    overflow: hidden;
     margin-bottom: 2rem;
-    padding: 1.5rem 1.25rem;
+    padding: 2.5rem 2rem;
     border-radius: 1.5rem;
     border: 1px solid var(--admin-border);
-    background-color: var(--teacher-surface);
+    background: linear-gradient(110deg, #EFFFF5 0%, #FFFFFF 50%, #E4F7ED 100%);
     color: var(--admin-forest);
-    overflow: hidden;
+    min-height: 17rem;
+    display: block; /* bukan grid lagi */
 }
 
 @media (min-width: 768px) {
     .teacher-hero {
-        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-        gap: 2rem;
-        padding: 2.25rem 2.5rem;
-        min-height: auto;
+        padding: 3rem 2.75rem;
+        min-height: 20rem;
     }
 }
 
+/* Teks di atas gambar, lebar maksimum 55% */
 .teacher-hero-text {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0;
+    max-width: 55%;
+}
+
+@media (max-width: 640px) {
+    .teacher-hero-text {
+        max-width: 100%;
+    }
 }
 
 .teacher-hero-date {
@@ -674,29 +680,23 @@ body.teacher-body.menu-open {
     font-size: .8125rem;
     font-weight: 700;
     color: var(--teacher-action);
-    letter-spacing: .03em;
+    letter-spacing: .04em;
     text-transform: uppercase;
 }
 
 .teacher-hero h1 {
     margin: 0;
-    font-size: 1.625rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 800;
     line-height: 1.25;
     color: var(--admin-forest);
 }
 
-@media (min-width: 768px) {
-    .teacher-hero h1 {
-        font-size: 1.875rem;
-    }
-}
-
 .teacher-hero-summary {
     margin: .5rem 0 1.5rem;
-    max-width: 32rem;
+    max-width: 30rem;
     font-size: .9375rem;
-    line-height: 1.6;
+    line-height: 1.65;
     color: var(--admin-muted);
 }
 
@@ -714,37 +714,151 @@ body.teacher-body.menu-open {
     background-color: var(--teacher-action-hover);
 }
 
-/* Kolom kanan: Ilustrasi guru sebagai elemen visual terpisah */
+/* Ilustrasi guru sebagai background penuh hero */
 .teacher-hero-media {
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    position: absolute;
+    inset: 0;
     width: 100%;
-    max-height: 12rem;
-    border-radius: 1.125rem;
-    background-color: #F0FAF4;
-    border: 1px solid var(--admin-border);
-    padding: .75rem 1rem;
-    box-sizing: border-box;
-}
-
-@media (min-width: 768px) {
-    .teacher-hero-media {
-        max-height: 14.5rem;
-        padding: 1rem 1.25rem;
-    }
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .teacher-hero-media img {
     display: block;
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    max-height: 12.5rem;
-    object-fit: contain;
-    object-position: center;
-    border-radius: .75rem;
+    object-fit: cover;
+    object-position: right center;
+    border-radius: 0;
+    /* fade dari kiri (transparan) ke kanan (gambar muncul) agar teks terbaca */
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.45) 38%, #000 62%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.45) 38%, #000 62%);
+}
+
+@media (max-width: 640px) {
+    .teacher-hero-media img {
+        object-position: right center;
+        mask-image: linear-gradient(to right, rgba(0,0,0,.88) 0%, rgba(0,0,0,.55) 55%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,.88) 0%, rgba(0,0,0,.55) 55%, transparent 100%);
+    }
+}
+
+/* ---------- Animasi Hero ---------- */
+
+@keyframes th-fade-up {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes th-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes th-float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+}
+
+@keyframes th-twinkle {
+    0%, 100% { opacity: .25; transform: scale(.85); }
+    50%       { opacity: 1;   transform: scale(1.15); }
+}
+
+@keyframes th-plane {
+    0%   { transform: translate(0, 0) rotate(-8deg); }
+    40%  { transform: translate(18px, -12px) rotate(-14deg); }
+    70%  { transform: translate(30px, -6px)  rotate(-6deg); }
+    100% { transform: translate(0, 0) rotate(-8deg); }
+}
+
+@keyframes th-leaf {
+    0%, 100% { transform: rotate(-4deg); }
+    50%       { transform: rotate(6deg); }
+}
+
+/* Teks hero muncul berurutan */
+.teacher-hero-date {
+    animation: th-fade-up .55s ease both;
+}
+
+.teacher-hero h1 {
+    animation: th-fade-up .6s .12s ease both;
+}
+
+.teacher-hero-summary {
+    animation: th-fade-up .6s .22s ease both;
+}
+
+.teacher-hero #btn-hero-schedule {
+    animation: th-fade-up .55s .32s ease both;
+    transition: background-color .18s ease, transform .15s ease, box-shadow .18s ease;
+}
+
+.teacher-hero #btn-hero-schedule:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(5, 122, 70, .25);
+}
+
+.teacher-hero #btn-hero-schedule:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Ilustrasi guru fade-in setelah muncul */
+.teacher-hero-media {
+    animation: th-fade-in .7s .1s ease both;
+}
+
+/* Dekorasi SVG inline di hero — bintang, daun, pesawat (opsional, hanya jika ditambahkan di Blade) */
+.th-deco-star {
+    animation: th-twinkle 2.4s ease-in-out infinite;
+    will-change: opacity, transform;
+}
+
+.th-deco-star:nth-child(2) { animation-delay: .8s; }
+.th-deco-star:nth-child(3) { animation-delay: 1.5s; }
+
+.th-deco-leaf {
+    animation: th-leaf 3.8s ease-in-out infinite;
+    transform-origin: bottom center;
+    will-change: transform;
+}
+
+.th-deco-plane {
+    animation: th-plane 4.5s 1.2s ease-in-out infinite;
+    will-change: transform;
+}
+
+/* Hormati preferensi gerak minim */
+@media (prefers-reduced-motion: reduce) {
+    .teacher-hero-date,
+    .teacher-hero h1,
+    .teacher-hero-summary,
+    .teacher-hero #btn-hero-schedule,
+    .teacher-hero-media,
+    .teacher-hero-media img,
+    .th-deco-star,
+    .th-deco-leaf,
+    .th-deco-plane {
+        animation: none;
+    }
+
+    .teacher-hero #btn-hero-schedule:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+/* Perkuat latar hero agar teks terbaca di sisi kiri */
+.teacher-hero {
+    background: linear-gradient(135deg, #EFFFF5 0%, #FFFFFF 55%);
 }
 
 /* ---------- Rel waktu: daftar sesi mengajar ---------- */

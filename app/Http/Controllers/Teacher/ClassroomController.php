@@ -42,8 +42,7 @@ class ClassroomController extends Controller
         $classroom->load([
             'program',
             'schedules' => fn ($query) => $query->orderBy('day_of_week')->orderBy('start_time'),
-            'materials' => fn ($query) => $query->latest()->take(5),
-            'assignments' => fn ($query) => $query->withCount('submissions')->orderByDesc('due_at')->take(5),
+            'materials' => fn ($query) => $query->orderByDesc('published_at'),
         ]);
 
         $enrollments = Enrollment::query()

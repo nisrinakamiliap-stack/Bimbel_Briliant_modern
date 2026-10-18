@@ -2,9 +2,6 @@
 @php
 $learningTabs = [
     ['label' => 'Materi', 'route' => 'teacher.learning.materials.index', 'active' => 'teacher.learning.materials.*'],
-    ['label' => 'Tugas', 'route' => 'teacher.learning.assignments.index', 'active' => 'teacher.learning.assignments.*'],
-    ['label' => 'Pengumpulan', 'route' => 'teacher.learning.submissions.index', 'active' => 'teacher.learning.submissions.*'],
-    ['label' => 'Penilaian', 'route' => 'teacher.learning.grades.index', 'active' => 'teacher.learning.grades.*'],
 ];
 @endphp
 <nav class="admin-view-switch" aria-label="Bagian Pembelajaran" style="margin-bottom: 1.25rem; flex-wrap: wrap;">

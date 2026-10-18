@@ -78,6 +78,73 @@ class LearningController extends Controller
     }
 
     /**
+     * Halaman daftar materi (route: student.materials.index).
+     */
+    public function materialList(Request $request): View
+    {
+        $student = $request->user();
+        $classroomIds = $student->approvedClassroomIds();
+
+        $classroomFilter = $request->integer('kelas', 0);
+
+        $query = Material::query()
+            ->published()
+            ->whereIn('classroom_id', $classroomIds)
+            ->with('classroom');
+
+        if ($classroomFilter && in_array($classroomFilter, $classroomIds, true)) {
+            $query->where('classroom_id', $classroomFilter);
+        }
+
+        $materials = $query->latest('published_at')->paginate(15);
+
+        $myClassrooms = \App\Models\Classroom::query()
+            ->whereIn('id', $classroomIds)->with('program')->get();
+
+        return view('student.materials.index', [
+            'materials' => $materials,
+            'myClassrooms' => $myClassrooms,
+            'classroomFilter' => $classroomFilter,
+            'hasClasses' => $classroomIds !== [],
+        ]);
+    }
+
+    /**
+     * Halaman daftar tugas (route: student.assignments.index).
+     */
+    public function assignmentList(Request $request): View
+    {
+        $student = $request->user();
+        $classroomIds = $student->approvedClassroomIds();
+
+        $statusFilter = $request->string('status', '')->value();
+        $classroomFilter = $request->integer('kelas', 0);
+
+        $query = Assignment::query()
+            ->published()
+            ->whereIn('classroom_id', $classroomIds)
+            ->with(['classroom', 'submissions' => fn ($q) => $q->where('student_id', $student->id)->with('grade')])
+            ->orderBy('due_at');
+
+        if ($classroomFilter && in_array($classroomFilter, $classroomIds, true)) {
+            $query->where('classroom_id', $classroomFilter);
+        }
+
+        $assignments = $query->paginate(15);
+
+        $myClassrooms = \App\Models\Classroom::query()
+            ->whereIn('id', $classroomIds)->with('program')->get();
+
+        return view('student.assignments.index', [
+            'assignments' => $assignments,
+            'myClassrooms' => $myClassrooms,
+            'classroomFilter' => $classroomFilter,
+            'statusFilter' => $statusFilter,
+            'hasClasses' => $classroomIds !== [],
+        ]);
+    }
+
+    /**
      * Mengirim atau memperbarui pengumpulan tugas dengan waktu server.
      */
     public function submit(SubmissionRequest $request, Assignment $assignment): RedirectResponse
@@ -113,6 +180,6 @@ class LearningController extends Controller
             $message .= ' Pengumpulan tercatat terlambat.';
         }
 
-        return redirect()->route('student.learning.assignments.show', $assignment)->with('success', $message);
+        return redirect()->route('student.assignments.index')->with('success', $message);
     }
 }
