@@ -5,16 +5,16 @@
 
 @section('content')
 {{-- HERO / HEADER SECTION --}}
-<section style="background-color: #ffffff; padding-top: 2.5rem; padding-bottom: 3.5rem; border-bottom: 1px solid #f1f5f9;">
+<section style="background-color: #ffffff; padding-top: 2.5rem; padding-bottom: 3.5rem; border-bottom: 1px solid #EBF5EF;">
     <div class="container-main">
         {{-- Breadcrumb --}}
         <nav aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
             <ol style="display: flex; align-items: center; gap: 0.5rem; list-style: none; padding: 0; margin: 0; font-size: 0.875rem;">
                 <li>
-                    <a href="{{ route('home') }}" style="color: #64748b; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#16845B'" onmouseout="this.style.color='#64748b'">Beranda</a>
+                    <a href="{{ route('home') }}" style="color: #5F7569; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#079B58'" onmouseout="this.style.color='#5F7569'">Beranda</a>
                 </li>
                 <li style="color: #cbd5e1;" aria-hidden="true">/</li>
-                <li style="color: #142B4A; font-weight: 600;" aria-current="page">Tentang Kami</li>
+                <li style="color: #12352A; font-weight: 600;" aria-current="page">Tentang Kami</li>
             </ol>
         </nav>
 
@@ -22,10 +22,10 @@
         <div style="text-align: center; max-width: 760px; margin: 0 auto;">
             <div class="divider-green" style="margin-left: auto; margin-right: auto;"></div>
             <p class="text-section-label" style="margin-bottom: 0.75rem;">Profil Lembaga</p>
-            <h1 class="heading-xl" style="margin-bottom: 1rem; color: #142B4A;">
+            <h1 class="heading-xl" style="margin-bottom: 1rem; color: #12352A;">
                 {{ $about['profil']['judul'] ?? 'Membimbing Generasi Cerdas dan Berkarakter Sejak 2018' }}
             </h1>
-            <p style="font-size: 1.0625rem; color: #4a5568; line-height: 1.75; margin: 0 auto;">
+            <p style="font-size: 1.0625rem; color: #5F7569; line-height: 1.75; margin: 0 auto;">
                 {{ $about['profil']['ringkasan'] ?? 'Temukan dedikasi kami dalam menghadirkan pengalaman belajar yang personal, terstruktur, dan bermakna bagi masa depan putra-putri Anda.' }}
             </p>
         </div>
@@ -33,20 +33,20 @@
 </section>
 
 {{-- STATISTIK UTAMA --}}
-<section style="padding-top: 3.5rem; padding-bottom: 3.5rem; background-color: #F8FAFC; border-bottom: 1px solid #e2e8f0;">
+<section style="padding-top: 3.5rem; padding-bottom: 3.5rem; background-color: #F8FAFC; border-bottom: 1px solid #DDEFE4;">
     <div class="container-main">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
             @foreach ($about['statistik'] ?? [] as $stat)
-                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.75rem 1.5rem; text-align: center; box-shadow: 0 4px 12px rgba(20,43,74,0.03); transition: transform 0.2s ease, border-color 0.2s ease;"
-                     onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='#16845B';"
-                     onmouseout="this.style.transform='translateY(0)';this.style.borderColor='#e2e8f0';">
-                    <div style="font-size: 2.25rem; font-weight: 800; color: #16845B; line-height: 1.1; margin-bottom: 0.5rem;">
+                <div style="background-color: #ffffff; border: 1px solid #DDEFE4; border-radius: 1rem; padding: 1.75rem 1.5rem; text-align: center; box-shadow: 0 4px 12px rgba(18,53,42,0.03); transition: transform 0.2s ease, border-color 0.2s ease;"
+                     onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='#079B58';"
+                     onmouseout="this.style.transform='translateY(0)';this.style.borderColor='#DDEFE4';">
+                    <div style="font-size: 2.25rem; font-weight: 800; color: #079B58; line-height: 1.1; margin-bottom: 0.5rem;">
                         {{ $stat['angka'] }}
                     </div>
-                    <div style="font-size: 1rem; font-weight: 700; color: #142B4A; margin-bottom: 0.25rem;">
+                    <div style="font-size: 1rem; font-weight: 700; color: #12352A; margin-bottom: 0.25rem;">
                         {{ $stat['label'] }}
                     </div>
-                    <div style="font-size: 0.8125rem; color: #64748b; line-height: 1.4;">
+                    <div style="font-size: 0.8125rem; color: #5F7569; line-height: 1.4;">
                         {{ $stat['sub'] }}
                     </div>
                 </div>
@@ -62,13 +62,13 @@
             <div>
                 <div class="divider-green"></div>
                 <p class="text-section-label" style="margin-bottom: 0.75rem;">Cerita Kami</p>
-                <h2 class="heading-lg" style="margin-bottom: 1.25rem; color: #142B4A;">
+                <h2 class="heading-lg" style="margin-bottom: 1.25rem; color: #12352A;">
                     Pendidikan yang Memahami dan Menumbuhkan
                 </h2>
-                <p style="font-size: 1rem; color: #4a5568; line-height: 1.8; margin-bottom: 1.25rem;">
+                <p style="font-size: 1rem; color: #5F7569; line-height: 1.8; margin-bottom: 1.25rem;">
                     {{ $about['profil']['cerita'] ?? '' }}
                 </p>
-                <p style="font-size: 1rem; color: #4a5568; line-height: 1.8; margin-bottom: 2rem;">
+                <p style="font-size: 1rem; color: #5F7569; line-height: 1.8; margin-bottom: 2rem;">
                     Kami tidak memandang siswa sebagai wadah kosong yang harus dijejali rumus instan. Di Sentra Edukasi, tutor memposisikan diri sebagai mentor, sahabat diskusi, dan fasilitator yang memandu anak memahami esensi ilmu dengan hati yang gembira.
                 </p>
 
@@ -85,17 +85,17 @@
 
             {{-- Kolom Kanan: Card Sorotan --}}
             <div>
-                <div style="background: linear-gradient(135deg, #142B4A 0%, #1d3d6b 100%); border-radius: 1.25rem; padding: 2.5rem; color: #ffffff; box-shadow: 0 16px 40px rgba(20,43,74,0.12); position: relative; overflow: hidden;">
-                    <div style="position: absolute; top: -30px; right: -30px; width: 150px; height: 150px; border-radius: 50%; background-color: rgba(22,132,91,0.2); pointer-events: none;"></div>
+                <div style="background: linear-gradient(135deg, #12352A 0%, #1a4d38 100%); border-radius: 1.25rem; padding: 2.5rem; color: #ffffff; box-shadow: 0 16px 40px rgba(18,53,42,0.12); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -30px; right: -30px; width: 150px; height: 150px; border-radius: 50%; background-color: rgba(7,155,88,0.2); pointer-events: none;"></div>
                     <div style="position: relative; z-index: 1;">
-                        <span class="badge-pill" style="background-color: rgba(22,132,91,0.25); color: #86efac; border: 1px solid rgba(134,239,172,0.3); font-size: 0.75rem; margin-bottom: 1.25rem;">
+                        <span class="badge-pill" style="background-color: rgba(7,155,88,0.25); color: #86efac; border: 1px solid rgba(134,239,172,0.3); font-size: 0.75rem; margin-bottom: 1.25rem;">
                             Filosofi Pendidikan
                         </span>
                         <blockquote style="font-size: 1.125rem; font-style: italic; line-height: 1.8; color: rgba(255,255,255,0.95); margin: 0 0 1.5rem 0;">
                             &ldquo;Ketika seorang anak memahami konsep dengan benar, ia tidak hanya lulus ujian—ia mendapatkan kunci untuk membuka potensi tak terbatas di masa depannya.&rdquo;
                         </blockquote>
                         <div style="display: flex; align-items: center; gap: 0.875rem; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 1.25rem;">
-                            <div style="width: 2.75rem; height: 2.75rem; border-radius: 50%; background-color: #16845B; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.875rem; color: #ffffff;">
+                            <div style="width: 2.75rem; height: 2.75rem; border-radius: 50%; background-color: #079B58; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.875rem; color: #ffffff;">
                                 MB
                             </div>
                             <div>
@@ -111,27 +111,27 @@
 </section>
 
 {{-- VISI & MISI --}}
-<section style="padding-top: 5rem; padding-bottom: 5rem; background-color: #F8FAFC; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
+<section style="padding-top: 5rem; padding-bottom: 5rem; background-color: #F8FAFC; border-top: 1px solid #DDEFE4; border-bottom: 1px solid #DDEFE4;">
     <div class="container-main">
         <div style="text-align: center; max-width: 600px; margin: 0 auto 3.5rem;">
             <div class="divider-green" style="margin-left: auto; margin-right: auto;"></div>
             <p class="text-section-label" style="margin-bottom: 0.75rem;">Landasan Kami</p>
-            <h2 class="heading-xl" style="color: #142B4A; margin-bottom: 0.75rem;">Visi &amp; Misi Lembaga</h2>
-            <p style="font-size: 1rem; color: #64748b; line-height: 1.6;">Arah dan komitmen nyata yang senantiasa menuntun setiap proses bimbingan kami.</p>
+            <h2 class="heading-xl" style="color: #12352A; margin-bottom: 0.75rem;">Visi &amp; Misi Lembaga</h2>
+            <p style="font-size: 1rem; color: #5F7569; line-height: 1.6;">Arah dan komitmen nyata yang senantiasa menuntun setiap proses bimbingan kami.</p>
         </div>
 
         <div style="display: grid; grid-template-columns: 1fr; gap: 2rem;" id="vision-mission-grid">
             {{-- Kartu Visi --}}
-            <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 2.5rem; box-shadow: 0 4px 16px rgba(20,43,74,0.03);">
+            <div style="background-color: #ffffff; border: 1px solid #DDEFE4; border-radius: 1rem; padding: 2.5rem; box-shadow: 0 4px 16px rgba(18,53,42,0.03);">
                 <div style="display: flex; align-items: center; gap: 0.875rem; margin-bottom: 1.25rem;">
-                    <div style="width: 3rem; height: 3rem; background-color: #EAF6EF; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; color: #16845B; flex-shrink: 0;" aria-hidden="true">
+                    <div style="width: 3rem; height: 3rem; background-color: #EFFFF5; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; color: #079B58; flex-shrink: 0;" aria-hidden="true">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"></circle>
                             <line x1="2" y1="12" x2="22" y2="12"></line>
                             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                         </svg>
                     </div>
-                    <h3 style="font-size: 1.375rem; font-weight: 700; color: #142B4A; margin: 0;">Visi Kami</h3>
+                    <h3 style="font-size: 1.375rem; font-weight: 700; color: #12352A; margin: 0;">Visi Kami</h3>
                 </div>
                 <p style="font-size: 1.0625rem; color: #334155; line-height: 1.8; margin: 0;">
                     {{ $about['visi'] ?? '' }}
@@ -139,7 +139,7 @@
             </div>
 
             {{-- Kartu Misi --}}
-            <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 2.5rem; box-shadow: 0 4px 16px rgba(20,43,74,0.03);">
+            <div style="background-color: #ffffff; border: 1px solid #DDEFE4; border-radius: 1rem; padding: 2.5rem; box-shadow: 0 4px 16px rgba(18,53,42,0.03);">
                 <div style="display: flex; align-items: center; gap: 0.875rem; margin-bottom: 1.25rem;">
                     <div style="width: 3rem; height: 3rem; background-color: #EFF6FF; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; color: #2563EB; flex-shrink: 0;" aria-hidden="true">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -147,13 +147,13 @@
                             <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                         </svg>
                     </div>
-                    <h3 style="font-size: 1.375rem; font-weight: 700; color: #142B4A; margin: 0;">Misi Kami</h3>
+                    <h3 style="font-size: 1.375rem; font-weight: 700; color: #12352A; margin: 0;">Misi Kami</h3>
                 </div>
                 <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem;">
                     @foreach ($about['misi'] ?? [] as $misi)
                         <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                            <div style="width: 1.5rem; height: 1.5rem; background-color: #EAF6EF; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;" aria-hidden="true">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#16845B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <div style="width: 1.5rem; height: 1.5rem; background-color: #EFFFF5; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;" aria-hidden="true">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#079B58" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                             </div>
@@ -174,8 +174,8 @@
         <div style="text-align: center; max-width: 600px; margin: 0 auto 3.5rem;">
             <div class="divider-green" style="margin-left: auto; margin-right: auto;"></div>
             <p class="text-section-label" style="margin-bottom: 0.75rem;">Prinsip Kerja</p>
-            <h2 class="heading-xl" style="color: #142B4A; margin-bottom: 0.75rem;">Nilai-Nilai Utama Kami</h2>
-            <p style="font-size: 1rem; color: #64748b; line-height: 1.6;">Empat pilar nilai yang menjadi standar operasional dan interaksi harian tutor bersama siswa.</p>
+            <h2 class="heading-xl" style="color: #12352A; margin-bottom: 0.75rem;">Nilai-Nilai Utama Kami</h2>
+            <p style="font-size: 1rem; color: #5F7569; line-height: 1.6;">Empat pilar nilai yang menjadi standar operasional dan interaksi harian tutor bersama siswa.</p>
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
@@ -185,12 +185,12 @@
                     'blue' => ['bg' => '#EFF6FF', 'stroke' => '#2563EB'],
                     'orange' => ['bg' => '#FFF7ED', 'stroke' => '#EA580C'],
                     'purple' => ['bg' => '#FAF5FF', 'stroke' => '#9333EA'],
-                    default => ['bg' => '#EAF6EF', 'stroke' => '#16845B'],
+                    default => ['bg' => '#EFFFF5', 'stroke' => '#079B58'],
                 };
                 @endphp
-                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 2rem 1.75rem; box-shadow: 0 4px 12px rgba(20,43,74,0.03); transition: transform 0.2s ease, box-shadow 0.2s ease;"
-                     onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 28px rgba(20,43,74,0.07)';"
-                     onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 12px rgba(20,43,74,0.03)';">
+                <div style="background-color: #ffffff; border: 1px solid #DDEFE4; border-radius: 1rem; padding: 2rem 1.75rem; box-shadow: 0 4px 12px rgba(18,53,42,0.03); transition: transform 0.2s ease, box-shadow 0.2s ease;"
+                     onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 28px rgba(18,53,42,0.07)';"
+                     onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 12px rgba(18,53,42,0.03)';">
                     <div style="width: 3.25rem; height: 3.25rem; background-color: {{ $color['bg'] }}; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;" aria-hidden="true">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ $color['stroke'] }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             @if (($nilai['ikon'] ?? '') === 'users')
@@ -213,10 +213,10 @@
                             @endif
                         </svg>
                     </div>
-                    <h3 style="font-size: 1.125rem; font-weight: 700; color: #142B4A; margin-bottom: 0.5rem;">
+                    <h3 style="font-size: 1.125rem; font-weight: 700; color: #12352A; margin-bottom: 0.5rem;">
                         {{ $nilai['judul'] }}
                     </h3>
-                    <p style="font-size: 0.875rem; color: #64748b; line-height: 1.65; margin: 0;">
+                    <p style="font-size: 0.875rem; color: #5F7569; line-height: 1.65; margin: 0;">
                         {{ $nilai['deskripsi'] }}
                     </p>
                 </div>
@@ -226,40 +226,40 @@
 </section>
 
 {{-- TIM PENGAJAR / TUTOR UNGGULAN --}}
-<section style="padding-top: 5rem; padding-bottom: 5rem; background-color: #F8FAFC; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
+<section style="padding-top: 5rem; padding-bottom: 5rem; background-color: #F8FAFC; border-top: 1px solid #DDEFE4; border-bottom: 1px solid #DDEFE4;">
     <div class="container-main">
         <div style="text-align: center; max-width: 600px; margin: 0 auto 3.5rem;">
             <div class="divider-green" style="margin-left: auto; margin-right: auto;"></div>
             <p class="text-section-label" style="margin-bottom: 0.75rem;">Tim Pengajar</p>
-            <h2 class="heading-xl" style="color: #142B4A; margin-bottom: 0.75rem;">Tutor Berpengalaman &amp; Berdedikasi</h2>
-            <p style="font-size: 1rem; color: #64748b; line-height: 1.6;">Lulusan perguruan tinggi unggulan yang tidak hanya menguasai materi, namun tulus mendampingi siswa.</p>
+            <h2 class="heading-xl" style="color: #12352A; margin-bottom: 0.75rem;">Tutor Berpengalaman &amp; Berdedikasi</h2>
+            <p style="font-size: 1rem; color: #5F7569; line-height: 1.6;">Lulusan perguruan tinggi unggulan yang tidak hanya menguasai materi, namun tulus mendampingi siswa.</p>
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
             @foreach ($about['tutor'] ?? [] as $tutor)
                 @php
                 $avatarColor = match($tutor['warna'] ?? 'blue') {
-                    'green' => ['bg' => '#EAF6EF', 'text' => '#16845B'],
+                    'green' => ['bg' => '#EFFFF5', 'text' => '#079B58'],
                     'orange' => ['bg' => '#FFF7ED', 'text' => '#EA580C'],
                     'purple' => ['bg' => '#FAF5FF', 'text' => '#9333EA'],
                     'red' => ['bg' => '#FEF2F2', 'text' => '#DC2626'],
                     default => ['bg' => '#EFF6FF', 'text' => '#2563EB'],
                 };
                 @endphp
-                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.75rem; display: flex; align-items: flex-start; gap: 1.25rem; box-shadow: 0 4px 12px rgba(20,43,74,0.03); transition: transform 0.2s ease, border-color 0.2s ease;"
-                     onmouseover="this.style.transform='translateY(-2px)';this.style.borderColor='#16845B';"
-                     onmouseout="this.style.transform='translateY(0)';this.style.borderColor='#e2e8f0';">
+                <div style="background-color: #ffffff; border: 1px solid #DDEFE4; border-radius: 1rem; padding: 1.75rem; display: flex; align-items: flex-start; gap: 1.25rem; box-shadow: 0 4px 12px rgba(18,53,42,0.03); transition: transform 0.2s ease, border-color 0.2s ease;"
+                     onmouseover="this.style.transform='translateY(-2px)';this.style.borderColor='#079B58';"
+                     onmouseout="this.style.transform='translateY(0)';this.style.borderColor='#DDEFE4';">
                     <div style="width: 3.5rem; height: 3.5rem; border-radius: 0.875rem; background-color: {{ $avatarColor['bg'] }}; color: {{ $avatarColor['text'] }}; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.125rem; flex-shrink: 0;" aria-hidden="true">
                         {{ $tutor['inisial'] ?? 'MB' }}
                     </div>
                     <div>
-                        <h3 style="font-size: 1.0625rem; font-weight: 700; color: #142B4A; margin: 0 0 0.25rem 0;">
+                        <h3 style="font-size: 1.0625rem; font-weight: 700; color: #12352A; margin: 0 0 0.25rem 0;">
                             {{ $tutor['nama'] }}
                         </h3>
-                        <div style="font-size: 0.8125rem; font-weight: 600; color: #16845B; margin-bottom: 0.35rem;">
+                        <div style="font-size: 0.8125rem; font-weight: 600; color: #079B58; margin-bottom: 0.35rem;">
                             {{ $tutor['peran'] }}
                         </div>
-                        <div style="font-size: 0.75rem; color: #64748b; margin-bottom: 0.25rem;">
+                        <div style="font-size: 0.75rem; color: #5F7569; margin-bottom: 0.25rem;">
                             🎓 {{ $tutor['lulusan'] }}
                         </div>
                         <div style="font-size: 0.75rem; color: #94a3b8; font-weight: 500;">
@@ -278,14 +278,14 @@
         <div style="text-align: center; max-width: 600px; margin: 0 auto 3.5rem;">
             <div class="divider-green" style="margin-left: auto; margin-right: auto;"></div>
             <p class="text-section-label" style="margin-bottom: 0.75rem;">Fasilitas</p>
-            <h2 class="heading-xl" style="color: #142B4A; margin-bottom: 0.75rem;">Fasilitas Belajar Modern</h2>
-            <p style="font-size: 1rem; color: #64748b; line-height: 1.6;">Dukungan sarana pembelajaran yang nyaman dan kondusif untuk mendukung konsentrasi.</p>
+            <h2 class="heading-xl" style="color: #12352A; margin-bottom: 0.75rem;">Fasilitas Belajar Modern</h2>
+            <p style="font-size: 1rem; color: #5F7569; line-height: 1.6;">Dukungan sarana pembelajaran yang nyaman dan kondusif untuk mendukung konsentrasi.</p>
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
             @foreach ($about['fasilitas'] ?? [] as $fasilitas)
-                <div style="background-color: #F8FAFC; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 2rem 1.75rem;">
-                    <div style="width: 3rem; height: 3rem; background-color: #EAF6EF; border-radius: 0.625rem; display: flex; align-items: center; justify-content: center; color: #16845B; margin-bottom: 1.25rem;" aria-hidden="true">
+                <div style="background-color: #F8FAFC; border: 1px solid #DDEFE4; border-radius: 1rem; padding: 2rem 1.75rem;">
+                    <div style="width: 3rem; height: 3rem; background-color: #EFFFF5; border-radius: 0.625rem; display: flex; align-items: center; justify-content: center; color: #079B58; margin-bottom: 1.25rem;" aria-hidden="true">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             @if (($fasilitas['ikon'] ?? '') === 'book')
                                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
@@ -304,10 +304,10 @@
                             @endif
                         </svg>
                     </div>
-                    <h3 style="font-size: 1.125rem; font-weight: 700; color: #142B4A; margin-bottom: 0.5rem;">
+                    <h3 style="font-size: 1.125rem; font-weight: 700; color: #12352A; margin-bottom: 0.5rem;">
                         {{ $fasilitas['nama'] }}
                     </h3>
-                    <p style="font-size: 0.875rem; color: #64748b; line-height: 1.6; margin: 0;">
+                    <p style="font-size: 0.875rem; color: #5F7569; line-height: 1.6; margin: 0;">
                         {{ $fasilitas['deskripsi'] }}
                     </p>
                 </div>
@@ -317,9 +317,9 @@
 </section>
 
 {{-- CTA PENUTUP --}}
-<section style="padding-top: 5rem; padding-bottom: 5rem; background: linear-gradient(135deg, #142B4A 0%, #0e1f36 100%); color: #ffffff;">
+<section style="padding-top: 5rem; padding-bottom: 5rem; background: linear-gradient(135deg, #12352A 0%, #0c2620 100%); color: #ffffff;">
     <div class="container-main" style="text-align: center; max-width: 680px;">
-        <span class="badge-pill" style="background-color: rgba(22,132,91,0.25); color: #86efac; border: 1px solid rgba(134,239,172,0.3); font-size: 0.75rem; margin-bottom: 1.25rem;">
+        <span class="badge-pill" style="background-color: rgba(7,155,88,0.25); color: #86efac; border: 1px solid rgba(134,239,172,0.3); font-size: 0.75rem; margin-bottom: 1.25rem;">
             Bergabung Bersama Kami
         </span>
         <h2 style="font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; color: #ffffff; margin-bottom: 1rem; line-height: 1.2;">
@@ -329,7 +329,7 @@
             Daftarkan putra-putri Anda sekarang atau konsultasikan kebutuhan belajarnya bersama konselor pendidikan kami secara gratis.
         </p>
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
-            <a href="{{ route('program.index') }}" class="btn-primary" style="background-color: #16845B; border-color: #16845B;">
+            <a href="{{ route('program.index') }}" class="btn-primary" style="background-color: #079B58; border-color: #079B58;">
                 Jelajahi Program Belajar
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </a>

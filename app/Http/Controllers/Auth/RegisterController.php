@@ -40,7 +40,7 @@ class RegisterController extends Controller
 
         return redirect()->route('student.dashboard')->with(
             'success',
-            'Registrasi berhasil! Selamat datang di Bimbel Modern Brilliant, '.$user->name.'.'
+            'Registrasi berhasil! Selamat datang di Bimbel Sentra Edukasi, '.$user->name.'.'
         );
     }
 }

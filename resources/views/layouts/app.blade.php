@@ -23,25 +23,15 @@
 
     @stack('styles')
 </head>
-<body class="bg-white text-[#253247] antialiased">
+<body class="bg-white text-[#12352A] antialiased">
 
 {{-- NAVBAR --}}
 <nav id="navbar" role="navigation" aria-label="Navigasi Utama">
     <div class="container-main">
         <div style="display:flex;align-items:center;justify-content:space-between;height:4.5rem;">
             {{-- Logo --}}
-            <a href="{{ route('home') }}" style="display:flex;align-items:center;gap:.625rem;text-decoration:none;flex-shrink:0;" aria-label="Bimbel Sentra Edukasi — Beranda">
-                <div style="width:2.25rem;height:2.25rem;background-color:#16845B;border-radius:.625rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white"/>
-                        <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div>
-                    <span style="font-size:1rem;font-weight:800;color:#142B4A;display:block;line-height:1.1;">Bimbel</span>
-                    <span style="font-size:.6875rem;font-weight:600;color:#16845B;letter-spacing:.05em;text-transform:uppercase;display:block;line-height:1.1;">SENTRA EDUKASI</span>
-                </div>
+            <a href="{{ route('home') }}" style="display:flex;align-items:center;text-decoration:none;flex-shrink:0;" aria-label="Bimbel Sentra Edukasi — Beranda">
+                <img src="{{ asset('logo.png') }}" alt="Logo Bimbel Sentra Edukasi" style="height:3rem;width:auto;object-fit:contain;">
             </a>
 
             {{-- Menu Desktop --}}
@@ -70,9 +60,9 @@
             {{-- Hamburger Button Mobile --}}
             <button id="hamburger-btn" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobile-menu"
                 style="display:flex;flex-direction:column;gap:5px;padding:.5rem;border:none;background:none;cursor:pointer;border-radius:.375rem;">
-                <span id="ham-line-1" style="display:block;width:22px;height:2px;background-color:#142B4A;border-radius:1px;transition:transform .25s ease,opacity .25s ease;"></span>
-                <span id="ham-line-2" style="display:block;width:22px;height:2px;background-color:#142B4A;border-radius:1px;transition:transform .25s ease,opacity .25s ease;"></span>
-                <span id="ham-line-3" style="display:block;width:22px;height:2px;background-color:#142B4A;border-radius:1px;transition:transform .25s ease,opacity .25s ease;"></span>
+                <span id="ham-line-1" style="display:block;width:22px;height:2px;background-color:#12352A;border-radius:1px;transition:transform .25s ease,opacity .25s ease;"></span>
+                <span id="ham-line-2" style="display:block;width:22px;height:2px;background-color:#12352A;border-radius:1px;transition:transform .25s ease,opacity .25s ease;"></span>
+                <span id="ham-line-3" style="display:block;width:22px;height:2px;background-color:#12352A;border-radius:1px;transition:transform .25s ease,opacity .25s ease;"></span>
             </button>
         </div>
     </div>
@@ -80,21 +70,11 @@
 
 {{-- MOBILE MENU DIALOG --}}
 <div id="mobile-menu" role="dialog" aria-label="Menu Navigasi Mobile" aria-modal="true">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:1px solid #e2e8f0;">
-        <div style="display:flex;align-items:center;gap:.625rem;">
-            <div style="width:2.25rem;height:2.25rem;background-color:#16845B;border-radius:.625rem;display:flex;align-items:center;justify-content:center;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white"/>
-                    <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-            <div>
-                <span style="font-size:1rem;font-weight:800;color:#142B4A;display:block;line-height:1.1;">Bimbel</span>
-                <span style="font-size:.6875rem;font-weight:600;color:#16845B;letter-spacing:.05em;text-transform:uppercase;display:block;line-height:1.1;">SENTRA EDUKASI</span>
-            </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:1px solid #DDEFE4;">
+        <div style="display:flex;align-items:center;">
+            <img src="{{ asset('logo.png') }}" alt="Logo Bimbel Sentra Edukasi" style="height:2.75rem;width:auto;object-fit:contain;">
         </div>
-        <button id="close-menu-btn" aria-label="Tutup menu" style="padding:.5rem;border:none;background:none;cursor:pointer;color:#4a5568;border-radius:.375rem;">
+        <button id="close-menu-btn" aria-label="Tutup menu" style="padding:.5rem;border:none;background:none;cursor:pointer;color:#5F7569;border-radius:.375rem;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -102,11 +82,11 @@
         </button>
     </div>
     <nav role="menu" aria-label="Menu Mobile">
-        <a href="{{ route('home') }}" class="mobile-nav-link {{ request()->routeIs('home') ? 'style-active' : '' }}" role="menuitem" style="{{ request()->routeIs('home') ? 'color:#16845B;font-weight:700;' : '' }}">Home</a>
-        <a href="{{ route('program.index') }}" class="mobile-nav-link" role="menuitem" style="{{ request()->routeIs('program.*') ? 'color:#16845B;font-weight:700;' : '' }}">Program Belajar</a>
-        <a href="{{ route('jadwal.index') }}" class="mobile-nav-link" role="menuitem" style="{{ request()->routeIs('jadwal.*') ? 'color:#16845B;font-weight:700;' : '' }}">Jadwal</a>
-        <a href="{{ route('tentang.index') }}" class="mobile-nav-link" role="menuitem" style="{{ request()->routeIs('tentang.*') ? 'color:#16845B;font-weight:700;' : '' }}">Tentang Kami</a>
-        <a href="{{ route('kontak.index') }}" class="mobile-nav-link" role="menuitem" style="{{ request()->routeIs('kontak.*') ? 'color:#16845B;font-weight:700;' : '' }}">Kontak</a>
+        <a href="{{ route('home') }}" class="mobile-nav-link {{ request()->routeIs('home') ? 'style-active' : '' }}" role="menuitem" style="{{ request()->routeIs('home') ? 'color:#079B58;font-weight:700;' : '' }}">Home</a>
+        <a href="{{ route('program.index') }}" class="mobile-nav-link" role="menuitem" style="{{ request()->routeIs('program.*') ? 'color:#079B58;font-weight:700;' : '' }}">Program Belajar</a>
+        <a href="{{ route('jadwal.index') }}" class="mobile-nav-link" role="menuitem" style="{{ request()->routeIs('jadwal.*') ? 'color:#079B58;font-weight:700;' : '' }}">Jadwal</a>
+        <a href="{{ route('tentang.index') }}" class="mobile-nav-link" role="menuitem" style="{{ request()->routeIs('tentang.*') ? 'color:#079B58;font-weight:700;' : '' }}">Tentang Kami</a>
+        <a href="{{ route('kontak.index') }}" class="mobile-nav-link" role="menuitem" style="{{ request()->routeIs('kontak.*') ? 'color:#079B58;font-weight:700;' : '' }}">Kontak</a>
     </nav>
     <div style="margin-top:2rem;display:flex;flex-direction:column;gap:.875rem;">
         @auth
@@ -134,23 +114,13 @@
 </main>
 
 {{-- FOOTER SEDERHANA --}}
-<footer id="footer" role="contentinfo" style="background-color:#0e1f36;color:rgba(255,255,255,0.7);padding-top:4rem;">
+<footer id="footer" role="contentinfo" style="background-color:#0c2620;color:rgba(255,255,255,0.7);padding-top:4rem;">
     <div class="container-main">
         <div id="footer-grid" style="display:grid;grid-template-columns:1fr;gap:2.5rem;padding-bottom:3rem;">
             {{-- Brand info --}}
             <div style="max-width:380px;">
-                <div style="display:flex;align-items:center;gap:.625rem;margin-bottom:1.25rem;">
-                    <div style="width:2.25rem;height:2.25rem;background-color:#16845B;border-radius:.625rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white"/>
-                            <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <span style="font-size:1rem;font-weight:800;color:#ffffff;display:block;line-height:1.1;">Bimbel</span>
-                        <span style="font-size:.6875rem;font-weight:600;color:#16845B;letter-spacing:.05em;text-transform:uppercase;display:block;line-height:1.1;">SENTRA EDUKASI</span>
-                    </div>
+                <div style="margin-bottom:1.25rem;">
+                    <img src="{{ asset('logo.png') }}" alt="Logo Bimbel Sentra Edukasi" style="height:3rem;width:auto;object-fit:contain;filter:brightness(0) invert(1);">
                 </div>
                 <p style="font-size:.875rem;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:1.5rem;">
                     Lembaga bimbingan belajar dengan pendekatan modern, materi terstruktur, dan pendampingan tutor berpengalaman untuk mengantarkan siswa meraih prestasi akademik terbaik.
@@ -185,19 +155,19 @@
                 <h3 style="font-size:.8125rem;font-weight:700;color:#ffffff;letter-spacing:.05em;text-transform:uppercase;margin-bottom:1.25rem;">Informasi Kontak</h3>
                 <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.875rem;">
                     <li style="display:flex;align-items:flex-start;gap:.75rem;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16845B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#079B58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                         <span style="font-size:.875rem;color:rgba(255,255,255,.55);">Jl. Pendidikan Utama No. 88<br>Jakarta Selatan — 12340</span>
                     </li>
                     <li style="display:flex;align-items:center;gap:.75rem;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16845B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#079B58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                         <span style="font-size:.875rem;color:rgba(255,255,255,.55);">(021) 7890-1234 / 0812-3456-7890</span>
                     </li>
                     <li style="display:flex;align-items:center;gap:.75rem;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16845B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#079B58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                         <span style="font-size:.875rem;color:rgba(255,255,255,.55);">info@modernbrilliant.sch.id</span>
                     </li>
                     <li style="display:flex;align-items:center;gap:.75rem;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16845B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#079B58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                         <span style="font-size:.875rem;color:rgba(255,255,255,.55);">Senin – Sabtu, 08.00 – 20.00 WIB</span>
                     </li>
                 </ul>

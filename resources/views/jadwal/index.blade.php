@@ -5,16 +5,16 @@
 
 @section('content')
 {{-- HEADER / BREADCRUMB SECTION --}}
-<section style="background-color: #ffffff; padding-top: 2.5rem; padding-bottom: 2.75rem; border-bottom: 1px solid #f1f5f9;">
+<section style="background-color: #ffffff; padding-top: 2.5rem; padding-bottom: 2.75rem; border-bottom: 1px solid #EBF5EF;">
     <div class="container-main">
         {{-- Breadcrumb --}}
         <nav aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
             <ol style="display: flex; align-items: center; gap: 0.5rem; list-style: none; padding: 0; margin: 0; font-size: 0.875rem;">
                 <li>
-                    <a href="{{ route('home') }}" style="color: #64748b; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#16845B'" onmouseout="this.style.color='#64748b'">Beranda</a>
+                    <a href="{{ route('home') }}" style="color: #5F7569; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#079B58'" onmouseout="this.style.color='#5F7569'">Beranda</a>
                 </li>
                 <li style="color: #cbd5e1;" aria-hidden="true">/</li>
-                <li style="color: #142B4A; font-weight: 600;" aria-current="page">Jadwal Pembelajaran</li>
+                <li style="color: #12352A; font-weight: 600;" aria-current="page">Jadwal Pembelajaran</li>
             </ol>
         </nav>
 
@@ -22,10 +22,10 @@
         <div style="text-align: center; max-width: 680px; margin: 0 auto;">
             <div class="divider-green" style="margin-left: auto; margin-right: auto;"></div>
             <p class="text-section-label" style="margin-bottom: 0.75rem;">Agenda Kelas</p>
-            <h1 class="heading-xl" style="margin-bottom: 1rem; color: #142B4A;">
+            <h1 class="heading-xl" style="margin-bottom: 1rem; color: #12352A;">
                 Jadwal Pembelajaran
             </h1>
-            <p style="font-size: 1.0625rem; color: #4a5568; line-height: 1.75; margin: 0 auto;">
+            <p style="font-size: 1.0625rem; color: #5F7569; line-height: 1.75; margin: 0 auto;">
                 Lihat semua kelas yang tersedia dan pilih waktu yang sesuai dengan kebutuhan belajarmu.
             </p>
         </div>
@@ -61,26 +61,26 @@
                            id="tab-{{ $key }}"
                            role="tab"
                            aria-selected="{{ $isActive ? 'true' : 'false' }}"
-                           style="display: inline-flex; align-items: center; padding: 0.5rem 1.125rem; border-radius: 999px; font-size: 0.875rem; text-decoration: none; transition: all 0.2s ease; cursor: pointer; {{ $isActive ? 'background-color:#16845B;color:#ffffff;font-weight:700;box-shadow:0 4px 12px rgba(22,132,91,0.25);border:1px solid #16845B;' : 'background-color:#ffffff;color:#4a5568;font-weight:600;border:1px solid #e2e8f0;' }}">
+                           style="display: inline-flex; align-items: center; padding: 0.5rem 1.125rem; border-radius: 999px; font-size: 0.875rem; text-decoration: none; transition: all 0.2s ease; cursor: pointer; {{ $isActive ? 'background-color:#079B58;color:#ffffff;font-weight:700;box-shadow:0 4px 12px rgba(7,155,88,0.25);border:1px solid #079B58;' : 'background-color:#ffffff;color:#5F7569;font-weight:600;border:1px solid #DDEFE4;' }}">
                             {{ $label }}
                         </a>
                     @endforeach
                 </div>
 
                 {{-- Indikator Jumlah Kelas --}}
-                <div style="font-size: 0.875rem; color: #64748b; font-weight: 500;">
-                    Menampilkan <strong style="color: #142B4A;">{{ $totalJadwal }}</strong> kelas
+                <div style="font-size: 0.875rem; color: #5F7569; font-weight: 500;">
+                    Menampilkan <strong style="color: #12352A;">{{ $totalJadwal }}</strong> kelas
                 </div>
             </div>
 
             {{-- 2. Navigasi Minggu --}}
-            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 0.875rem; padding: 0.875rem 1.25rem; box-shadow: 0 2px 8px rgba(20,43,74,0.02);">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; background-color: #ffffff; border: 1px solid #DDEFE4; border-radius: 0.875rem; padding: 0.875rem 1.25rem; box-shadow: 0 2px 8px rgba(18,53,42,0.02);">
                 {{-- Tombol Minggu Sebelumnya --}}
                 <a href="{{ route('jadwal.index', ['jenjang' => $jenjangAktif, 'week' => $prevWeek]) }}"
                    class="btn-week-nav"
                    id="btn-prev-week"
                    aria-label="Minggu Sebelumnya"
-                   style="display: inline-flex; align-items: center; gap: 0.5rem; color: #142B4A; text-decoration: none; font-size: 0.875rem; font-weight: 600; padding: 0.4rem 0.875rem; border-radius: 0.5rem; border: 1px solid #e2e8f0; background-color: #f8fafc; transition: all 0.2s ease;">
+                   style="display: inline-flex; align-items: center; gap: 0.5rem; color: #12352A; text-decoration: none; font-size: 0.875rem; font-weight: 600; padding: 0.4rem 0.875rem; border-radius: 0.5rem; border: 1px solid #DDEFE4; background-color: #F6FAF8; transition: all 0.2s ease;">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <polyline points="15 18 9 12 15 6"></polyline>
                     </svg>
@@ -89,7 +89,7 @@
 
                 {{-- Rentang Tanggal Tengah --}}
                 <div style="display: flex; align-items: center; gap: 0.625rem; text-align: center;">
-                    <div style="width: 2rem; height: 2rem; border-radius: 50%; background-color: #EAF6EF; display: flex; align-items: center; justify-content: center; color: #16845B; flex-shrink: 0;" aria-hidden="true">
+                    <div style="width: 2rem; height: 2rem; border-radius: 50%; background-color: #EFFFF5; display: flex; align-items: center; justify-content: center; color: #079B58; flex-shrink: 0;" aria-hidden="true">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                             <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -98,13 +98,13 @@
                         </svg>
                     </div>
                     <div>
-                        <span id="label-rentang-tanggal" style="font-size: 1rem; font-weight: 700; color: #142B4A; display: block;">
+                        <span id="label-rentang-tanggal" style="font-size: 1rem; font-weight: 700; color: #12352A; display: block;">
                             {{ $rentangTanggal }}
                         </span>
                         @if ($weekOffset === 0)
-                            <span style="font-size: 0.75rem; font-weight: 600; color: #16845B;">(Minggu Ini)</span>
+                            <span style="font-size: 0.75rem; font-weight: 600; color: #079B58;">(Minggu Ini)</span>
                         @else
-                            <a href="{{ route('jadwal.index', ['jenjang' => $jenjangAktif, 'week' => 0]) }}" style="font-size: 0.75rem; font-weight: 600; color: #16845B; text-decoration: underline;">
+                            <a href="{{ route('jadwal.index', ['jenjang' => $jenjangAktif, 'week' => 0]) }}" style="font-size: 0.75rem; font-weight: 600; color: #079B58; text-decoration: underline;">
                                 Kembali ke Minggu Ini
                             </a>
                         @endif
@@ -116,7 +116,7 @@
                    class="btn-week-nav"
                    id="btn-next-week"
                    aria-label="Minggu Berikutnya"
-                   style="display: inline-flex; align-items: center; gap: 0.5rem; color: #142B4A; text-decoration: none; font-size: 0.875rem; font-weight: 600; padding: 0.4rem 0.875rem; border-radius: 0.5rem; border: 1px solid #e2e8f0; background-color: #f8fafc; transition: all 0.2s ease;">
+                   style="display: inline-flex; align-items: center; gap: 0.5rem; color: #12352A; text-decoration: none; font-size: 0.875rem; font-weight: 600; padding: 0.4rem 0.875rem; border-radius: 0.5rem; border: 1px solid #DDEFE4; background-color: #F6FAF8; transition: all 0.2s ease;">
                     <span>Minggu Depan</span>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <polyline points="9 18 15 12 9 6"></polyline>
@@ -146,10 +146,10 @@
                         <line x1="14" y1="14" x2="10" y2="18"></line>
                     </svg>
                 </div>
-                <h2 style="font-size: 1.25rem; font-weight: 700; color: #142B4A; margin-bottom: 0.5rem;">
+                <h2 style="font-size: 1.25rem; font-weight: 700; color: #12352A; margin-bottom: 0.5rem;">
                     Tidak Ada Jadwal Kelas Ditemukan
                 </h2>
-                <p style="font-size: 0.9375rem; color: #64748b; line-height: 1.6; max-width: 480px; margin: 0 auto 1.75rem;">
+                <p style="font-size: 0.9375rem; color: #5F7569; line-height: 1.6; max-width: 480px; margin: 0 auto 1.75rem;">
                     @if ($jenjangAktif !== 'semua')
                         Belum ada kelas terjadwal untuk filter <strong>{{ strtoupper($jenjangAktif) }}</strong> pada rentang tanggal ini.
                     @else
@@ -169,15 +169,15 @@
         @endif
 
         {{-- 5. BANNER KONSULTASI JADWAL KHUSUS / PRIVAT --}}
-        <div style="margin-top: 3.5rem; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 2rem 2.25rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; box-shadow: 0 4px 16px rgba(20,43,74,0.04);">
+        <div style="margin-top: 3.5rem; background-color: #ffffff; border: 1px solid #DDEFE4; border-radius: 1rem; padding: 2rem 2.25rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; box-shadow: 0 4px 16px rgba(18,53,42,0.04);">
             <div style="max-width: 620px;">
-                <div style="display: inline-flex; align-items: center; gap: 0.375rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #16845B; margin-bottom: 0.375rem;">
+                <div style="display: inline-flex; align-items: center; gap: 0.375rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #079B58; margin-bottom: 0.375rem;">
                     Jadwal Fleksibel
                 </div>
-                <h3 style="font-size: 1.25rem; font-weight: 700; color: #142B4A; margin-bottom: 0.375rem;">
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: #12352A; margin-bottom: 0.375rem;">
                     Butuh Jadwal Privat atau Waktu Khusus?
                 </h3>
-                <p style="font-size: 0.875rem; color: #64748b; line-height: 1.6; margin: 0;">
+                <p style="font-size: 0.875rem; color: #5F7569; line-height: 1.6; margin: 0;">
                     Kami menyediakan opsi pendampingan privat 1-on-1 dengan jadwal yang bisa disesuaikan sepenuhnya dengan rutinitas sekolah Anda.
                 </p>
             </div>

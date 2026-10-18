@@ -24,18 +24,8 @@
 <nav id="navbar" role="navigation" aria-label="Navigasi Utama">
     <div class="container-main">
         <div style="display:flex;align-items:center;justify-content:space-between;height:4.5rem;">
-            <a href="#hero" style="display:flex;align-items:center;gap:.625rem;text-decoration:none;flex-shrink:0;" aria-label="Bimbel Sentra Edukasi — Beranda">
-                <div style="width:2.25rem;height:2.25rem;background-color:#16845B;border-radius:.625rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white"/>
-                        <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div>
-                    <span style="font-size:1rem;font-weight:800;color:#142B4A;display:block;line-height:1.1;">Bimbel</span>
-                    <span style="font-size:.6875rem;font-weight:600;color:#16845B;letter-spacing:.05em;text-transform:uppercase;display:block;line-height:1.1;">Sentra Edukasi</span>
-                </div>
+            <a href="#hero" style="display:flex;align-items:center;text-decoration:none;flex-shrink:0;" aria-label="Bimbel Sentra Edukasi — Beranda">
+                <img src="{{ asset('logo.png') }}" alt="Logo Bimbel Sentra Edukasi" style="height:3rem;width:auto;object-fit:contain;">
             </a>
             <div id="desktop-nav" style="display:none;align-items:center;gap:.25rem;" role="menubar">
                 <a href="#hero" class="nav-link active" role="menuitem">Home</a>
@@ -50,9 +40,9 @@
             </div>
             <button id="hamburger-btn" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobile-menu"
                 style="display:flex;flex-direction:column;gap:5px;padding:.5rem;border:none;background:none;cursor:pointer;border-radius:.375rem;">
-                <span id="ham-line-1" style="display:block;width:22px;height:2px;background-color:#142B4A;border-radius:1px;transition:transform .25s ease,opacity .25s ease;"></span>
-                <span id="ham-line-2" style="display:block;width:22px;height:2px;background-color:#142B4A;border-radius:1px;transition:transform .25s ease,opacity .25s ease;"></span>
-                <span id="ham-line-3" style="display:block;width:22px;height:2px;background-color:#142B4A;border-radius:1px;transition:transform .25s ease,opacity .25s ease;"></span>
+                <span id="ham-line-1" style="display:block;width:22px;height:2px;background-color:#12352A;border-radius:1px;transition:transform .25s ease,opacity .25s ease;"></span>
+                <span id="ham-line-2" style="display:block;width:22px;height:2px;background-color:#12352A;border-radius:1px;transition:transform .25s ease,opacity .25s ease;"></span>
+                <span id="ham-line-3" style="display:block;width:22px;height:2px;background-color:#12352A;border-radius:1px;transition:transform .25s ease,opacity .25s ease;"></span>
             </button>
         </div>
     </div>
@@ -60,21 +50,11 @@
 
 {{-- MOBILE MENU --}}
 <div id="mobile-menu" role="dialog" aria-label="Menu Navigasi Mobile" aria-modal="true">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:1px solid #e2e8f0;">
-        <div style="display:flex;align-items:center;gap:.625rem;">
-            <div style="width:2.25rem;height:2.25rem;background-color:#16845B;border-radius:.625rem;display:flex;align-items:center;justify-content:center;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white"/>
-                    <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-            <div>
-                <span style="font-size:1rem;font-weight:800;color:#142B4A;display:block;line-height:1.1;">Bimbel</span>
-                <span style="font-size:.6875rem;font-weight:600;color:#16845B;letter-spacing:.05em;text-transform:uppercase;display:block;line-height:1.1;">Sentra Edukasi</span>
-            </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:1px solid #DDEFE4;">
+        <div style="display:flex;align-items:center;">
+            <img src="{{ asset('logo.png') }}" alt="Logo Bimbel Sentra Edukasi" style="height:2.75rem;width:auto;object-fit:contain;">
         </div>
-        <button id="close-menu-btn" aria-label="Tutup menu" style="padding:.5rem;border:none;background:none;cursor:pointer;color:#4a5568;border-radius:.375rem;">
+        <button id="close-menu-btn" aria-label="Tutup menu" style="padding:.5rem;border:none;background:none;cursor:pointer;color:#5F7569;border-radius:.375rem;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
@@ -109,10 +89,10 @@
                 </div>
                 <h1 id="hero-heading" class="heading-display animate-fade-in-up delay-100" style="margin-bottom:1.25rem;opacity:0;">
                     Belajar Lebih Terarah,<br>
-                    <span style="color:#16845B;">Raih Prestasi</span><br>
+                    <span style="color:#079B58;">Raih Prestasi</span><br>
                     Lebih Gemilang.
                 </h1>
-                <p class="animate-fade-in-up delay-200" style="font-size:1.0625rem;color:#4a5568;line-height:1.75;margin-bottom:2rem;max-width:520px;opacity:0;">
+                <p class="animate-fade-in-up delay-200" style="font-size:1.0625rem;color:#5F7569;line-height:1.75;margin-bottom:2rem;max-width:520px;opacity:0;">
                     Temukan pengalaman belajar yang lebih terstruktur dengan pendampingan tutor, program belajar yang sesuai kebutuhan, dan lingkungan yang mendukung perkembangan akademikmu.
                 </p>
                 <div class="animate-fade-in-up delay-300" style="display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem;opacity:0;">
@@ -125,31 +105,30 @@
                 <div class="animate-fade-in-up delay-400" style="display:flex;flex-wrap:wrap;gap:1.25rem;opacity:0;">
                     @foreach ([['label' => 'Tutor Berpengalaman'], ['label' => 'Jadwal Fleksibel'], ['label' => 'Materi Terstruktur']] as $item)
                     <div style="display:flex;align-items:center;gap:.5rem;">
-                        <div style="width:1.75rem;height:1.75rem;background-color:#EAF6EF;border-radius:50%;display:flex;align-items:center;justify-content:center;" aria-hidden="true">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#16845B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <div style="width:1.75rem;height:1.75rem;background-color:#EFFFF5;border-radius:50%;display:flex;align-items:center;justify-content:center;" aria-hidden="true">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#079B58" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
-                        <span style="font-size:.8125rem;font-weight:500;color:#4a5568;">{{ $item['label'] }}</span>
+                        <span style="font-size:.8125rem;font-weight:500;color:#5F7569;">{{ $item['label'] }}</span>
                     </div>
                     @endforeach
                 </div>
             </div>
             <div id="hero-image-col" style="position:relative;">
                 <div class="hero-image-wrapper" style="aspect-ratio:4/3;">
-                    <img src="https://images.unspla
-                    sh.com/photo-1522202176988-66273c2fd55f?w=800&q=80"
+                    <img src="{{ asset('hero.png') }}"
                          alt="Siswa berdiskusi bersama tutor dalam sesi bimbingan belajar"
                          style="width:100%;height:100%;object-fit:cover;display:block;" loading="eager">
                 </div>
-                <a href="{{ route('program.index') }}" style="position:absolute;bottom:-1rem;left:-1rem;background-color:white;border-radius:.875rem;padding:1rem 1.25rem;box-shadow:0 12px 32px rgba(20,43,74,.12);display:flex;align-items:center;gap:.75rem;min-width:200px;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease;cursor:pointer;" id="hero-floating-program-card" aria-label="Lihat Program Belajar">
-                    <div style="width:2.5rem;height:2.5rem;background-color:#EAF6EF;border-radius:.625rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16845B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <a href="{{ route('program.index') }}" style="position:absolute;bottom:-1rem;left:-1rem;background-color:white;border-radius:.875rem;padding:1rem 1.25rem;box-shadow:0 12px 32px rgba(18,53,42,.12);display:flex;align-items:center;gap:.75rem;min-width:200px;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease;cursor:pointer;" id="hero-floating-program-card" aria-label="Lihat Program Belajar">
+                    <div style="width:2.5rem;height:2.5rem;background-color:#EFFFF5;border-radius:.625rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#079B58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                             <polyline points="22 4 12 14.01 9 11.01"></polyline>
                         </svg>
                     </div>
                     <div>
-                        <div style="font-size:.8125rem;font-weight:700;color:#142B4A;">Program Tersedia</div>
-                        <div style="font-size:.75rem;color:#4a5568;">SD, SMP, SMA &amp; Ujian</div>
+                        <div style="font-size:.8125rem;font-weight:700;color:#12352A;">Program Tersedia</div>
+                        <div style="font-size:.75rem;color:#5F7569;">SD, SMP, SMA &amp; Ujian</div>
                     </div>
                 </a>
             </div>
@@ -172,11 +151,11 @@
             @foreach ($trustItems as $i => $item)
             <div class="trust-item" id="trust-{{ $i + 1 }}">
                 <div class="trust-icon-wrapper" aria-hidden="true">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16845B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{!! $item['icon'] !!}</svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#079B58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{!! $item['icon'] !!}</svg>
                 </div>
                 <div>
-                    <div style="font-size:.875rem;font-weight:700;color:#142B4A;margin-bottom:.125rem;">{{ $item['title'] }}</div>
-                    <div style="font-size:.75rem;color:#64748b;">{{ $item['desc'] }}</div>
+                    <div style="font-size:.875rem;font-weight:700;color:#12352A;margin-bottom:.125rem;">{{ $item['title'] }}</div>
+                    <div style="font-size:.75rem;color:#5F7569;">{{ $item['desc'] }}</div>
                 </div>
             </div>
             @endforeach
@@ -191,19 +170,19 @@
             <div class="divider-green" style="margin-left:auto;margin-right:auto;"></div>
             <p class="text-section-label" style="margin-bottom:.75rem;">Program Kami</p>
             <h2 id="programs-heading" class="heading-xl" style="margin-bottom:1rem;">Temukan Program Belajar yang Tepat</h2>
-            <p style="font-size:1rem;color:#4a5568;line-height:1.7;">Pilih program sesuai kebutuhan dan target belajarmu. Setiap program dirancang untuk membantu siswa belajar lebih terarah.</p>
+            <p style="font-size:1rem;color:#5F7569;line-height:1.7;">Pilih program sesuai kebutuhan dan target belajarmu. Setiap program dirancang untuk membantu siswa belajar lebih terarah.</p>
         </div>
         @php
         $programs = [
-            ['id'=>'sd','title'=>'Bimbingan Belajar SD','badge'=>'Kelas 1–6','badge_class'=>'badge-green','desc'=>'Membangun fondasi belajar yang kuat dengan pendekatan yang menyenangkan dan sesuai usia. Fokus pada Matematika, Bahasa Indonesia, IPA, dan IPS.','feat1'=>'Target: Siswa SD kelas 1–6','feat2'=>'Sesi kelompok kecil & individual','icon_bg'=>'#EAF6EF','icon_color'=>'#16845B','icon'=>'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>'],
-            ['id'=>'smp','title'=>'Bimbingan Belajar SMP','badge'=>'Kelas 7–9','badge_class'=>'badge-navy','desc'=>'Membantu siswa SMP menguasai mata pelajaran inti dengan metode belajar yang lebih terstruktur. Persiapan ujian akhir semester dan ujian nasional.','feat1'=>'Target: Siswa SMP kelas 7–9','feat2'=>'Matematika, IPA, Bahasa Inggris','icon_bg'=>'rgba(20,43,74,0.07)','icon_color'=>'#142B4A','icon'=>'<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>'],
-            ['id'=>'sma','title'=>'Bimbingan Belajar SMA','badge'=>'Kelas 10–12','badge_class'=>'badge-green','desc'=>'Program intensif untuk siswa SMA dengan fokus penguasaan materi dan strategi belajar efektif menghadapi ujian akhir dan seleksi perguruan tinggi.','feat1'=>'Target: Siswa SMA kelas 10–12','feat2'=>'IPA, IPS, dan jurusan pilihan','icon_bg'=>'#EAF6EF','icon_color'=>'#16845B','icon'=>'<path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path>'],
-            ['id'=>'ujian','title'=>'Persiapan Ujian','badge'=>null,'badge_class'=>'','popular'=>true,'desc'=>'Program khusus persiapan ujian seperti UN, SNBT, dan ujian masuk sekolah favorit. Latihan soal intensif dan pembahasan mendalam.','feat1'=>'UN, SNBT, Ujian Masuk Sekolah','feat2'=>'Simulasi & tryout berkala','icon_bg'=>'rgba(20,43,74,0.07)','icon_color'=>'#142B4A','icon'=>'<polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>'],
+            ['id'=>'sd','title'=>'Bimbingan Belajar SD','badge'=>'Kelas 1–6','badge_class'=>'badge-green','desc'=>'Membangun fondasi belajar yang kuat dengan pendekatan yang menyenangkan dan sesuai usia. Fokus pada Matematika, Bahasa Indonesia, IPA, dan IPS.','feat1'=>'Target: Siswa SD kelas 1–6','feat2'=>'Sesi kelompok kecil & individual','icon_bg'=>'#EFFFF5','icon_color'=>'#079B58','icon'=>'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>'],
+            ['id'=>'smp','title'=>'Bimbingan Belajar SMP','badge'=>'Kelas 7–9','badge_class'=>'badge-navy','desc'=>'Membantu siswa SMP menguasai mata pelajaran inti dengan metode belajar yang lebih terstruktur. Persiapan ujian akhir semester dan ujian nasional.','feat1'=>'Target: Siswa SMP kelas 7–9','feat2'=>'Matematika, IPA, Bahasa Inggris','icon_bg'=>'rgba(18,53,42,0.07)','icon_color'=>'#12352A','icon'=>'<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>'],
+            ['id'=>'sma','title'=>'Bimbingan Belajar SMA','badge'=>'Kelas 10–12','badge_class'=>'badge-green','desc'=>'Program intensif untuk siswa SMA dengan fokus penguasaan materi dan strategi belajar efektif menghadapi ujian akhir dan seleksi perguruan tinggi.','feat1'=>'Target: Siswa SMA kelas 10–12','feat2'=>'IPA, IPS, dan jurusan pilihan','icon_bg'=>'#EFFFF5','icon_color'=>'#079B58','icon'=>'<path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path>'],
+            ['id'=>'ujian','title'=>'Persiapan Ujian','badge'=>null,'badge_class'=>'','popular'=>true,'desc'=>'Program khusus persiapan ujian seperti UN, SNBT, dan ujian masuk sekolah favorit. Latihan soal intensif dan pembahasan mendalam.','feat1'=>'UN, SNBT, Ujian Masuk Sekolah','feat2'=>'Simulasi & tryout berkala','icon_bg'=>'rgba(18,53,42,0.07)','icon_color'=>'#12352A','icon'=>'<polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>'],
         ];
         @endphp
         <div class="grid-programs">
             @foreach ($programs as $program)
-            <article class="program-card" id="program-{{ $program['id'] }}" style="{{ isset($program['popular']) ? 'border-color:rgba(22,132,91,.3);background-color:#fafffe;' : '' }}position:relative;">
+            <article class="program-card" id="program-{{ $program['id'] }}" style="{{ isset($program['popular']) ? 'border-color:rgba(7,155,88,.3);background-color:#fafffe;' : '' }}position:relative;">
                 @if (isset($program['popular']))
                 <div style="position:absolute;top:1.25rem;right:1.25rem;" aria-hidden="true">
                     <span class="badge-pill badge-green" style="font-size:.7rem;">Populer</span>
@@ -214,16 +193,16 @@
                 </div>
                 <div style="flex:1;">
                     <div style="display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem;">
-                        <h3 style="font-size:1.125rem;font-weight:700;color:#142B4A;margin:0;">{{ $program['title'] }}</h3>
+                        <h3 style="font-size:1.125rem;font-weight:700;color:#12352A;margin:0;">{{ $program['title'] }}</h3>
                         @if ($program['badge'])
                         <span class="badge-pill {{ $program['badge_class'] }}">{{ $program['badge'] }}</span>
                         @endif
                     </div>
-                    <p style="font-size:.875rem;color:#4a5568;line-height:1.7;margin-bottom:1.25rem;">{{ $program['desc'] }}</p>
-                    <div style="font-size:.8125rem;color:#64748b;margin-bottom:1.5rem;">
+                    <p style="font-size:.875rem;color:#5F7569;line-height:1.7;margin-bottom:1.25rem;">{{ $program['desc'] }}</p>
+                    <div style="font-size:.8125rem;color:#5F7569;margin-bottom:1.5rem;">
                         @foreach ([$program['feat1'], $program['feat2']] as $feat)
                         <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.375rem;">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16845B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#079B58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
                             <span>{{ $feat }}</span>
                         </div>
                         @endforeach
@@ -244,14 +223,14 @@
                 <div class="divider-green"></div>
                 <p class="text-section-label" style="margin-bottom:.75rem;">Mengapa Kami</p>
                 <h2 id="about-heading" class="heading-xl" style="margin-bottom:1.25rem;">Pendampingan Belajar yang Lebih Bermakna</h2>
-                <p style="font-size:1rem;color:#4a5568;line-height:1.75;margin-bottom:2rem;">Kami percaya bahwa setiap siswa memiliki potensi yang perlu dikembangkan dengan pendekatan yang tepat, sabar, dan terstruktur.</p>
+                <p style="font-size:1rem;color:#5F7569;line-height:1.75;margin-bottom:2rem;">Kami percaya bahwa setiap siswa memiliki potensi yang perlu dikembangkan dengan pendekatan yang tepat, sabar, dan terstruktur.</p>
                 <div style="display:flex;flex-direction:column;gap:1rem;">
                     @foreach (['Program disesuaikan dengan kebutuhan dan kemampuan masing-masing siswa', 'Laporan perkembangan belajar yang transparan untuk orang tua', 'Lingkungan belajar yang nyaman dan mendukung'] as $point)
                     <div style="display:flex;align-items:center;gap:.75rem;">
-                        <div style="width:1.5rem;height:1.5rem;background-color:#EAF6EF;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-hidden="true">
-                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#16845B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <div style="width:1.5rem;height:1.5rem;background-color:#EFFFF5;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-hidden="true">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#079B58" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
-                        <span style="font-size:.9375rem;color:#4a5568;">{{ $point }}</span>
+                        <span style="font-size:.9375rem;color:#5F7569;">{{ $point }}</span>
                     </div>
                     @endforeach
                 </div>
@@ -268,11 +247,11 @@
                 @foreach ($features as $i => $feat)
                 <div class="feature-card" id="feature-{{ $i + 1 }}">
                     <div class="feature-icon" aria-hidden="true">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16845B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{!! $feat['icon'] !!}</svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#079B58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{!! $feat['icon'] !!}</svg>
                     </div>
                     <div>
-                        <h3 style="font-size:.9375rem;font-weight:700;color:#142B4A;margin-bottom:.375rem;">{{ $feat['title'] }}</h3>
-                        <p style="font-size:.8125rem;color:#4a5568;line-height:1.6;margin:0;">{{ $feat['desc'] }}</p>
+                        <h3 style="font-size:.9375rem;font-weight:700;color:#12352A;margin-bottom:.375rem;">{{ $feat['title'] }}</h3>
+                        <p style="font-size:.8125rem;color:#5F7569;line-height:1.6;margin:0;">{{ $feat['desc'] }}</p>
                     </div>
                 </div>
                 @endforeach
@@ -288,7 +267,7 @@
             <div class="divider-green" style="margin-left:auto;margin-right:auto;"></div>
             <p class="text-section-label" style="margin-bottom:.75rem;">Cara Kerja</p>
             <h2 id="cara-kerja-heading" class="heading-xl" style="margin-bottom:1rem;">Mulai Perjalanan Belajarmu dalam 3 Langkah</h2>
-            <p style="font-size:1rem;color:#4a5568;line-height:1.7;">Proses yang mudah dan transparan untuk memulai bimbingan belajar bersama kami.</p>
+            <p style="font-size:1rem;color:#5F7569;line-height:1.7;">Proses yang mudah dan transparan untuk memulai bimbingan belajar bersama kami.</p>
         </div>
         @php
         $steps = [
@@ -306,11 +285,11 @@
                 <div style="display:flex;justify-content:center;margin-bottom:1.25rem;">
                     <div class="step-number" aria-hidden="true">{{ $step['num'] }}</div>
                 </div>
-                <div style="width:3.5rem;height:3.5rem;background-color:#EAF6EF;border-radius:.875rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;" aria-hidden="true">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16845B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{!! $step['icon'] !!}</svg>
+                <div style="width:3.5rem;height:3.5rem;background-color:#EFFFF5;border-radius:.875rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#079B58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{!! $step['icon'] !!}</svg>
                 </div>
-                <h3 style="font-size:1.0625rem;font-weight:700;color:#142B4A;margin-bottom:.625rem;">{{ $step['title'] }}</h3>
-                <p style="font-size:.875rem;color:#4a5568;line-height:1.7;max-width:220px;margin:0 auto;">{{ $step['desc'] }}</p>
+                <h3 style="font-size:1.0625rem;font-weight:700;color:#12352A;margin-bottom:.625rem;">{{ $step['title'] }}</h3>
+                <p style="font-size:.875rem;color:#5F7569;line-height:1.7;max-width:220px;margin:0 auto;">{{ $step['desc'] }}</p>
             </div>
             @endforeach
         </div>
@@ -330,7 +309,7 @@
             <div class="divider-green" style="margin-left:auto;margin-right:auto;"></div>
             <p class="text-section-label" style="margin-bottom:.75rem;">Testimoni</p>
             <h2 id="testimonials-heading" class="heading-xl" style="margin-bottom:1rem;">Cerita dari Pengalaman Belajar</h2>
-            <p style="font-size:1rem;color:#4a5568;line-height:1.7;">Berikut adalah contoh cerita dari berbagai peserta. Gantikan dengan testimoni nyata dari siswa dan orang tua.</p>
+            <p style="font-size:1rem;color:#5F7569;line-height:1.7;">Berikut adalah contoh cerita dari berbagai peserta. Gantikan dengan testimoni nyata dari siswa dan orang tua.</p>
             <div class="demo-label" style="margin:1rem auto 0;width:fit-content;" role="note" aria-label="Konten demo">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                 Konten demo — gantikan dengan testimoni nyata
@@ -357,8 +336,8 @@
                 <footer style="display:flex;align-items:center;gap:.875rem;margin-top:auto;">
                     <div class="testimonial-avatar" aria-hidden="true">{{ $testimonial['initials'] }}</div>
                     <div>
-                        <div style="font-size:.875rem;font-weight:700;color:#142B4A;">{{ $testimonial['name'] }}</div>
-                        <div style="font-size:.75rem;color:#64748b;">{{ $testimonial['role'] }}</div>
+                        <div style="font-size:.875rem;font-weight:700;color:#12352A;">{{ $testimonial['name'] }}</div>
+                        <div style="font-size:.75rem;color:#5F7569;">{{ $testimonial['role'] }}</div>
                     </div>
                 </footer>
             </blockquote>
@@ -378,7 +357,7 @@
                 Konsultasikan kebutuhan belajarmu dan temukan program yang sesuai. Kami siap membantu kamu belajar lebih terarah.
             </p>
             <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;">
-                <a href="{{ route('login') }}" class="btn-primary" id="cta-daftar-sekarang" style="background-color:#16845B;border-color:#16845B;">
+                <a href="{{ route('login') }}" class="btn-primary" id="cta-daftar-sekarang" style="background-color:#079B58;border-color:#079B58;">
                     Daftar Sekarang
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
@@ -393,18 +372,8 @@
     <div class="container-main">
         <div id="footer-grid" style="display:grid;grid-template-columns:1fr;gap:3rem;padding:4rem 0 3rem;">
             <div style="max-width:320px;">
-                <div style="display:flex;align-items:center;gap:.625rem;margin-bottom:1.25rem;">
-                    <div style="width:2.25rem;height:2.25rem;background-color:#16845B;border-radius:.625rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-hidden="true">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white"/>
-                            <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <span style="font-size:1rem;font-weight:800;color:#ffffff;display:block;line-height:1.1;">Bimbel</span>
-                        <span style="font-size:.6875rem;font-weight:600;color:#16845B;letter-spacing:.05em;text-transform:uppercase;display:block;line-height:1.1;">Sentra Edukasi</span>
-                    </div>
+                <div style="margin-bottom:1.25rem;">
+                    <img src="{{ asset('logo.png') }}" alt="Logo Bimbel Sentra Edukasi" style="height:3rem;width:auto;object-fit:contain;filter:brightness(0) invert(1);">
                 </div>
                 <p style="font-size:.875rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:1.5rem;">Lembaga bimbingan belajar yang menyediakan program pendampingan terstruktur untuk siswa SD, SMP, SMA, dan persiapan ujian.</p>
                 <div style="display:flex;gap:.625rem;" aria-label="Media sosial kami">
@@ -434,19 +403,19 @@
                 <h3 style="font-size:.8125rem;font-weight:700;color:#ffffff;letter-spacing:.05em;text-transform:uppercase;margin-bottom:1.25rem;">Informasi Kontak</h3>
                 <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.875rem;">
                     <li style="display:flex;align-items:flex-start;gap:.75rem;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16845B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#079B58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                         <span style="font-size:.875rem;color:rgba(255,255,255,.55);">[Alamat lengkap akan diisi]<br>Kota, Provinsi — Kode Pos</span>
                     </li>
                     <li style="display:flex;align-items:center;gap:.75rem;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16845B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#079B58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                         <span style="font-size:.875rem;color:rgba(255,255,255,.55);">[Nomor telepon akan diisi]</span>
                     </li>
                     <li style="display:flex;align-items:center;gap:.75rem;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16845B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#079B58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                         <span style="font-size:.875rem;color:rgba(255,255,255,.55);">[Email akan diisi]</span>
                     </li>
                     <li style="display:flex;align-items:center;gap:.75rem;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16845B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#079B58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                         <span style="font-size:.875rem;color:rgba(255,255,255,.55);">Senin – Sabtu, 07.00 – 20.00</span>
                     </li>
                 </ul>

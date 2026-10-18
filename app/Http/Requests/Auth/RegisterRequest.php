@@ -39,7 +39,7 @@ class RegisterRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class, 'email')],
-            'phone' => ['required', 'string', 'regex:/^(\+62|62|0)8[0-9]{7,12}$/'],
+            'phone' => ['required', 'string', 'regex:'.User::PHONE_PATTERN],
             'password' => ['required', 'string', 'confirmed', Password::defaults()],
         ];
     }

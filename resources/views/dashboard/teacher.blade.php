@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard Guru — Bimbel Modern Brilliant')
+@section('title', 'Dashboard Guru — Bimbel Sentra Edukasi')
 
 @section('content')
     <x-dashboard-placeholder

@@ -36,5 +36,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Murid Bimbel',
             'email' => 'murid@example.com',
         ]);
+
+        $this->call(ProgramSeeder::class);
     }
 }

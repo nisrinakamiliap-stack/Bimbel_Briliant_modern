@@ -1,7 +1,7 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
-@section('title', 'Login — Bimbel Modern Brilliant')
-@section('meta_description', 'Masuk ke akun Bimbel Modern Brilliant untuk mengakses dashboard belajar, jadwal kelas, materi, dan nilai.')
+@section('title', 'Login — Bimbel Sentra Edukasi')
+@section('meta_description', 'Masuk ke akun Bimbel Sentra Edukasi untuk mengakses dashboard belajar, jadwal kelas, materi, dan nilai.')
 
 @push('styles')
     @include('auth.partials.styles')
@@ -15,7 +15,7 @@
             {{-- Panel Identitas Brand (desktop) --}}
             <aside class="auth-brand-panel" aria-hidden="true">
                 <span class="auth-badge">Portal Belajar</span>
-                <h2>Selamat datang kembali di Bimbel Modern Brilliant</h2>
+                <h2>Selamat datang kembali di Bimbel Sentra Edukasi</h2>
                 <p>Lanjutkan perjalanan belajarmu. Akses jadwal kelas, materi, tugas, dan perkembangan nilai dalam satu tempat.</p>
                 <ul class="auth-brand-list">
                     <li>

@@ -1,7 +1,7 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
-@section('title', 'Daftar Akun Murid — Bimbel Modern Brilliant')
-@section('meta_description', 'Daftarkan akun murid di Bimbel Modern Brilliant untuk memilih program, melihat jadwal, dan mulai belajar bersama tutor profesional.')
+@section('title', 'Daftar Akun Murid — Bimbel Sentra Edukasi')
+@section('meta_description', 'Daftarkan akun murid di Bimbel Sentra Edukasi untuk memilih program, melihat jadwal, dan mulai belajar bersama tutor profesional.')
 
 @push('styles')
     @include('auth.partials.styles')
